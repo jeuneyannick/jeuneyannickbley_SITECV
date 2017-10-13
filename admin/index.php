@@ -22,9 +22,7 @@ if($req -> rowCount() > 0){
 
     echo '<table border="1">';
 
-    echo '<tr>'; 
-
-
+    echo '<tr>';
 
     foreach($ligne_utilisateur as $indice => $valeur){
         echo '<td>' . $valeur. '</td>';
@@ -34,5 +32,16 @@ if($req -> rowCount() > 0){
 
 
     ?>
+    <hr>
+
+    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+    <p>Texte</p>
+    <hr>
+    <?php
+      $req= $pdo->query("SELECT * FROM t_competences");
+      $ligne_competence = $req->fetch();
+      ?>
+
+     <h2>Les competences</h2>
 </body>
 </html>
