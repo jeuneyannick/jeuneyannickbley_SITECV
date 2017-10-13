@@ -9,6 +9,22 @@ if($req -> rowCount() > 0){
 }
 
 ?>
+<?php
+//je récupère la compétence
+
+$id_competence = $_GET['id_competence']; //..par l'id et $_GET
+$req=$pdo->query("SELECT* FROM t_competences WHERE id_competence= '$id_competence'"); //la requete est egale à l'id
+$ligne_competence= $req->fetch();
+print_r($ligne_competence); 
+
+
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -42,6 +58,7 @@ if($req -> rowCount() > 0){
       $ligne_competence = $req->fetch();
       ?>
 
-     <h2>Les competences</h2>
+     <h2>Modification d'une competence</h2>
+     <p>texte</p>
 </body>
 </html>
