@@ -7,13 +7,9 @@ require_once('connexion.php');
 
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
-if($req -> rowCount() > 0){
-    echo '<pre>';
-    print_r($ligne_utilisateur);
-    echo'</pre>';
-}
 
 ?>
+
 <?php
 //gestion des contenus de la bdd compétences
 //Insertion d'une competence
@@ -56,20 +52,7 @@ if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'UR
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
 </head>
 <body>
-    <?php
-
-    echo '<table border="1">';
-
-    echo '<tr>';
-
-    foreach($ligne_utilisateur as $indice => $valeur){
-        echo '<td>' . $valeur. '</td>';
-    }
-    echo '</tr>';
-    echo '</table>';
-
-
-    ?>
+    
     <hr>
 
     <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
