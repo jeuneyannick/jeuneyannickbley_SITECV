@@ -53,7 +53,7 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
     <p>Texte</p>
     <hr>
     <?php
-    $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
+    $req= $pdo->prepare("SELECT* FROM t_loisirs WHERE utilisateur_id= '1'");
     $req->execute();
     $nbr_loisirs = $req-> rowCount();
     ?>

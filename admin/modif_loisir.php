@@ -1,6 +1,6 @@
 <?php
 require_once('connexion.php');
-$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
+$req = $pdo -> query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 
@@ -10,7 +10,7 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 //je récupère le loisir
 
 $id_loisir = $_GET['id_loisir']; //..par l'id et $_GET
-$req=$pdo->query("SELECT * FROM t_loisirs WHERE id_loisir='$id_loisir'"); //la requete est egale à l'id
+$req=$pdo->query("SELECT* FROM t_loisirs WHERE id_loisir='$id_loisir'"); //la requete est egale à l'id
 $ligne_loisir= $req->fetch();
 
 
@@ -41,10 +41,10 @@ if(isset($_POST['loisir'])){//par le nom du premier input
         <hr>
 
         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
-        
+
         <hr>
         <?php
-        $req= $pdo->query("SELECT * FROM t_loisirs WHERE id_loisir='$id_loisir'");
+        $req= $pdo->query("SELECT* FROM t_loisirs WHERE id_loisir='$id_loisir'");
         $ligne_loisir = $req->fetch();
         ?>
 
