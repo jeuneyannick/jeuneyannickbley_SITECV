@@ -166,7 +166,11 @@ require_once('connexion.php');
                     </div>
                 </div>
             </div> -->
+        
 
+
+        <!-- Quelques modifications --> 
+        
 
 
 
