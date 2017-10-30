@@ -49,7 +49,7 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
 <body>
     <hr>
 
-    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+    <h1>Admin de site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
     <p>Texte</p>
     <hr>
     <?php
