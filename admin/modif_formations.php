@@ -1,6 +1,6 @@
 <?php
 require_once('connexion.php');
-$req = $pdo -> query("SELECT * FROM t_formations WHERE id_formation = '1'");
+$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 
@@ -9,21 +9,23 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 //je récupère la compétence
 
-$id_competence = $_GET['id_formation']; //..par l'id et $_GET
-$req=$pdo->query("SELECT * FROM t_formations WHERE id_formation='$id_formation'"); //la requete est egale à l'id
-$ligne_competence= $req->fetch();
+$id_formation = $_GET['id_formation']; //..par l'id et $_GET
+$req=$pdo->query("SELECT* FROM t_formations WHERE id_formation='$id_formation'"); //la requete est egale à l'id
+$ligne_formation= $req->fetch();
 
 
 
 // mise à jour d'une compétence
 
-if(isset($_POST['competence'])){//par le nom du premier input
-    $competence = addslashes($_POST['competence']);
-    $c_niveau  = addslashes($_POST['c_niveau']);
-    $id_competence = $_POST['id_competence'];
+if(isset($_POST['f_titre'])){//par le nom du premier input
+    $f_titre = addslashes($_POST['f_titre']);
+    $f_soustitre  = addslashes($_POST['f_soustitre']);
+    $f_dates  = addslashes($_POST['f_dates']);
+    $f_description  = addslashes($_POST['f_description']);
+    $id_formation = $_POST['id_formation'];
 
-    $pdo->exec("UPDATE t_competences SET competence ='$competence', c_niveau='$c_niveau' WHERE id_competence='$id_competence'");
-    header('location: competences.php');
+    $pdo->exec("UPDATE t_formations SET f_titre ='$f_titre', f_soustitre='$f_soustitre', f_dates='$f_dates', f_description='$f_description' WHERE id_formation='$id_formation'");
+    header('location: formations.php');
     exit();
 
 }
@@ -41,23 +43,33 @@ if(isset($_POST['competence'])){//par le nom du premier input
 
         <hr>
 
-        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
         <p>Texte</p>
         <hr>
         <?php
-        $req= $pdo->query("SELECT * FROM t_competences WHERE id_competence='$id_competence'");
-        $ligne_competence = $req->fetch();
+        $req= $pdo->query("SELECT * FROM t_formations WHERE id_formation='$id_formation'");
+        $ligne_formation = $req->fetch();
         ?>
 
-        <h2>Modification d'une competence</h2>
+        <h2>Modification d'une formation</h2>
 
-        <p><?php echo $ligne_competence['competence']; ?></p>
-        <form action="modif_competences.php" method="post">
+        <p><?php echo $ligne_formation['f_titre']; ?></p>
+        <p><?php echo $ligne_formation['f_soustitre']; ?></p>
+        <p><?php echo $ligne_formation['f_dates']; ?></p>
+        <p><?php echo $ligne_formation['f_description']; ?></p>
+        <form action="modif_formations.php" method="post">
 
-            <label for="competence">Competence</label>
-            <input type="text" name="competence" value="<?php echo $ligne_competence['competence'];?>">
-            <input type="number" name="c_niveau" value="<?php echo $ligne_competence['c_niveau'];?>">
-            <input hidden name="id_competence" value="<?php echo $ligne_competence['id_competence'];?>">
+            <label for="f_titre">Titre</label>
+
+            <input type="text" name="f_titre" value="<?php echo $ligne_formation['f_titre'];?>">
+
+            <input type="text" name="f_soustitre" value="<?php echo $ligne_formation['f_soustitre'];?>">
+
+            <input type="text" name="f_dates" value="<?php echo $ligne_formation['f_dates'];?>">
+
+            <input type="text" name="f_description" value="<?php echo $ligne_formation['f_description'];?>">
+
+            <input hidden name="id_formation" value="<?php echo $ligne_formation['id_formation'];?>">
             <input type="submit" value="Mettre à jour">
         </form>
     </body>

@@ -11,11 +11,14 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 //gestion des contenus de la bdd compétences
 //Insertion d'une competence
-if(isset($_POST['formation']) ){// si on a posté une nouvelle compétence
-    if(!empty($_POST['formation'])){
+if(isset($_POST['f_titre']) ) {// si on a posté une nouvelle compétence
+    if(!empty($_POST['f_titre']) && !empty($_POST['f_soustitre']) && !empty($_POST['f_dates']) && !empty($_POST['f_description']) ){
 
-        $formations = addslashes($_POST['formation']);
-        $pdo->prepare("INSERT INTO t_formations (f_titre, f_soustitre, f_dates, ) VALUES (NULL,'$formations','1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        $f_titre = addslashes($_POST['f_titre']);
+        $f_soustitre = addslashes($_POST['f_soustitre']);
+        $f_dates = addslashes($_POST['f_dates']);
+        $f_description = addslashes($_POST['f_description']);
+        $pdo->exec("INSERT INTO t_formations VALUES (NULL,'$f_titre','$f_soustitre','$f_dates','$f_description','1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
         header("location: formations.php");//pour revenir sur la page
         exit();
 
@@ -43,6 +46,8 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
     <hr>
@@ -56,37 +61,87 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
     ?>
 
     <h2>il y a <?= $nbr_formations; ?> formations</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      Formations
+                  </div>
+                  <div class="panel-body">
+                      <table class="table table-hover">
 
-    <table border=2>
 
-        <tr>
+                          <thead>
+                              <tr>
+                                  <th>Titre</th>
+                                  <th>Soustitre</th>
+                                  <th>Dates</th>
+                                  <th>Description</th>
+                                  <th>Suppression</th>
+                                  <th>Modification</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php while($ligne_formation= $req->fetch()){ ?>
 
-            <th>Formations</th>
-            <th>Suppression</th>
-            <th>Modification</th>
-        </tr>
-        <?php while($ligne_formation= $req->fetch()){ ?>
+                                  <tr>
 
-            <tr>
-                <td><?php echo $ligne_formation['formation']; ?></td>
-                <td><a href="formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Supprimer</a></td>
-                <td><a href="modif_formation.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Modifier</a></td>
+                                      <td><?php echo $ligne_formation['f_titre']; ?></td>
+                                      <td><?php echo $ligne_formation['f_soustitre']; ?></td>
+                                      <td><?php echo $ligne_formation['f_dates']; ?></td>
+                                      <td><?php echo $ligne_formation['f_description']; ?></td>
+                                      <td><a href="formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Supprimer</a></td>
+                                      <td><a href="modif_formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Modifier</a></td>
 
-            </tr>
-        <?php } ?>
-    </table>
-    <hr></hr>
+                                  </tr>
+                              <?php } ?>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
 
-    <h3>Insertion d'une formation </h3>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Insertion d'une formation
+                    </div>
+                    <div class="panel-body">
+                        <form  method="post" action="">
+                            <div class="form-group">
+                                <label for="titre">Titre</label>
+                                <input type="text" name="f_titre" id="f_titre" placeholder="Inserez une formation" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="f_soustitre">Soustitre</label>
+                                <input type="text" name="f_soustitre" id="f_soustitre" placeholder="Inserez une formation" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="f_dates">Formations</label>
+                                <input type="text" name="f_dates" id="f_dates" placeholder="Inserez une formation" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="f_description">Formations</label>
+                                <input type="text" name="f_description" id="f_description" placeholder="Inserez une formation" class="form-control">
+                            </div>
 
-    <form method="post" action="formations.php">
+                            <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 
-        <label for="formations">Formations</label>
-        <input type="text" name="formation" id="formation" placeholder="Inserez une formation">
-        <input type="submit" value="Inserer">
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-    </form>
+        </div>
+    </div>
 
+
+    <footer>
+
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>
