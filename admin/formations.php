@@ -3,6 +3,11 @@
 require_once('connexion.php');
 
 
+
+
+
+
+
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
@@ -50,6 +55,8 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
     <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
+
+    <?php require_once('inc/nav_inc.php>'); ?>
     <hr>
 
     <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
@@ -118,11 +125,11 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                                 <input type="text" name="f_soustitre" id="f_soustitre" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="f_dates">Formations</label>
+                                <label for="f_dates">Dates</label>
                                 <input type="text" name="f_dates" id="f_dates" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="f_description">Formations</label>
+                                <label for="f_description">Description</label>
                                 <input type="text" name="f_description" id="f_description" placeholder="Inserez une formation" class="form-control">
                             </div>
 

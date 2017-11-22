@@ -3,6 +3,7 @@
 
 
 require_once('connexion.php');
+require_once('inc/nav_inc.php');
 
 
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
@@ -45,51 +46,84 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
     <hr>
 
-    <h1>Admin de site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
-    <p>Texte</p>
+    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
     <hr>
     <?php
-    $req= $pdo->prepare("SELECT* FROM t_loisirs WHERE utilisateur_id= '1'");
+    $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
     $req->execute();
     $nbr_loisirs = $req-> rowCount();
     ?>
 
     <h2>il y a <?= $nbr_loisirs; ?> loisirs</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+              <div class="panel panel-primary">
+                  <div class="panel-heading">
+                      Loisirs
+                  </div>
+                  <div class="panel-body">
+                      <table class="table table-hover">
 
-    <table border=2>
 
-        <tr>
+                          <thead>
+                              <tr>
+                                  <th>Loisirs</th>
+                                  <th>Suppression</th>
+                                  <th>Modification</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php while($ligne_formation= $req->fetch()){ ?>
 
-            <th>Loisirs</th>
-            <th>Suppression</th>
-            <th>Modification</th>
-        </tr>
-        <?php while($ligne_loisir= $req->fetch()){ ?>
+                                  <tr>
 
-            <tr>
-                <td><?php echo $ligne_loisir['loisir']; ?></td>
-                <td><a href="loisirs.php?id_loisir=<?php echo $ligne_loisir['id_loisir'];?>">Supprimer</a></td>
-                <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_loisir['id_loisir'];?>">Modifier</a></td>
+                                      <td><?php echo $ligne_formation['loisir']; ?></td>
+                                      <td><a href="loisirs.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Supprimer</a></td>
+                                      <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Modifier</a></td>
 
-            </tr>
-        <?php } ?>
-    </table>
-    <hr></hr>
+                                  </tr>
+                              <?php } ?>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+            </div>
 
-    <h3>Insertion d'un loisir </h3>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Insertion d'un loisir
+                    </div>
+                    <div class="panel-body">
+                        <form  method="post" action="">
+                            <div class="form-group">
+                                <label for="loisirs">Loisirs</label>
+                                <input type="text" name="loisir" id="f_titre" placeholder="Inserez une formation" class="form-control">
+                            </div>
 
-    <form method="post" action="loisirs.php">
+                            <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 
-        <label for="Loisirs">Loisirs</label>
-        <input type="text" name="loisir" id="loisir" placeholder="Inserez un loisir">
-        <input type="submit" value="Inserez">
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-    </form>
+        </div>
+    </div>
 
+
+    <footer>
+
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 </html>

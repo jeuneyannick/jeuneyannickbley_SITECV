@@ -31,17 +31,19 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
 }
 
 ?>
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style_admin.css">
+    <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+</head>
+<body>
+    <div class="container">
 
-        <hr>
 
         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
         <p>Texte</p>
@@ -51,26 +53,66 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
         $ligne_formation = $req->fetch();
         ?>
 
-        <h2>Modification d'une formation</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2>Modification d'une formation</h2>
 
-        <p><?php echo $ligne_formation['f_titre']; ?></p>
-        <p><?php echo $ligne_formation['f_soustitre']; ?></p>
-        <p><?php echo $ligne_formation['f_dates']; ?></p>
-        <p><?php echo $ligne_formation['f_description']; ?></p>
-        <form action="modif_formations.php" method="post">
 
-            <label for="f_titre">Titre</label>
+                    </div>
+                    <div class="panel-body">
+                        <form action="modif_formations.php" method="post">
+                            <div class="form-group">
+                                <label for="f_titre">Titre</label>
 
-            <input type="text" name="f_titre" value="<?php echo $ligne_formation['f_titre'];?>">
+                                <input type="text" name="f_titre" class="form-control" value="<?php echo $ligne_formation['f_titre'];?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="soustitre">Soustitre</label>
+                                <input type="text" name="f_soustitre" class="form-control" value="<?php echo $ligne_formation['f_soustitre'];?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="dates">Dates</label>
+                                <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_formation['f_dates'];?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_formation['f_description'];?>">
+                            </div>
 
-            <input type="text" name="f_soustitre" value="<?php echo $ligne_formation['f_soustitre'];?>">
+                            <input hidden name="id_formation"  value="<?php echo $ligne_formation['id_formation'];?>">
 
-            <input type="text" name="f_dates" value="<?php echo $ligne_formation['f_dates'];?>">
+                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                        </form>
+                    </div>
+                </div>
 
-            <input type="text" name="f_description" value="<?php echo $ligne_formation['f_description'];?>">
+            </div>
+        </div>
+    </div>
 
-            <input hidden name="id_formation" value="<?php echo $ligne_formation['id_formation'];?>">
-            <input type="submit" value="Mettre à jour">
-        </form>
-    </body>
-    </html>
+    <p><?php echo $ligne_formation['f_titre']; ?></p>
+    <p><?php echo $ligne_formation['f_soustitre']; ?></p>
+    <p><?php echo $ligne_formation['f_dates']; ?></p>
+    <p><?php echo $ligne_formation['f_description']; ?></p>
+    <form action="modif_formations.php" method="post">
+
+        <label for="f_titre">Titre</label>
+
+        <input type="text" name="f_titre" value="<?php echo $ligne_formation['f_titre'];?>">
+
+        <input type="text" name="f_soustitre" value="<?php echo $ligne_formation['f_soustitre'];?>">
+
+        <input type="text" name="f_dates" value="<?php echo $ligne_formation['f_dates'];?>">
+
+        <input type="text" name="f_description" value="<?php echo $ligne_formation['f_description'];?>">
+
+        <input hidden name="id_formation" value="<?php echo $ligne_formation['id_formation'];?>">
+        <input type="submit" value="Mettre à jour">
+    </form>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>

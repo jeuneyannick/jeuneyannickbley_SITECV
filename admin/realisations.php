@@ -1,7 +1,6 @@
 <?php
 // gestion des contenus de la bdd
 //suppression d'une competence
-
 require_once('connexion.php');
 
 
@@ -12,35 +11,30 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 <?php
 //gestion des contenus de la bdd compétences
-//Insertion d'une experience
-if(isset($_POST['e_titre'])){// si on a posté une nouvelle experience
-    if(!empty($_POST['e_titre']) && !empty($_POST['e_soustitre']) && !empty($_POST['e_dates']) && !empty($_POST['e_description']) ){
-
-        $e_titre = addslashes($_POST['e_titre']);
-        $e_soustitre = addslashes($_POST['e_soustitre']);
-        $e_dates = addslashes($_POST['e_dates']);
-        $e_description = addslashes($_POST['e_description']);
-        $pdo->exec("INSERT INTO t_experiences VALUES (NULL,'$e_titre' ,'$e_soustitre' ,'$e_dates' ,'$e_description' ,'1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
-        header("location: experiences.php");//pour revenir sur la page
+//Insertion d'une competence
+if(isset($_POST['r_titre']) ){// si on a posté une nouvelle compétence
+    if(!empty($_POST['r_titre']) && !empty($_POST['r_soustitre']) && !empty($_POST['r_dates']) && !empty($_POST['r_description'])){
+     echo "problème";
+        $r_titre = addslashes($_POST['r_titre']);
+        $r_soustitre = addslashes($_POST['r_soustitre']);
+        $r_dates = addslashes($_POST['r_dates']);
+        $r_description = addslashes($_POST['r_description']);
+        $pdo->exec("INSERT INTO t_realisations VALUES (NULL,'$r_titre','$r_soustitre','$r_dates','$r_description', '1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        header("location: realisations.php");//pour revenir sur la page
         exit();
 
     }
 }
 
 
-
-
-
-
-
 //suppression d'une compétence
 
-if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'URL
-    $efface = $_GET['id_experience'];// je mets cela dans une variable
+if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'URL
+    $efface = $_GET['id_realisation'];// je mets cela dans une variable
 
-    $req="DELETE FROM t_experiences WHERE id_experience = '$efface'";
+    $req="DELETE FROM t_realisations WHERE id_realisation = '$efface'";
     $pdo->query($req);// on peut utiliser avec exec aussi si on veut
-    header("location: experiences.php");
+    header("location: realisations.php");
 
 }//Ferme le if isset
 
@@ -57,23 +51,24 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
     <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
+    <?php require_once('inc/nav_inc.php'); ?>
     <hr>
 
     <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
     <hr>
     <?php
-    $req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
+    $req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
     $req->execute();
-    $nbr_experiences = $req-> rowCount();
+    $nbr_formations = $req-> rowCount();
     ?>
 
-    <h2>il y a <?= $nbr_experiences; ?> experiences</h2>
+    <h2>il y a <?= $nbr_formations; ?> formations</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
               <div class="panel panel-primary">
                   <div class="panel-heading">
-                      Experiences
+                      Réalisations
                   </div>
                   <div class="panel-body">
                       <table class="table table-hover">
@@ -90,16 +85,16 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                               </tr>
                           </thead>
                           <tbody>
-                              <?php while($ligne_experiences= $req->fetch()){ ?>
+                              <?php while($ligne_realisation= $req->fetch()){ ?>
 
                                   <tr>
 
-                                      <td><?php echo $ligne_experiences['e_titre']; ?></td>
-                                      <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
-                                      <td><?php echo $ligne_experiences['e_dates']; ?></td>
-                                      <td><?php echo $ligne_experiences['e_description']; ?></td>
-                                      <td><a href="experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Supprimer</a></td>
-                                      <td><a href="modif_experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Modifier</a></td>
+                                      <td><?php echo $ligne_realisation['f_titre']; ?></td>
+                                      <td><?php echo $ligne_realisation['f_soustitre']; ?></td>
+                                      <td><?php echo $ligne_realisation['f_dates']; ?></td>
+                                      <td><?php echo $ligne_realisation['f_description']; ?></td>
+                                      <td><a href="formations.php?id_formation=<?php echo $ligne_realisation['id_realisation'];?>">Supprimer</a></td>
+                                      <td><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Modifier</a></td>
 
                                   </tr>
                               <?php } ?>
@@ -112,25 +107,25 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
             <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        Insertion d'une formation
+                        Insertion d'une realisation
                     </div>
                     <div class="panel-body">
                         <form  method="post" action="">
                             <div class="form-group">
                                 <label for="titre">Titre</label>
-                                <input type="text" name="e_titre" id="e_titre" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="f_titre" id="f_titre" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="e_soustitre">Soustitre</label>
-                                <input type="text" name="e_soustitre" id="e_soustitre" placeholder="Inserez une formation" class="form-control">
+                                <label for="f_soustitre">Soustitre</label>
+                                <input type="text" name="f_soustitre" id="f_soustitre" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="e_dates">Formations</label>
-                                <input type="text" name="e_dates" id="e_dates" placeholder="Inserez une formation" class="form-control">
+                                <label for="f_dates">Dates</label>
+                                <input type="text" name="f_dates" id="f_dates" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="e_description">Description</label>
-                                <input type="text" name="e_description" id="e_description" placeholder="Inserez une formation" class="form-control">
+                                <label for="f_description">Description</label>
+                                <input type="text" name="f_description" id="f_description" placeholder="Inserez une formation" class="form-control">
                             </div>
 
                             <input type="submit" class="btn btn-warning btn-block" value="Inserer">
