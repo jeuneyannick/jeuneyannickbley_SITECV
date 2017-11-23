@@ -2,7 +2,7 @@
 // gestion des contenus de la bdd
 //suppression d'une competence
 
-require_once('connexion.php');
+require_once('init/connect.php');
 
 
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
@@ -57,56 +57,63 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
     <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
-    <hr>
-
-    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
-    <hr>
-    <?php
+    <?php require_once('inc/nav_inc.php');
     $req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
     $req->execute();
     $nbr_experiences = $req-> rowCount();
     ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+                        <h2>il y a <?= $nbr_experiences; ?> experiences</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h2>il y a <?= $nbr_experiences; ?> experiences</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                      Experiences
-                  </div>
-                  <div class="panel-body">
-                      <table class="table table-hover">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Experiences
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
 
 
-                          <thead>
-                              <tr>
-                                  <th>Titre</th>
-                                  <th>Soustitre</th>
-                                  <th>Dates</th>
-                                  <th>Description</th>
-                                  <th>Suppression</th>
-                                  <th>Modification</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <?php while($ligne_experiences= $req->fetch()){ ?>
+                            <thead>
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Soustitre</th>
+                                    <th>Dates</th>
+                                    <th>Description</th>
+                                    <th>Suppression</th>
+                                    <th>Modification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while($ligne_experiences= $req->fetch()){ ?>
 
-                                  <tr>
+                                    <tr>
 
-                                      <td><?php echo $ligne_experiences['e_titre']; ?></td>
-                                      <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
-                                      <td><?php echo $ligne_experiences['e_dates']; ?></td>
-                                      <td><?php echo $ligne_experiences['e_description']; ?></td>
-                                      <td><a href="experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Supprimer</a></td>
-                                      <td><a href="modif_experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Modifier</a></td>
+                                        <td><?php echo $ligne_experiences['e_titre']; ?></td>
+                                        <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
+                                        <td><?php echo $ligne_experiences['e_dates']; ?></td>
+                                        <td><?php echo $ligne_experiences['e_description']; ?></td>
+                                        <td><a href="experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Supprimer</a></td>
+                                        <td><a href="modif_experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Modifier</a></td>
 
-                                  </tr>
-                              <?php } ?>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-4">

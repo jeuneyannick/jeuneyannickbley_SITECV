@@ -1,5 +1,5 @@
 <?php
-require_once('connexion.php');
+require_once('init/connect.php');
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
@@ -37,12 +37,12 @@ if(isset($_POST['r_titre'])){//par le nom du premier input
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style_admin.css" rel="stylesheet">
         <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
     </head>
     <body>
-
-        <hr>
-
+      <?php require_once('inc/nav_inc.php'); ?>
         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
         <p>Texte</p>
         <hr>

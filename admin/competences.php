@@ -2,7 +2,8 @@
 // gestion des contenus de la bdd
 //suppression d'une competence
 
-require_once('connexion.php');
+require_once('init/connect.php');
+
 
 
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
@@ -56,53 +57,59 @@ if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'UR
 </head>
 <body>
 
-    <?php require_once('inc/nav_inc.php'); ?>
-    <hr>
-
-    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
-    <hr>
-    <?php
+    <?php require_once('inc/nav_inc.php');
     $req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
     $req->execute();
     $nbr_competences = $req-> rowCount();
     ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+                        <h2>il y a <?= $nbr_competences; ?> competences</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h2>il y a <?= $nbr_competences; ?> competences</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                      Competences
-                  </div>
-                  <div class="panel-body">
-                      <table class="table table-hover">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Competences
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
 
 
-                          <thead>
-                              <tr>
-                                  <th>Competence</th>
-                                  <th>Niveau</th>
-                                  <th>Suppression</th>
-                                  <th>Modification</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <?php while($ligne_competence= $req->fetch()){ ?>
+                            <thead>
+                                <tr>
+                                    <th>Competence</th>
+                                    <th>Niveau</th>
+                                    <th>Suppression</th>
+                                    <th>Modification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while($ligne_competence= $req->fetch()){ ?>
 
-                                  <tr>
+                                    <tr>
 
-                                      <td><?php echo $ligne_competence['competence']; ?></td>
-                                      <td><?php echo $ligne_competence['c_niveau']; ?></td>
-                                      <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Supprimer</a></td>
-                                      <td><a href="modif_competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Modifier</a></td>
+                                        <td><?php echo $ligne_competence['competence']; ?></td>
+                                        <td><?php echo $ligne_competence['c_niveau']; ?></td>
+                                        <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Supprimer</a></td>
+                                        <td><a href="modif_competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Modifier</a></td>
 
-                                  </tr>
-                              <?php } ?>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-4">

@@ -1,5 +1,5 @@
 <?php
-require_once('connexion.php');
+require_once('init/connect.php');
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
@@ -29,19 +29,22 @@ if(isset($_POST['competence'])){//par le nom du premier input
 }
 
 ?>
-    <!DOCTYPE html>
-    <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style_admin.css">
+    <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+</head>
+<body>
+    <?php require_once('inc/nav_inc.php');  ?>
+    <div class="container">
 
-        <hr>
 
-        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
         <p>Texte</p>
         <hr>
         <?php
@@ -49,16 +52,38 @@ if(isset($_POST['competence'])){//par le nom du premier input
         $ligne_competence = $req->fetch();
         ?>
 
-        <h2>Modification d'une competence</h2>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h2>Modification d'une compétence</h2>
 
-        <p><?php echo $ligne_competence['competence']; ?></p>
-        <form action="modif_competences.php" method="post">
 
-            <label for="competence">Competence</label>
-            <input type="text" name="competence" value="<?php echo $ligne_competence['competence'];?>">
-            <input type="number" name="c_niveau" value="<?php echo $ligne_competence['c_niveau'];?>">
-            <input hidden name="id_competence" value="<?php echo $ligne_competence['id_competence'];?>">
-            <input type="submit" value="Mettre à jour">
-        </form>
-    </body>
-    </html>
+                    </div>
+                    <div class="panel-body">
+                        <form action="modif_competences.php" method="post">
+                            <div class="form-group">
+                                <label for="competence">competence</label>
+
+                                <input type="text" name="competence" class="form-control" value="<?php echo $ligne_competence['competence'];?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="c_niveau">Niveau</label>
+                                <input type="text" name="c_niveau" class="form-control" value="<?php echo $ligne_competence['c_niveau'];?>">
+                            </div>
+
+                            <input hidden name="id_competence"  value="<?php echo $ligne_competence['id_competence'];?>">
+
+                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>

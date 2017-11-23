@@ -2,8 +2,7 @@
 // gestion des contenus de la bdd
 
 
-require_once('connexion.php');
-require_once('inc/nav_inc.php');
+require_once('init/connect.php');
 
 
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
@@ -50,50 +49,59 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
     <link rel="stylesheet" href="style_admin.css">
 </head>
 <body>
-    <hr>
-
-    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
-    <hr>
-    <?php
+    <?php require_once('inc/nav_inc.php');
     $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
     $req->execute();
     $nbr_loisirs = $req-> rowCount();
     ?>
+    <div class="container">
+        <div class="row">
+            <div class="col-offset-md-6 col-md-6 ">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                            <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
+                            <h2>Il y a <?= $nbr_loisirs; ?> loisirs</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <h2>il y a <?= $nbr_loisirs; ?> loisirs</h2>
+
+
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                      Loisirs
-                  </div>
-                  <div class="panel-body">
-                      <table class="table table-hover">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Loisirs
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
 
 
-                          <thead>
-                              <tr>
-                                  <th>Loisirs</th>
-                                  <th>Suppression</th>
-                                  <th>Modification</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <?php while($ligne_formation= $req->fetch()){ ?>
+                            <thead>
+                                <tr>
+                                    <th>Loisirs</th>
+                                    <th>Suppression</th>
+                                    <th>Modification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while($ligne_formation= $req->fetch()){ ?>
 
-                                  <tr>
+                                    <tr>
 
-                                      <td><?php echo $ligne_formation['loisir']; ?></td>
-                                      <td><a href="loisirs.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Supprimer</a></td>
-                                      <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Modifier</a></td>
+                                        <td><?php echo $ligne_formation['loisir']; ?></td>
+                                        <td><a href="loisirs.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Supprimer</a></td>
+                                        <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Modifier</a></td>
 
-                                  </tr>
-                              <?php } ?>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-4">

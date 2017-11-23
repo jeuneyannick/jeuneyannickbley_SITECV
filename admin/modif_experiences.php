@@ -1,6 +1,6 @@
 
 <?php
-require_once('connexion.php');
+require_once('init/connect.php');
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
@@ -39,37 +39,65 @@ $ligne_experience= $req->fetch();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style_admin.css" rel="stylesheet">
         <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
     </head>
     <body>
+        <?php require_once('inc/nav_inc.php'); ?>
+            <div class="container">
 
-        <hr>
 
-        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
-        <p>Texte</p>
-        <hr>
-        <?php
-        $req= $pdo->query("SELECT * FROM t_experiences WHERE id_experience='$id_experience'");
-        $ligne_experience = $req->fetch();
-        ?>
+                <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
+                <p>Texte</p>
+                <hr>
+                <?php
+                $req= $pdo->query("SELECT * FROM t_experiences WHERE id_experience='$id_experience'");
+                $ligne_experience = $req->fetch();
+                ?>
 
-        <h2>Modification d'une experience</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h2>Modification d'une experience</h2>
 
-        <p><?php echo $ligne_experience['e_titre']; ?></p>
-        <form action="modif_experiences.php" method="post">
 
-            <label for="Titre">Titre</label>
+                            </div>
+                            <div class="panel-body">
+                                <form action="modif_experiences.php" method="post">
+                                    <div class="form-group">
+                                        <label for="e_titre">Titre</label>
 
-            <input type="text" name="e_titre" value="<?php echo $ligne_experience['e_titre'];?>">
+                                        <input type="text" name="e_titre" class="form-control" value="<?php echo $ligne_experience['e_titre'];?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="soustitre">Soustitre</label>
+                                        <input type="text" name="e_soustitre" class="form-control" value="<?php echo $ligne_experience['e_soustitre'];?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dates">Dates</label>
+                                        <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_experience['e_dates'];?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_experience['e_description'];?>">
+                                    </div>
 
-            <input type="text" name="e_soustitre" value="<?php echo $ligne_experience['e_soustitre'];?>">
+                                    <input hidden name="id_experience"  value="<?php echo $ligne_experience['id_experience'];?>">
 
-            <input type="text" name="e_dates" value="<?php echo $ligne_experience['e_dates'];?>">
+                                    <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                                </form>
+                            </div>
+                        </div>
 
-            <input type="text" name="e_description" value="<?php echo $ligne_experience['e_description'];?>">
+                    </div>
+                </div>
+            </div>
 
-            <input hidden name="id_experience" value="<?php echo $ligne_experience['id_experience'];?>">
-            <input type="submit" value="Mettre à jour">
-        </form>
-    </body>
-    </html>
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        </body>
+        </html>

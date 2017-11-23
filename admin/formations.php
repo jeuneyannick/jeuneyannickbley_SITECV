@@ -1,6 +1,6 @@
 <?php
 // gestion des contenus de la bdd
-require_once('connexion.php');
+require_once('init/connect.php');
 
 
 
@@ -57,10 +57,9 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
 <body>
 
     <?php require_once('inc/nav_inc.php>'); ?>
-    <hr>
 
     <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
-    <hr>
+
     <?php
     $req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
     $req->execute();

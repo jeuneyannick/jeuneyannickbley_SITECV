@@ -1,5 +1,5 @@
 <?php
-require_once('connexion.php');
+require_once('init/connect.php');
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
@@ -42,6 +42,8 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
 </head>
 <body>
+
+  <?php require_once('inc/nav_inc.php');  ?>
     <div class="container">
 
 
@@ -92,25 +94,7 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
         </div>
     </div>
 
-    <p><?php echo $ligne_formation['f_titre']; ?></p>
-    <p><?php echo $ligne_formation['f_soustitre']; ?></p>
-    <p><?php echo $ligne_formation['f_dates']; ?></p>
-    <p><?php echo $ligne_formation['f_description']; ?></p>
-    <form action="modif_formations.php" method="post">
 
-        <label for="f_titre">Titre</label>
-
-        <input type="text" name="f_titre" value="<?php echo $ligne_formation['f_titre'];?>">
-
-        <input type="text" name="f_soustitre" value="<?php echo $ligne_formation['f_soustitre'];?>">
-
-        <input type="text" name="f_dates" value="<?php echo $ligne_formation['f_dates'];?>">
-
-        <input type="text" name="f_description" value="<?php echo $ligne_formation['f_description'];?>">
-
-        <input hidden name="id_formation" value="<?php echo $ligne_formation['id_formation'];?>">
-        <input type="submit" value="Mettre à jour">
-    </form>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

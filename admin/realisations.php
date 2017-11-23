@@ -1,20 +1,20 @@
 <?php
 // gestion des contenus de la bdd
 //suppression d'une competence
-require_once('connexion.php');
+require_once('init/connect.php');
 
 
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
-?>
 
-<?php
+
+
 //gestion des contenus de la bdd compétences
 //Insertion d'une competence
 if(isset($_POST['r_titre']) ){// si on a posté une nouvelle compétence
     if(!empty($_POST['r_titre']) && !empty($_POST['r_soustitre']) && !empty($_POST['r_dates']) && !empty($_POST['r_description'])){
-     echo "problème";
+        echo "problème";
         $r_titre = addslashes($_POST['r_titre']);
         $r_soustitre = addslashes($_POST['r_soustitre']);
         $r_dates = addslashes($_POST['r_dates']);
@@ -52,56 +52,55 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
 </head>
 <body>
     <?php require_once('inc/nav_inc.php'); ?>
-    <hr>
 
     <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
     <hr>
     <?php
-    $req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
+    $req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '1'");
     $req->execute();
-    $nbr_formations = $req-> rowCount();
+    $nbr_realisations = $req-> rowCount();
     ?>
 
-    <h2>il y a <?= $nbr_formations; ?> formations</h2>
+    <h2>il y a <?= $nbr_realisations; ?> realisations</h2>
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-              <div class="panel panel-primary">
-                  <div class="panel-heading">
-                      Réalisations
-                  </div>
-                  <div class="panel-body">
-                      <table class="table table-hover">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Réalisations
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
 
 
-                          <thead>
-                              <tr>
-                                  <th>Titre</th>
-                                  <th>Soustitre</th>
-                                  <th>Dates</th>
-                                  <th>Description</th>
-                                  <th>Suppression</th>
-                                  <th>Modification</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <?php while($ligne_realisation= $req->fetch()){ ?>
+                            <thead>
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Soustitre</th>
+                                    <th>Dates</th>
+                                    <th>Description</th>
+                                    <th>Suppression</th>
+                                    <th>Modification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while($ligne_realisation= $req->fetch()){ ?>
 
-                                  <tr>
+                                    <tr>
 
-                                      <td><?php echo $ligne_realisation['f_titre']; ?></td>
-                                      <td><?php echo $ligne_realisation['f_soustitre']; ?></td>
-                                      <td><?php echo $ligne_realisation['f_dates']; ?></td>
-                                      <td><?php echo $ligne_realisation['f_description']; ?></td>
-                                      <td><a href="formations.php?id_formation=<?php echo $ligne_realisation['id_realisation'];?>">Supprimer</a></td>
-                                      <td><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Modifier</a></td>
+                                        <td><?php echo $ligne_realisation['r_titre']; ?></td>
+                                        <td><?php echo $ligne_realisation['r_soustitre']; ?></td>
+                                        <td><?php echo $ligne_realisation['r_dates']; ?></td>
+                                        <td><?php echo $ligne_realisation['r_description']; ?></td>
+                                        <td><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Supprimer</a></td>
+                                        <td><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Modifier</a></td>
 
-                                  </tr>
-                              <?php } ?>
-                          </tbody>
-                      </table>
-                  </div>
-              </div>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
             <div class="col-md-4">
@@ -113,21 +112,20 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
                         <form  method="post" action="">
                             <div class="form-group">
                                 <label for="titre">Titre</label>
-                                <input type="text" name="f_titre" id="f_titre" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="r_titre" id="r_titre" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="f_soustitre">Soustitre</label>
-                                <input type="text" name="f_soustitre" id="f_soustitre" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="r_soustitre" id="r_soustitre" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="f_dates">Dates</label>
-                                <input type="text" name="f_dates" id="f_dates" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="r_dates" id="r_dates" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="f_description">Description</label>
-                                <input type="text" name="f_description" id="f_description" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="r_description" id="r_description" placeholder="Inserez une formation" class="form-control">
                             </div>
-
                             <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 
                         </form>
