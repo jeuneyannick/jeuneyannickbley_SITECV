@@ -1,6 +1,17 @@
 <?php
 require_once('init/connect.php');
-$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '1'");
+session_start();;// à mettre dans toutes les pages de l'admin
+if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
+
+    $id_utilisateur = $_SESSION['id_utilisateur'];
+    $prenom = $_SESSION['prenom'];
+    $nom= $_SESSION['nom'];
+
+}else{ // l'utilisateur  n'est pas connecté
+    header('location:connexion.php');
+}
+
+$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '$id_utilisateur'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 
@@ -36,22 +47,27 @@ if(isset($_POST['competence'])){//par le nom du premier input
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="css/style_admin.css">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
 </head>
 <body>
     <?php require_once('inc/nav_inc.php');  ?>
+
+
     <div class="container">
-
-
-        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
-        <p>Texte</p>
-        <hr>
-        <?php
-        $req= $pdo->query("SELECT * FROM t_competences WHERE id_competence='$id_competence'");
-        $ligne_competence = $req->fetch();
-        ?>
-
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="alert alert-info" role="alert">
+                    <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+    $req= $pdo->query("SELECT * FROM t_competences WHERE id_competence='$id_competence'");
+    $ligne_competence = $req->fetch();
+    ?>
+    <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-info">

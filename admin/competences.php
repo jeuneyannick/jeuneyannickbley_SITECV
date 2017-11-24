@@ -1,12 +1,21 @@
 <?php
 // gestion des contenus de la bdd
 //suppression d'une competence
-
 require_once('init/connect.php');
+session_start();// à mettre dans toutes les pages de l'admin
+if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
+
+    $id_utilisateur = $_SESSION['id_utilisateur'];
+    $prenom = $_SESSION['prenom'];
+    $nom= $_SESSION['nom'];
+
+}else{ // l'utilisateur  n'est pas connecté
+    header('location:connexion.php');
+}
 
 
 
-$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
+$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='$id_utilisateur'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 ?>
@@ -19,7 +28,7 @@ if(isset($_POST['competence']) ){// si on a posté une nouvelle compétence
 
         $competence = addslashes($_POST['competence']);
         $c_niveau = addslashes($_POST['c_niveau']);
-        $pdo->exec("INSERT INTO t_competences VALUES (NULL,'$competence','$c_niveau','1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        $pdo->exec("INSERT INTO t_competences VALUES (NULL,'$competence','$c_niveau','$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
         header("location: competences.php");//pour revenir sur la page
         exit();
 
@@ -36,7 +45,6 @@ if(isset($_POST['competence']) ){// si on a posté une nouvelle compétence
 
 if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'URL
     $efface = $_GET['id_competence'];// je mets cela dans une variable
-
     $req="DELETE FROM t_competences WHERE id_competence = '$efface'";
     $pdo->query($req);// on peut utiliser avec exec aussi si on veut
     header("location: competences.php");
@@ -53,7 +61,7 @@ if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'UR
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="css/style_admin.css">
 </head>
 <body>
 
@@ -67,7 +75,7 @@ if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'UR
             <div class="col-md-6">
                 <div class="panel panel-danger">
                     <div class="panel-heading">
-                        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['pseudo']); ?></h1>
+                        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
                         <h2>il y a <?= $nbr_competences; ?> competences</h2>
                     </div>
                 </div>

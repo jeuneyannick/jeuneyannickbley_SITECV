@@ -1,11 +1,20 @@
 <?php
 // gestion des contenus de la bdd
-
-
 require_once('init/connect.php');
+session_start();;// à mettre dans toutes les pages de l'admin
+if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
+
+    $id_utilisateur = $_SESSION['id_utilisateur'];
+    $prenom = $_SESSION['prenom'];
+    $nom= $_SESSION['nom'];
+
+}else{ // l'utilisateur  n'est pas connecté
+    header('location:connexion.php');
+}
 
 
-$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='1'");
+
+$req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='$id_utilisateur'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 
@@ -17,7 +26,7 @@ if(isset($_POST['loisir']) ){// si on a posté une nouvelle compétence
     if(!empty($_POST['loisir'])){
 
         $loisirs = addslashes($_POST['loisir']);
-        $pdo->exec("INSERT INTO t_loisirs VALUES (NULL,'$loisirs','1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        $pdo->exec("INSERT INTO t_loisirs VALUES (NULL,'$loisirs','$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
         header("location: loisirs.php");//pour revenir sur la page
         exit();
 
@@ -46,17 +55,17 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="style_admin.css">
+    <link rel="stylesheet" href="css/style_admin.css">
 </head>
 <body>
     <?php require_once('inc/nav_inc.php');
-    $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
+    $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '$id_utilisateur'");
     $req->execute();
     $nbr_loisirs = $req-> rowCount();
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-offset-md-6 col-md-6 ">
+            <div class="col-offset-md-3 col-md-6 ">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                             <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>

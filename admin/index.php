@@ -1,26 +1,38 @@
 <?php
 require_once('init/connect.php');
 
-$req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
+session_start();;// à mettre dans toutes les pages de l'admin
+if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
+
+    $id_utilisateur = $_SESSION['id_utilisateur'];
+    $prenom = $_SESSION['prenom'];
+    $nom= $_SESSION['nom'];
+
+}else{ // l'utilisateur  n'est pas connecté
+    header('location:connexion.php');
+}
+
+
+$req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '$id_utilisateur'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
-$req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '$id_utilisateur'");
 $req->execute();
 $nbr_formations = $req-> rowCount();
 
-$req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '$id_utilisateur'");
 $req->execute();
 $nbr_realisations = $req-> rowCount();
 
-$req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '$id_utilisateur'");
 $req->execute();
 $nbr_loisirs = $req-> rowCount();
 
-$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '$id_utilisateur'");
 $req->execute();
 $nbr_experiences = $req-> rowCount();
 
-$req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '$id_utilisateur'");
 $req->execute();
 $nbr_competences = $req-> rowCount();
 
@@ -28,7 +40,7 @@ $nbr_competences = $req-> rowCount();
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
