@@ -110,7 +110,7 @@ if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'UR
 
                                             <td><?php echo $ligne_competence['competence']; ?></td>
                                             <td><?php echo $ligne_competence['c_niveau']; ?></td>
-                                            <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Supprimer</a></td>
+                                            <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>"><button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>Supprimer</button></a></td>
                                             <td><a href="modif_competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Modifier</a></td>
 
                                         </tr>

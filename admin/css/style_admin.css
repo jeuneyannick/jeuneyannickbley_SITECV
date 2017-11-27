@@ -1,5 +1,9 @@
 @charset "utf-8";
 /*CSS Document admin pisola */
 body{
-    background-image: url(../img/purty_wood.png);
+    background: #616161;
+}
+
+.navbar-inverse{
+    background:#C2C57F;
 }

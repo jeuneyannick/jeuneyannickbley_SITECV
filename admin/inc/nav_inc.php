@@ -1,3 +1,7 @@
+<?php
+require('fonctions.inc.php');
+
+ ?>
 
 <!-- Navbar Bootstrap !-->
 <nav class="navbar navbar-inverse">
@@ -16,8 +20,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="utilisateur.php">Utilisateur <span class="sr-only">(current)</span></a></li>
-                <li><a href="titrecv.php">Titre CV</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Parcours<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -31,21 +33,14 @@
                     <ul class="dropdown-menu">
                         <li><a href="competences.php">Competences</a></li>
                         <li><a href="loisirs.php">Loisirs</a></li>
-                        <li><a href="reseaux.php">Reseaux</a></li>
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Rechercher</button>
-            </form>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion <span class="caret"></span></a>
+                    <a href="connexion.php" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Connexion <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Déconnexion</a></li>
+                        <li><a href="../pagehtmldebase.html?action=oui">Déconnexion</a></li>
                     </ul>
                 </li>
             </ul>
