@@ -68,8 +68,8 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
             <div class="col-offset-md-3 col-md-6 ">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                            <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
-                            <h2>Il y a <?= $nbr_loisirs; ?> loisirs</h2>
+                        <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
+                        <h2>Il y a <?= $nbr_loisirs; ?> loisirs</h2>
                     </div>
                 </div>
             </div>
@@ -85,30 +85,32 @@ if(isset($_GET['id_loisir'])){// on récupère la comp. par son id dans l'URL
                     <div class="panel-heading">
                         Loisirs
                     </div>
-                    <div class="panel-body">
-                        <table class="table table-hover">
+                    <div class="table-reponsive">
+                        <div class="panel-body">
+                            <table class="table table-hover">
 
 
-                            <thead>
-                                <tr>
-                                    <th>Loisirs</th>
-                                    <th>Suppression</th>
-                                    <th>Modification</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while($ligne_formation= $req->fetch()){ ?>
-
+                                <thead>
                                     <tr>
-
-                                        <td><?php echo $ligne_formation['loisir']; ?></td>
-                                        <td><a href="loisirs.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Supprimer</a></td>
-                                        <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Modifier</a></td>
-
+                                        <th>Loisirs</th>
+                                        <th>Suppression</th>
+                                        <th>Modification</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php while($ligne_formation= $req->fetch()){ ?>
+
+                                        <tr>
+
+                                            <td><?php echo $ligne_formation['loisir']; ?></td>
+                                            <td><a href="loisirs.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Supprimer</a></td>
+                                            <td><a href="modif_loisir.php?id_loisir=<?php echo $ligne_formation['id_loisir'];?>">Modifier</a></td>
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

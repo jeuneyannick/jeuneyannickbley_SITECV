@@ -80,53 +80,54 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
         </div>
     </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Réalisations
-                        </div>
-                        <div class="panel-body">
-                            <table class="table table-hover">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Réalisations
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
 
 
-                                <thead>
+                            <thead>
+                                <tr>
+                                    <th>Titre</th>
+                                    <th>Soustitre</th>
+                                    <th>Dates</th>
+                                    <th>Description</th>
+                                    <th>Suppression</th>
+                                    <th>Modification</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php while($ligne_realisation= $req->fetch()){ ?>
+
                                     <tr>
-                                        <th>Titre</th>
-                                        <th>Soustitre</th>
-                                        <th>Dates</th>
-                                        <th>Description</th>
-                                        <th>Suppression</th>
-                                        <th>Modification</th>
+
+                                        <td><?php echo $ligne_realisation['r_titre']; ?></td>
+                                        <td><?php echo $ligne_realisation['r_soustitre']; ?></td>
+                                        <td><?php echo $ligne_realisation['r_dates']; ?></td>
+                                        <td><?php echo $ligne_realisation['r_description']; ?></td>
+                                        <td><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Supprimer</a></td>
+                                        <td><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Modifier</a></td>
+
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while($ligne_realisation= $req->fetch()){ ?>
-
-                                        <tr>
-
-                                            <td><?php echo $ligne_realisation['r_titre']; ?></td>
-                                            <td><?php echo $ligne_realisation['r_soustitre']; ?></td>
-                                            <td><?php echo $ligne_realisation['r_dates']; ?></td>
-                                            <td><?php echo $ligne_realisation['r_description']; ?></td>
-                                            <td><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Supprimer</a></td>
-                                            <td><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Modifier</a></td>
-
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+            </div>
 
 
-                <div class="col-md-4">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Insertion d'une realisation
-                        </div>
+            <div class="col-md-4">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        Insertion d'une realisation
+                    </div>
+                    <div class="table-responsive">
                         <div class="panel-body">
                             <form  method="post" action="">
                                 <div class="form-group">
@@ -151,9 +152,10 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
 
 
     <footer>

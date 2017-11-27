@@ -1,7 +1,6 @@
 <?php
 // gestion des contenus de la bdd
 //suppression d'une competence
-
 require_once('init/connect.php');
 
 session_start();;// à mettre dans toutes les pages de l'admin
@@ -92,36 +91,38 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                     <div class="panel-heading">
                         Experiences
                     </div>
-                    <div class="panel-body">
-                        <table class="table table-hover">
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <table class="table table-hover">
 
 
-                            <thead>
-                                <tr>
-                                    <th>Titre</th>
-                                    <th>Soustitre</th>
-                                    <th>Dates</th>
-                                    <th>Description</th>
-                                    <th>Suppression</th>
-                                    <th>Modification</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while($ligne_experiences= $req->fetch()){ ?>
-
+                                <thead>
                                     <tr>
-
-                                        <td><?php echo $ligne_experiences['e_titre']; ?></td>
-                                        <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
-                                        <td><?php echo $ligne_experiences['e_dates']; ?></td>
-                                        <td><?php echo $ligne_experiences['e_description']; ?></td>
-                                        <td><a href="experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Supprimer</a></td>
-                                        <td><a href="modif_experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Modifier</a></td>
-
+                                        <th>Titre</th>
+                                        <th>Soustitre</th>
+                                        <th>Dates</th>
+                                        <th>Description</th>
+                                        <th>Suppression</th>
+                                        <th>Modification</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php while($ligne_experiences= $req->fetch()){ ?>
+
+                                        <tr>
+
+                                            <td><?php echo $ligne_experiences['e_titre']; ?></td>
+                                            <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
+                                            <td><?php echo $ligne_experiences['e_dates']; ?></td>
+                                            <td><?php echo $ligne_experiences['e_description']; ?></td>
+                                            <td><a href="experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Supprimer</a></td>
+                                            <td><a href="modif_experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Modifier</a></td>
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

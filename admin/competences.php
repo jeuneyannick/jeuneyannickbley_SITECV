@@ -90,32 +90,34 @@ if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'UR
                     <div class="panel-heading">
                         Competences
                     </div>
-                    <div class="panel-body">
-                        <table class="table table-hover">
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <table class="table table-hover">
 
 
-                            <thead>
-                                <tr>
-                                    <th>Competence</th>
-                                    <th>Niveau</th>
-                                    <th>Suppression</th>
-                                    <th>Modification</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while($ligne_competence= $req->fetch()){ ?>
-
+                                <thead>
                                     <tr>
-
-                                        <td><?php echo $ligne_competence['competence']; ?></td>
-                                        <td><?php echo $ligne_competence['c_niveau']; ?></td>
-                                        <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Supprimer</a></td>
-                                        <td><a href="modif_competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Modifier</a></td>
-
+                                        <th>Competence</th>
+                                        <th>Niveau</th>
+                                        <th>Suppression</th>
+                                        <th>Modification</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php while($ligne_competence= $req->fetch()){ ?>
+
+                                        <tr>
+
+                                            <td><?php echo $ligne_competence['competence']; ?></td>
+                                            <td><?php echo $ligne_competence['c_niveau']; ?></td>
+                                            <td><a href="competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Supprimer</a></td>
+                                            <td><a href="modif_competences.php?id_competence=<?php echo $ligne_competence['id_competence'];?>">Modifier</a></td>
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -76,22 +76,24 @@ if(isset($_POST['competence'])){//par le nom du premier input
 
 
                     </div>
-                    <div class="panel-body">
-                        <form action="modif_competences.php" method="post">
-                            <div class="form-group">
-                                <label for="competence">competence</label>
+                    <div class="table-repsonsive">
+                        <div class="panel-body">
+                            <form action="modif_competences.php" method="post">
+                                <div class="form-group">
+                                    <label for="competence">competence</label>
 
-                                <input type="text" name="competence" class="form-control" value="<?php echo $ligne_competence['competence'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="c_niveau">Niveau</label>
-                                <input type="text" name="c_niveau" class="form-control" value="<?php echo $ligne_competence['c_niveau'];?>">
-                            </div>
+                                    <input type="text" name="competence" class="form-control" value="<?php echo $ligne_competence['competence'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="c_niveau">Niveau</label>
+                                    <input type="text" name="c_niveau" class="form-control" value="<?php echo $ligne_competence['c_niveau'];?>">
+                                </div>
 
-                            <input hidden name="id_competence"  value="<?php echo $ligne_competence['id_competence'];?>">
+                                <input hidden name="id_competence"  value="<?php echo $ligne_competence['id_competence'];?>">
 
-                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
-                        </form>
+                                <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                            </form>
+                        </div>
                     </div>
                 </div>
 

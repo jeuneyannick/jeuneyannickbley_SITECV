@@ -80,30 +80,32 @@ $ligne_experience= $req->fetch();
 
 
                     </div>
-                    <div class="panel-body">
-                        <form action="modif_experiences.php" method="post">
-                            <div class="form-group">
-                                <label for="e_titre">Titre</label>
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <form action="modif_experiences.php" method="post">
+                                <div class="form-group">
+                                    <label for="e_titre">Titre</label>
 
-                                <input type="text" name="e_titre" class="form-control" value="<?php echo $ligne_experience['e_titre'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="soustitre">Soustitre</label>
-                                <input type="text" name="e_soustitre" class="form-control" value="<?php echo $ligne_experience['e_soustitre'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="dates">Dates</label>
-                                <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_experience['e_dates'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_experience['e_description'];?>">
-                            </div>
+                                    <input type="text" name="e_titre" class="form-control" value="<?php echo $ligne_experience['e_titre'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="soustitre">Soustitre</label>
+                                    <input type="text" name="e_soustitre" class="form-control" value="<?php echo $ligne_experience['e_soustitre'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dates">Dates</label>
+                                    <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_experience['e_dates'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_experience['e_description'];?>">
+                                </div>
 
-                            <input hidden name="id_experience"  value="<?php echo $ligne_experience['id_experience'];?>">
+                                <input hidden name="id_experience"  value="<?php echo $ligne_experience['id_experience'];?>">
 
-                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
-                        </form>
+                                <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                            </form>
+                        </div>
                     </div>
                 </div>
 

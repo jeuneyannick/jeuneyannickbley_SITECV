@@ -75,28 +75,30 @@ if(isset($_POST['r_titre'])){//par le nom du premier input
                     <div class="panel-heading">
                         <h2>Modification d'une realisation</h2>
                     </div>
-                    <div class="panel-body">
-                        <form action="modif_realisations.php" method="post">
-                            <div class="form-group">
-                                <label for="realisations">Realisations</label>
-                                <input type="text" name="r_titre" class="form-control" value="<?php echo $ligne_realisation['r_titre'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="soustitre">Soustitre</label>
-                                <input type="text" name="r_soustitre" class="form-control" value="<?php echo $ligne_realisation['r_soustitre'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="dates">Dates</label>
-                                <input type="text" name="r_dates" class="form-control" value="<?php echo $ligne_realisation['r_dates'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <input type="text" name="r_description" class="form-control" value="<?php echo $ligne_realisation['r_description'];?>">
-                            </div>
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <form action="modif_realisations.php" method="post">
+                                <div class="form-group">
+                                    <label for="realisations">Realisations</label>
+                                    <input type="text" name="r_titre" class="form-control" value="<?php echo $ligne_realisation['r_titre'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="soustitre">Soustitre</label>
+                                    <input type="text" name="r_soustitre" class="form-control" value="<?php echo $ligne_realisation['r_soustitre'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dates">Dates</label>
+                                    <input type="text" name="r_dates" class="form-control" value="<?php echo $ligne_realisation['r_dates'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" name="r_description" class="form-control" value="<?php echo $ligne_realisation['r_description'];?>">
+                                </div>
 
-                            <input hidden name="id_realisation"  value="<?php echo $ligne_realisation['id_realisation'];?>">
-                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
-                        </form>
+                                <input hidden name="id_realisation"  value="<?php echo $ligne_realisation['id_realisation'];?>">
+                                <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

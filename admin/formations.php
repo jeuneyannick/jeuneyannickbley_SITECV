@@ -89,36 +89,38 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                     <div class="panel-heading">
                         Formations
                     </div>
-                    <div class="panel-body">
-                        <table class="table table-hover">
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <table class="table table-hover">
 
 
-                            <thead>
-                                <tr>
-                                    <th>Titre</th>
-                                    <th>Soustitre</th>
-                                    <th>Dates</th>
-                                    <th>Description</th>
-                                    <th>Suppression</th>
-                                    <th>Modification</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php while($ligne_formation= $req->fetch()){ ?>
-
+                                <thead>
                                     <tr>
-
-                                        <td><?php echo $ligne_formation['f_titre']; ?></td>
-                                        <td><?php echo $ligne_formation['f_soustitre']; ?></td>
-                                        <td><?php echo $ligne_formation['f_dates']; ?></td>
-                                        <td><?php echo $ligne_formation['f_description']; ?></td>
-                                        <td><a href="formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Supprimer</a></td>
-                                        <td><a href="modif_formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Modifier</a></td>
-
+                                        <th>Titre</th>
+                                        <th>Soustitre</th>
+                                        <th>Dates</th>
+                                        <th>Description</th>
+                                        <th>Suppression</th>
+                                        <th>Modification</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php while($ligne_formation= $req->fetch()){ ?>
+
+                                        <tr>
+
+                                            <td><?php echo $ligne_formation['f_titre']; ?></td>
+                                            <td><?php echo $ligne_formation['f_soustitre']; ?></td>
+                                            <td><?php echo $ligne_formation['f_dates']; ?></td>
+                                            <td><?php echo $ligne_formation['f_description']; ?></td>
+                                            <td><a href="formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Supprimer</a></td>
+                                            <td><a href="modif_formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Modifier</a></td>
+
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

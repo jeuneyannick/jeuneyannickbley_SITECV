@@ -50,7 +50,7 @@ if(isset($_POST['loisir'])){//par le nom du premier input
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
 </head>
 <body>
-  <?php require_once('inc/nav_inc.php'); ?>
+    <?php require_once('inc/nav_inc.php'); ?>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -74,18 +74,20 @@ if(isset($_POST['loisir'])){//par le nom du premier input
 
 
                     </div>
-                    <div class="panel-body">
-                        <form action="modif_loisir.php" method="post">
-                            <div class="form-group">
-                                <label for="loisir">Loisirs</label>
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <form action="modif_loisir.php" method="post">
+                                <div class="form-group">
+                                    <label for="loisir">Loisirs</label>
 
-                                <input type="text" name="loisir" class="form-control" value="<?php echo $ligne_loisir['loisir'];?>">
-                            </div>
+                                    <input type="text" name="loisir" class="form-control" value="<?php echo $ligne_loisir['loisir'];?>">
+                                </div>
 
-                            <input hidden name="id_loisir"  value="<?php echo $ligne_loisir['id_loisir'];?>">
+                                <input hidden name="id_loisir"  value="<?php echo $ligne_loisir['id_loisir'];?>">
 
-                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
-                        </form>
+                                <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                            </form>
+                        </div>
                     </div>
                 </div>
 

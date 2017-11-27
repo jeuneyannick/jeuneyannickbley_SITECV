@@ -77,30 +77,32 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
                     <div class="panel-heading">
                         <h2>Modification d'une formation</h2>
                     </div>
-                    <div class="panel-body">
-                        <form action="modif_formations.php" method="post">
-                            <div class="form-group">
-                                <label for="f_titre">Titre</label>
+                    <div class="table-responsive">
+                        <div class="panel-body">
+                            <form action="modif_formations.php" method="post">
+                                <div class="form-group">
+                                    <label for="f_titre">Titre</label>
 
-                                <input type="text" name="f_titre" class="form-control" value="<?php echo $ligne_formation['f_titre'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="soustitre">Soustitre</label>
-                                <input type="text" name="f_soustitre" class="form-control" value="<?php echo $ligne_formation['f_soustitre'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="dates">Dates</label>
-                                <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_formation['f_dates'];?>">
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_formation['f_description'];?>">
-                            </div>
+                                    <input type="text" name="f_titre" class="form-control" value="<?php echo $ligne_formation['f_titre'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="soustitre">Soustitre</label>
+                                    <input type="text" name="f_soustitre" class="form-control" value="<?php echo $ligne_formation['f_soustitre'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="dates">Dates</label>
+                                    <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_formation['f_dates'];?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_formation['f_description'];?>">
+                                </div>
 
-                            <input hidden name="id_formation"  value="<?php echo $ligne_formation['id_formation'];?>">
+                                <input hidden name="id_formation"  value="<?php echo $ligne_formation['id_formation'];?>">
 
-                            <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
-                        </form>
+                                <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
+                            </form>
+                        </div>
                     </div>
                 </div>
 
