@@ -3,7 +3,7 @@
 //suppression d'une competence
 require_once('init/connect.php');
 
-session_start();;// à mettre dans toutes les pages de l'admin
+session_start();// à mettre dans toutes les pages de l'admin
 if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
 
     $id_utilisateur = $_SESSION['id_utilisateur'];

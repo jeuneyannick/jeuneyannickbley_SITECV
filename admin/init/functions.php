@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 
 // fonction pour voir si un utilisateur est connecté:
 function userConnecte(){
@@ -14,6 +12,17 @@ function userConnecte(){
 
 
 
+function menuIsActive($page){
 
+    $page = $page.'.php';
+    $Route = $_SERVER['SCRIPT_FILENAME'];
+    $Route = explode('/', $Route);
+    $Route = end($Route);
+
+    if($Route === $page){
+
+        return 'active';
+    }
+}
 
  ?>

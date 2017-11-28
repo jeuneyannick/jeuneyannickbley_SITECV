@@ -1,7 +1,18 @@
 <?php
 require_once('init/connect.php');
 session_start(); // à mettre dabs toutes les pages de l'admin (même cette page)
-  $msg_authentification ='';//On initialise la variable en cas d'erreur
+$msg_authentification ='';//On initialise la variable en cas d'erreur
+// pour déconnecter de l'admin
+if(isset($_GET['quitter']) && $_GET['quitter']=='oui'){// on récupère le terme quitter dans l'url
+    $_SESSION['connexion']=''; // on vide les variables de session
+    $_SESSION['id_utilisateur']='';
+    $_SESSION['prenom']='';
+    $_SESSION['nom']='';
+
+    unset($_SESSION['connexion']);
+    session_destroy();
+     header('location:connexion.php');
+} // ferme le isset de la déconnexion
 
 if(isset ($_POST['connexion'])){// On envoie le form avec le name du button (on a cliqué dessus )
     $email = addslashes($_POST['email']);
@@ -9,20 +20,20 @@ if(isset ($_POST['connexion'])){// On envoie le form avec le name du button (on 
     $req = $pdo->prepare("SELECT* FROM t_utilisateurs WHERE email='$email' AND mdp='$mdp'");
     $req->execute();
     $nbr_utilisateurs = $req->rowCount(); // s'il est dans la table on le compte mais O s'il n'y est pas
-      if ($nbr_utilisateurs  == 0 ){//il n'est pas ! Diantre !
-          $msg_authentification= "Erreur d'authentification !";
-      }else{//On le trouve, il est inscrit
-          $ligne_utilisateur = $req->fetch(); // On cherche ses infos
+    if ($nbr_utilisateurs  == 0 ){//il n'est pas ! Diantre !
+        $msg_authentification= "Erreur d'authentification !";
+    }else{//On le trouve, il est inscrit
+        $ligne_utilisateur = $req->fetch(); // On cherche ses infos
 
-          $_SESSION['connexion']= 'connecté';
-          $_SESSION['id_utilisateur']= $ligne_utilisateur['id_utilisateur'];
-          $_SESSION['prenom']= $ligne_utilisateur['prenom'];
-          $_SESSION['nom']= $ligne_utilisateur['nom'];
-          header('location: index.php');
+        $_SESSION['connexion']= 'connecté';
+        $_SESSION['id_utilisateur']= $ligne_utilisateur['id_utilisateur'];
+        $_SESSION['prenom']= $ligne_utilisateur['prenom'];
+        $_SESSION['nom']= $ligne_utilisateur['nom'];
+        header('location: index.php');
 
 
 
-      }
+    }
 }//Ferme le if isset
 ?>
 

@@ -1,18 +1,7 @@
 <?php
 require_once('init/connect.php');
 
-session_start();;// à mettre dans toutes les pages de l'admin
-// Pour se déconnecter de l'amdin
-if(isset($_GET['action']) && $_GET['action']== 'oui'){// on récupère le terme quitter dans l'url
-
-    $id_utilisateur = '';
-    $prenom = '';
-    $nom = '';
-    var_dump($_SESSIION['connexion']);
-    unset($_SESSION['connexion']);
-    session_destroy();
-    header('location: ../connexion.php?action=oui');
-}
+session_start();// à mettre dans toutes les pages de l'admin
 
 if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
 
