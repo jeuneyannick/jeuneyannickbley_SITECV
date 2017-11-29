@@ -1,0 +1,24 @@
+@charset "utf-8";
+/*CSS Document admin pisola */
+body{
+    background: #346F98;
+}
+
+.jumbotron{
+    background: #0897F9;
+    bottom: 225px;
+    font-family: Magra;
+}
+
+.alert-info h1{
+    text-align:center;
+    font-family: Magra;
+}
+.btn-default{
+    background:#B41029;
+}
+button{
+    background:#B41029;
+    color:white;
+    border: #B41029;
+}
