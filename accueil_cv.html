@@ -4,73 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/style_front.css">
+    <link rel="stylesheet" href="css-front/style_front.css">
+    <link rel="sstylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <title> Site public </title>
 </head>
 <body>
-    <div id="first-container"><!-- Div contenant l'image de fond de la permière partie de la page accueiL !-->
-        <nav class="navbar-header">
-            <ul class="links">
-                <li><a href="index.php"> Page d'accueil</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Competences</a></li>
-                <li><a href="#">Réalisations</a></li>
-                <li><a href="#">Formations</a></li>
-                <li><a href="#">Expériences</a></li>
-            </ul>
-        </nav>
+    <main>
+        <div id="first-container"><!-- Div contenant l'image de fond de la permière partie de la page accueiL !-->
 
-        <section id="introducing">
-            <p> Bienvenue sur le site de Bley Yannick</p>
-            <span>
-                Suivez moi sur
-            </span>
-            <ul class="social-network"><!-- Liste des icones redirigeant vers mes réseaxu sociaux -->
-                <li><a href="https://twitter.com/YannickBley" target="_blank"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a></li>
-                <li><a href="https://github.com/jeuneyannick" target="_blank"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a></li>
-                <li><a href="https://fr.linkedin.com/in/yannickbley" target="_blank"><i class="fa fa-linkedin-square fa-4x" aria-hidden="true"></i></a></li>
-                <li><a href="https://www.facebook.com/yannick.bley.50" target="_blank"><i class="fa fa-facebook-official fa-4x" aria-hidden="true"></i></a></li>
-            </ul>
-        </section>
-    </div><!-- Fin de la div de fond pour l'image!-->
+            <nav class="navbar-header" class="mainMenu">
+                <!-- <input type="checkbox" name="panel" class="hidden" id="panel"> -->
+                <label for="panel" class="menuTitle"></label>
+                <div class="clear"></div>
+                <ul id="links" class="menu">
+                    <li><a href="index.php"> Page d'accueil</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Competences</a></li>
+                    <li><a href="#">Réalisations</a></li>
+                    <li><a href="#">Formations</a></li>
+                    <li><a href="#">Expériences</a></li>
+                </ul>
+            </nav>
+            <div class="clear"></div>
+            <section id="introducing">
+                <p> Bienvenue sur le site de Bley Yannick</p>
+                <span>
+                    Suivez moi sur
+                </span>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-6">
+                            <ul class="social-network"><!-- Liste des icones redirigeant vers mes réseaxu sociaux -->
+                                <li><a href="https://twitter.com/YannickBley" class="col-md-6 col-md-offset-6" target="_blank"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a></li>
+                                <li><a href="https://github.com/jeuneyannick" class="col-md-6 col-md-offset-6" target="_blank"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a></li>
+                                <li><a href="https://fr.linkedin.com/in/yannickbley" class="col-md-6 col-md-offset-6" target="_blank"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a></li>
+                                <li><a href="https://www.facebook.com/yannick.bley.50" class="col-md-6 col-md-offset-6" target="_blank"><i class="fa fa-facebook-official fa-3x" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="clear"></div>
+        </div><!-- Fin de la div de fond pour l'image!-->
 
-    <div id="second-container">
-        <section id="link">
-            <div class="full"><!-- première ligne de la cube de la section dediée aux liens -->
-                <span class="title"><h2>Compétences</h2></span>
-            </div>
-            <div class="empty">
-            </div>
-            <div class="full">
-                <span class="title"><h2>Formations</h2></span>
-            </div><!-- fin de la première ligne -->
+        <div id="second-container">
+            <section id="link">
+                <div class="full"><!-- première ligne de la cube de la section dediée aux liens -->
+                    <span class="title"><h2>Compétences</h2></span>
+                </div>
+                <div class="empty">
+                </div>
+                <div class="full">
+                    <span class="title"><h2>Formations</h2></span>
+                </div><!-- fin de la première ligne -->
 
-            <div class="clear">
-            </div>
+                <div class="clear">
+                </div>
 
-            <div class="empty"><!-- Deuxième ligne de la cube de la section dediée aux liens!-->
-            </div>
+                <div class="empty"><!-- Deuxième ligne de la cube de la section dediée aux liens!-->
+                </div>
 
-            <div class="full">
-                <span class="title"><h2>Réalisations</h2></span>
-            </div>
+                <div class="full">
+                    <span class="title"><h2>Réalisations</h2></span>
+                </div>
 
-            <div class="clear">
-            </div><!--Fin de la deuxième ligne -->
+                <div class="clear">
+                </div><!--Fin de la deuxième ligne -->
 
-            <div class="full"><!-- Troisième ligne de la cube !-->
-                <span class="title"><h2>Loisirs</h2></span>
-            </div>
-            <div class="empty">
-            </div>
-            <div class="full">
-                <span class="title"><h2>Contact</h2></span>
-            </div><!--Fin de la troisième page-->
-        </section>
-    </div>
+                <div class="full"><!-- Troisième ligne de la cube !-->
+                    <span class="title"><h2>Loisirs</h2></span>
+                </div>
+                <div class="empty">
+                </div>
+                <div class="full">
+                    <span class="title"><h2>Contact</h2></span>
+                </div><!--Fin de la troisième page-->
+            </section>
 
-    <footer><!-- bas de page -->
+        </div>
+        <footer><!-- bas de page -->
 
-    </footer>
+        </footer>
+    </main>
+
 </body>
