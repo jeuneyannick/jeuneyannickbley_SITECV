@@ -53,9 +53,31 @@ main{
 .navbar-header ul li a{
 	font-family:Fjalla One,sans-serif;
 }
-
-
-
+#introducing{
+	background: #E8D5B7;
+    height: 50%;
+}
+#introducing p{
+	font-weight: bold;
+    text-align: center;
+    display: block;
+    color: saddlebrown;
+    font-size: 20px;
+}
+#social-network{
+	background: #658525;
+    width: 10%;
+	display: inline-block;
+    margin: 0 auto;
+}
+}
+#social-network a{
+	display: block;
+	text-align: center;
+}
+.fa{
+	color: #0F4392;
+}
 
 
 
