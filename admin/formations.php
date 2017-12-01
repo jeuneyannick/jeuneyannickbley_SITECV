@@ -60,6 +60,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_admin.css">
 </head>
@@ -71,7 +72,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
@@ -84,7 +85,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         Formations
@@ -125,7 +126,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         Insertion d'une formation
@@ -146,8 +147,11 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                             </div>
                             <div class="form-group">
                                 <label for="f_description">Description</label>
-                                <input type="text" name="f_description" id="f_description" placeholder="Inserez une formation" class="form-control">
+                                <textarea name="f_description" id="editor1" class="form-control"></textarea>
                             </div>
+                            <script>
+                            CKEDITOR.replace('editor1');
+                            </script>
 
                             <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 

@@ -7,3 +7,6 @@ body{
 .navbar-inverse{
     background:#C2C57F;
 }
+.panel-heading h1, .panel-heading h2{
+    text-align:center;
+}

@@ -62,6 +62,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_admin.css">
 </head>
@@ -69,11 +70,11 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
     <?php require_once('inc/nav_inc.php');
     $req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
     $req->execute();
-    $nbr_experiences = $req-> rowCount();
+    $nbr_experiences = $req->rowCount();
     ?>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
@@ -86,7 +87,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
 
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         Experiences
@@ -127,10 +128,10 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                 </div>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        Insertion d'une formation
+                        Insertion d'une experience
                     </div>
                     <div class="panel-body">
                         <form  method="post" action="">
@@ -148,25 +149,28 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                             </div>
                             <div class="form-group">
                                 <label for="e_description">Description</label>
-                                <input type="text" name="e_description" id="e_description" placeholder="Inserez une formation" class="form-control">
-                            </div>
+                                <textarea name="e_description" id="editor1" class="form-control"></textarea>
+                                </div>
+                                <script>
+                                CKEDITOR.replace('editor1');
+                                </script>
 
-                            <input type="submit" class="btn btn-warning btn-block" value="Inserer">
+                                <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
 
-    <footer>
+        <footer>
 
-    </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
 
-</body>
-</html>
+    </body>
+    </html>

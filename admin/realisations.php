@@ -58,6 +58,7 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_admin.css">
 </head>
@@ -144,8 +145,11 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
                                 </div>
                                 <div class="form-group">
                                     <label for="f_description">Description</label>
-                                    <input type="text" name="r_description" id="r_description" placeholder="Inserez une formation" class="form-control">
+                                    <textarea name="r_description" id="r_description" placeholder="Inserez une formation" class="form-control"></textarea>
                                 </div>
+                                <script>
+                                CKEDITOR.replace('editor1');
+                                </script>
                                 <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 
                             </form>
