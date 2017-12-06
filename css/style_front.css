@@ -1,0 +1,15 @@
+body
+ {
+    background: darksalmon;
+ }
+ .navbar-default
+ {
+    background:darksalmon;
+    border:none;
+ }
+  .navbar-nav p
+  {
+      color:white;
+      font-size:15px;
+      font-weight:bold;
+  }
