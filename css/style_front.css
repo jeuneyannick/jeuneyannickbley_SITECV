@@ -1,14 +1,14 @@
 body
 {
     background:white
-    margin:0 auto; 
+    margin:0 auto;
 }
    .navbar-default
   {
     background:darkolivegreen;
     border:none;
-    position:relative;
-    z-index:1
+    margin:0;
+    border-radius:0px
   }
   .navbar-default li:hover
   {
@@ -42,7 +42,7 @@ body
      background-image:url("../img/camo.png");
      color:white;
    }
-     .jumbotron div
+     .jumbotron div:not(.btn-danger)
      {
        box-sizing:border-box;
        opacity:initial;
