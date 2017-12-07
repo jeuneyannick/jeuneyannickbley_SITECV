@@ -32,9 +32,9 @@
     <title>Site cv Yannick Bley</title>
 </head>
 <body>
-    <main class="container-fluid">
-        <nav class="navbar navbar-default navbar fixed-top">
-            <div class="container">
+    <main class="container-fluid col-md-7 col-md-offset-2">
+        <div class="container">
+            <nav class="navbar navbar-default navbar fixed-top">
                 <div class="col-lg-12">
                     <div class="col-md-6 col-md-offset-6">
                         <ul class="nav navbar-nav">
@@ -45,8 +45,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </div>
 
 
         <section class="mastehead col-lg-12">
@@ -72,7 +72,7 @@
                             Bootstrap
                         </div>
                     </div>
-                    <div class="panel panel-default col-md-4 col-md-offset-4">
+                    <div class="panel panel-default col-md-4 col-md-offset-2">
                         <div class="panel-heading">Formations</div>
                         <div class="panel-body">
                             JavaScript
@@ -94,7 +94,7 @@
                             Bootstrap
                         </div>
                     </div>
-                    <div class="panel panel-default col-md-4 col-md-offset-4">
+                    <div class="panel panel-default col-md-4 col-md-offset-2">
                         <div class="panel-heading">Loisirs</div>
                         <div class="panel-body">
                             JavaScript
