@@ -1,15 +1,37 @@
 body
- {
+{
     background: darksalmon;
- }
- .navbar-default
- {
+}
+   .navbar-default
+  {
     background:darksalmon;
     border:none;
- }
-  .navbar-nav p
-  {
+  }
+    .navbar-nav p
+    {
       color:white;
       font-size:15px;
       font-weight:bold;
-  }
+    }
+ header
+ {
+    background:darksalmon;
+    width: 100%;
+    height:100vh;
+ }
+   .jumbotron
+   {
+     background:#A13939;
+     opacity:0.6;
+   }
+     .jumbotron div
+     {
+       box-sizing:border-box;
+       opacity:initial;
+       font-size: 2em;
+       text-align:center;
+     }
+       .jumbotron a
+       {
+         margin-left: 9px;
+       }
