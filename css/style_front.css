@@ -13,12 +13,21 @@ body
       font-size:15px;
       font-weight:bold;
     }
- header
+.container-fluid
+{
+    background:peachpuff;
+
+}
+ .mastehead
  {
     background:darksalmon;
     width: 100%;
-    height:100vh;
+    height:90vh;
  }
+  .container-jumbotron
+  {
+      padding-top:9px;
+  }
    .jumbotron
    {
      background:#A13939;
@@ -30,8 +39,32 @@ body
        opacity:initial;
        font-size: 2em;
        text-align:center;
+       font-family:Righteous;
      }
        .jumbotron a
        {
          margin-left: 9px;
+         font-family:Righteous;
        }
+      .panel-default
+      {
+          background:indianred;
+          color:peachpuff;
+          font-size:1em;
+          font-family:Righteous;
+          padding:2% 6%;
+          border:none;
+      }
+      .panel-default:hover
+      {
+          background:moccasin;
+          color:indianred;
+          transition:1s;
+
+      }
+        .panel-heading
+        {
+            background:lightseagreen;
+            border-radius:3px;
+            text-align:center; 
+        }
