@@ -1,29 +1,33 @@
 <?php
-require_once('admin/init/connect.php');
+require_once('admin/init/connect.php'); // Connexion à ma base de données
+require_once('admin/init/functions.php');// Require des fonctions que je vais utiliser
+$req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
+$affiche_utilisateurs = $req -> fetchAll(PDO::FETCH_ASSOC);
 
-$req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '$id_utilisateur'");
-$ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
-
-$req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '$id_utilisateur'");
+$req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
 $req->execute();
-$nbr_formations = $req-> rowCount();
+$affiche_formations = $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_formations) . '</br>';
 
-$req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '$id_utilisateur'");
+$req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '1'");
 $req->execute();
-$nbr_realisations = $req-> rowCount();
+$affiche_realisations = $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_realisations) . '</br>';
 
-$req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '$id_utilisateur'");
+$req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
 $req->execute();
-$nbr_loisirs = $req-> rowCount();
+$affiche_loisirs = $req->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_loisirs) . '</br>';
 
-$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '$id_utilisateur'");
+$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
 $req->execute();
-$nbr_experiences = $req-> rowCount();
+$affiche_experiences= $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_experiences) . '</br>';
 
-$req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '$id_utilisateur'");
+$req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
 $req->execute();
-$nbr_competences = $req-> rowCount();
-
+$affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_competences) . '</br>';
 
 ?>
 <!DOCTYPE html>
@@ -41,14 +45,15 @@ $nbr_competences = $req-> rowCount();
     <title>Site cv Yannick Bley</title>
 </head>
 <body>
-    <main class="container-fluid col-md-7 col-md-offset-2">
+
+    <main class="container-fluid">
         <nav class="navbar navbar-default navbar fixed-top">
             <div class="container">
                 <div class="col-lg-12">
                     <div class="col-md-6 col-md-offset-6">
                         <ul class="nav navbar-nav">
                             <li><a href="#index_bootstrap.php"><p>Accueil</p></a></li>
-                            <li><a href="#competences"><p>Compétences</p></a></li>
+                            <li><a href="competences"><p>Compétences</p></a></li>
                             <li><a href="#Formations"><p>Formations</p></a></li>
                             <li><a href="#Contact"><p>Contact</p></a></li>
                         </ul>
@@ -61,11 +66,11 @@ $nbr_competences = $req-> rowCount();
         <section class="mastehead col-lg-12">
             <div class="container">
                 <div class="row">
-                    <div class="jumbotron text-uppercase col-md-offset-2 col-md-7">
+                    <div class="jumbotron text-uppercase col-md-12 col-xs-12">
                         <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
                         <div class="description">Developpeur/Integrateur Web Junior</div>
                         <div class="search"> Je suis actuellement à la recherche d'un stage</div>
-                        <div class="btn btn-danger col-md-3 col-md-offset-3">
+                        <div class="btn btn-danger col-md-3 col-md-offset-5">
                             Retrouvez moi sur
                         </div>
                     </div>
@@ -75,26 +80,52 @@ $nbr_competences = $req-> rowCount();
                 <div class="row">
                     <div class="panel panel-default col-md-4">
                         <button class="btn btn-danger">Competences</button>
+                        <div class="panel-body">
+                            <?php
+                            for($i = 0; $i <count($affiche_competences); $i++){
+                                echo $affiche_competences[$i]['c_niveau'].'</br>';
+                                echo $affiche_competences[$i]['competence'].'</br>';
+                            } ?>
+                        </div>
+
                     </div>
                     <div class="panel panel-default col-md-4">
                         <button class="btn btn-danger">Formations</button>
+
                         <div class="panel-body">
-                            JavaScript
-                            Css
-                            html
-                            php
-                            Bootstrap
+                            <?php
+                            for($i = 0; $i <count($affiche_formations); $i++){
+                                echo $affiche_formations[$i]['f_titre'].'</br>';
+                                echo $affiche_formations[$i]['f_soustitre'].'</br>';
+                                echo $affiche_formations[$i]['f_dates'].'</br>';
+                                echo $affiche_formations[$i]['f_description'].'</br>';
+                            } ?>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="panel panel-default col-md-4">
                         <button class="btn btn-danger">Experiences</button>
+                        <div class="panel-body">
+                            <?php
+                            for($i = 0; $i <count($affiche_experiences); $i++){
+                                echo $affiche_experiences[$i]['e_titre'].'</br>';
+                                echo $affiche_experiences[$i]['e_soustitre'].'</br>';
+                                echo $affiche_experiences[$i]['e_dates'].'</br>';
+                                echo $affiche_experiences[$i]['e_description'].'</br>';
+                            } ?>
+                        </div>
                     </div>
                     <div class="panel panel-default col-md-4">
                         <button class="btn btn-danger">
                             Loisirs
                         </button>
+                        <div class="panel-body">
+                            <?php
+                            for($i = 0; $i <count($affiche_loisirs); $i++){
+                                echo $affiche_loisirs[$i]['loisir'].'</br>';
+                            } ?>
+                        </div>
                     </div>
                 </div>
             </section>
