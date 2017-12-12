@@ -45,96 +45,90 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
     <title>Site cv Yannick Bley</title>
 </head>
 <body>
-
-    <main class="container-fluid">
+    <section class="mastehead col-lg-12">
         <nav class="navbar navbar-default navbar fixed-top">
             <div class="container">
-                <div class="col-lg-12">
-                    <div class="col-md-6 col-md-offset-6">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#index_bootstrap.php"><p>Accueil</p></a></li>
-                            <li><a href="competences"><p>Compétences</p></a></li>
-                            <li><a href="#Formations"><p>Formations</p></a></li>
-                            <li><a href="#Contact"><p>Contact</p></a></li>
-                        </ul>
-                    </div>
+                <div class=" text-center col-xs-12 col-md-6">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#index_bootstrap.php"><p>Accueil</p></a></li>
+                        <li><a href="competences"><p>Compétences</p></a></li>
+                        <li><a href="#Formations"><p>Formations</p></a></li>
+                        <li><a href="#Contact"><p>Contact</p></a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
 
-
-        <section class="mastehead col-lg-12">
-            <div class="container">
-                <div class="row">
-                    <div class="jumbotron text-uppercase col-md-12 col-xs-12">
-                        <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
-                        <div class="description">Developpeur/Integrateur Web Junior</div>
-                        <div class="search"> Je suis actuellement à la recherche d'un stage</div>
-                        <div class="btn btn-danger col-md-3 col-md-offset-5">
-                            Retrouvez moi sur
-                        </div>
+        <div class="container">
+            <div class="row">
+                <div class="jumbotron text-uppercase col-md-12 col-sm-8">
+                    <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
+                    <div class="description">Developpeur/Integrateur Web Junior</div>
+                    <div class="search">Je suis actuellement à la recherche d'un stage</div>
+                    <div class="btn btn-danger col-md-2 col-md-offset-4 col-sm-2">
+                        Suivez moi
                     </div>
                 </div>
             </div>
-            <section class="container">
-                <div class="row">
-                    <div class="panel panel-default col-md-4">
-                        <button class="btn btn-danger">Competences</button>
-                        <div class="panel-body">
-                            <?php
-                            for($i = 0; $i <count($affiche_competences); $i++){
-                                echo $affiche_competences[$i]['c_niveau'].'</br>';
-                                echo $affiche_competences[$i]['competence'].'</br>';
-                            } ?>
-                        </div>
+        </div>
+    </div>
+</section>
+<!-- <section class="container">
+<div class="row">
+<div class="panel panel-default col-md-4">
+<button class="btn btn-danger">Competences</button>
+<div class="panel-body">
+<?php
+for($i = 0; $i <count($affiche_competences); $i++){
+echo $affiche_competences[$i]['c_niveau'].'</br>';
+echo $affiche_competences[$i]['competence'].'</br>';
+} ?>
+</div>
 
-                    </div>
-                    <div class="panel panel-default col-md-4">
-                        <button class="btn btn-danger">Formations</button>
+</div>
+<div class="panel panel-default col-md-4">
+<button class="btn btn-danger">Formations</button>
 
-                        <div class="panel-body">
-                            <?php
-                            for($i = 0; $i <count($affiche_formations); $i++){
-                                echo $affiche_formations[$i]['f_titre'].'</br>';
-                                echo $affiche_formations[$i]['f_soustitre'].'</br>';
-                                echo $affiche_formations[$i]['f_dates'].'</br>';
-                                echo $affiche_formations[$i]['f_description'].'</br>';
-                            } ?>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="panel panel-default col-md-4">
-                        <button class="btn btn-danger">Experiences</button>
-                        <div class="panel-body">
-                            <?php
-                            for($i = 0; $i <count($affiche_experiences); $i++){
-                                echo $affiche_experiences[$i]['e_titre'].'</br>';
-                                echo $affiche_experiences[$i]['e_soustitre'].'</br>';
-                                echo $affiche_experiences[$i]['e_dates'].'</br>';
-                                echo $affiche_experiences[$i]['e_description'].'</br>';
-                            } ?>
-                        </div>
-                    </div>
-                    <div class="panel panel-default col-md-4">
-                        <button class="btn btn-danger">
-                            Loisirs
-                        </button>
-                        <div class="panel-body">
-                            <?php
-                            for($i = 0; $i <count($affiche_loisirs); $i++){
-                                echo $affiche_loisirs[$i]['loisir'].'</br>';
-                            } ?>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-    </main>
+<div class="jumbotron text-uppercase col-md-12 col-xs-12">
+<?php
+for($i = 0; $i <count($affiche_formations); $i++){
+echo $affiche_formations[$i]['f_titre'].'</br>';
+echo $affiche_formations[$i]['f_soustitre'].'</br>';
+echo $affiche_formations[$i]['f_dates'].'</br>';
+echo $affiche_formations[$i]['f_description'].'</br>';
+} ?>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="panel panel-default col-md-4">
+<button class="btn btn-danger">Experiences</button>
+<div class="panel-body">
+<?php
+for($i = 0; $i <count($affiche_experiences); $i++){
+echo $affiche_experiences[$i]['e_titre'].'</br>';
+echo $affiche_experiences[$i]['e_soustitre'].'</br>';
+echo $affiche_experiences[$i]['e_dates'].'</br>';
+echo $affiche_experiences[$i]['e_description'].'</br>';
+} ?>
+</div>
+</div>
+<div class="panel panel-default col-md-4">
+<button class="btn btn-danger">
+Loisirs
+</button>
+<div class="panel-body">
+<?php
+for($i = 0; $i <count($affiche_loisirs); $i++){
+echo $affiche_loisirs[$i]['loisir'].'</br>';
+} ?>
+</div>
+</div>
+</div>
+</section> -->
+</section>
 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="admin/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="admin/js/bootstrap.min.js"></script>
 </body>
 </html>

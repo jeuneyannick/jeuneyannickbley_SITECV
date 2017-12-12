@@ -1,6 +1,5 @@
 body
 {
-    background:darkolivegreen;
     margin:0 auto;
 }
  .container-fluid
@@ -10,9 +9,9 @@ body
    .navbar-default
   {
     background-color:transparent;
-
     margin:0;
-    border-radius:0px
+    border:none;
+
   }
   .navbar-default li:hover
   {
@@ -23,7 +22,7 @@ body
     .navbar-nav p
     {
       color:white;
-      font-size:15px;
+      font-size:1em;
       font-weight:bold;
     }
 /*.container-fluid
@@ -35,7 +34,7 @@ body
  {
     background-image:url("../img/camo.png");
     width: 100%;
-    height:90vh;
+    height:100vh;
  }
   .container-jumbotron
   {
@@ -53,10 +52,15 @@ body
      {
       box-sizing: border-box;
       opacity: initial;
-      font-size: 45px;
+      font-size: 1.8em;
       text-align: center;
-      font-family: Righteous;
+      font-family:Righteous;
      }
+      .btn-danger{
+          text-align:center;
+          font-size:0.8em;
+          box-sizing:border-box;
+      }
        .jumbotron a
        {
          margin-left: 9px;
