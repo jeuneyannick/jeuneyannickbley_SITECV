@@ -37,18 +37,22 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
     <meta name="author" content="">
     <link rel="stylesheet" href="admin/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_responsive.css">
-    <link rel="stylesheet" href="font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <title>Site cv Yannick Bley</title>
 </head>
 <body>
+    <video autoplay loop muted poster="screenshot.jpg" id="background">
+
+        <source src="https://www.youtube.com/watch?v=cdKLSA2ke24" type="video/mp4">
+    </video
     <header>
         <nav class="navbar navbar-default navbar fixed-top">
             <div class="container">
                 <div class=" text-center col-xs-12 col-md-6">
                     <ul class="nav navbar-nav">
-                        <li><a href="#index_bootstrap.php"><p>Accueil</p></a></li>
-                        <li><a href="competences"><p>Compétences</p></a></li>
+                        <li><a href="#mobilefirst.php"><p>Accueil</p></a></li>
+                        <li><a href="#competences"><p>Compétences</p></a></li>
                         <li><a href="#Formations"><p>Formations</p></a></li>
                         <li><a href="#Contact"><p>Contact</p></a></li>
                     </ul>
@@ -56,22 +60,22 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             </div>
         </nav>
     </header>
-    <div class="container">
+
+    <div class="container contains">
         <div class="row">
             <div class="jumbotron text-uppercase text-center col-xs-12 col-md-12">
                 <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
                 <div class="description">Developpeur/Integrateur Web Junior</div>
                 <div class="search">Je suis actuellement à la recherche d'un stage</div>
-                <div class=" text-center btn btn-danger col-md-2 col-xs-6">
-                    Suivez moi
+                <div class="btn btn-danger col-md-4 col-md-offset-4 col-xs-4 col-xs-offset-4">
+                    <p>Suivez moi</p>
+                    <div class="socialnetwork text-center col-md-6 col-md-offset-1 col-xs-5 col-sm-4">
+                        <a href="https://twitter.com/YannickBley"><i class="fa fa-twitter fa-2x " aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a>
+                        <a href="https://fr.linkedin.com/in/yannick-bley-84b585145"><i class="fa fa-linkedin fa-2x " aria-hidden="true"></i></a>
+                        <a href="https://github.com/jeuneyannick"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-                <ul class="socialnetwork text-center">
-                    <li><a href="https://twitter.com/YannickBley"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                    <li><a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                    <li><a href="https://fr.linkedin.com/in/yannick-bley-84b585145"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                    <li><a href="https://github.com/jeuneyannick"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-
-                </ul>
             </div>
         </div>
     </div>

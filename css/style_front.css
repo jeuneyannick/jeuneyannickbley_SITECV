@@ -1,90 +1,20 @@
-body
-{
-    margin:0 auto;
+body{
+    background-image:url(../img/canyon.jpg);
 }
- .container-fluid
- {
-     background:white;
- }
-   .navbar-default
-  {
-    background-color:transparent;
-    margin:0;
-    border:none;
 
-  }
-  .navbar-default li:hover
-  {
-      background:peachpuff;
-      z-index:2;
-      transition:1s;
-  }
-    .navbar-nav p
-    {
-      color:white;
-      font-size:1em;
-      font-weight:bold;
-    }
-/*.container-fluid
-{
-    background:peachpuff;
-
-}*/
- .mastehead
- {
-    background-image:url("../img/camo.png");
-    width: 100%;
-    height:100vh;
- }
-  .container-jumbotron
-  {
-      padding-top:9px;
-  }
-   .jumbotron
-   {
-     background-color:transparent;
-     color:white;
-     height:100vh;
-     box-shadow:6px 12px 12px 6px black;
-   }
-
-     .jumbotron div:not(.btn-danger)
-     {
-      box-sizing: border-box;
-      opacity: initial;
-      font-size: 1.8em;
-      text-align: center;
-      font-family:Righteous;
-     }
-      .btn-danger{
-          text-align:center;
-          font-size:0.8em;
-          box-sizing:border-box;
-      }
-       .jumbotron a
-       {
-         margin-left: 9px;
-         font-family:Righteous;
-       }
-      .panel-default
-      {
-          background:darkolivegreen;
-          color:peachpuff;
-          font-size:1em;
-          font-family:Righteous;
-          padding:2% 6%;
-          border:none;
-      }
-      .panel-default:hover
-      {
-          background:moccasin;
-          color:indianred;
-          transition:1s;
-
-      }
-        .panel-heading
-        {
-            background:lightseagreen;
-            border-radius:3px;
-            text-align:center;
-        }
+.contains{
+    height:75%;
+}
+.jumbotron{
+    height:100%;
+}
+.intro{
+    margin-top:15%;
+}
+.btn{
+    margin-top:8%;
+    padding:20px 20px;
+}
+.socialnetwork{
+    margin-top:14%;
+}
