@@ -34,45 +34,56 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="admin/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_front.css">
-    <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
     <title>Site cv Yannick Bley</title>
 </head>
+
 <body>
-    <section class="mastehead col-lg-12">
+    <header>
         <nav class="navbar navbar-default navbar fixed-top">
             <div class="container">
                 <div class=" text-center col-xs-12 col-md-6">
                     <ul class="nav navbar-nav">
-                        <li><a href="#index_bootstrap.php"><p>Accueil</p></a></li>
-                        <li><a href="competences"><p>Compétences</p></a></li>
+                        <li><a href="#mobilefirst.php"><p>Accueil</p></a></li>
+                        <li><a href="#competences"><p>Compétences</p></a></li>
                         <li><a href="#Formations"><p>Formations</p></a></li>
                         <li><a href="#Contact"><p>Contact</p></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <div class="container">
-            <div class="row">
-                <div class="jumbotron text-uppercase col-md-12 col-sm-8">
-                    <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
-                    <div class="description">Developpeur/Integrateur Web Junior</div>
-                    <div class="search">Je suis actuellement à la recherche d'un stage</div>
-                    <div class="btn btn-danger col-md-2 col-md-offset-4 col-sm-2">
-                        Suivez moi
+    </header>
+    <div class="container contains">
+        <div class="row">
+            <div class="jumbotron text-uppercase text-center col-xs-12 col-md-12">
+                <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
+                <div class="description">Developpeur/Integrateur Web Junior</div>
+                <div class="search">Je suis actuellement à la recherche d'un stage</div>
+                <div class=" btn btn-danger col-md-2 col-md-offset-5 col-xs-4 col-xs-offset-4">
+                    <p>Suivez moi</p>
+                    <div class="socialnetwork text-center col-md-6 col-md-offset-1 col-xs-5 col-sm-4">
+                        <a href="https://twitter.com/YannickBley"><i class="fa fa-twitter fa-2x " aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook fa-2x " aria-hidden="true"></i></a>
+                        <a href="https://fr.linkedin.com/in/yannick-bley-84b585145"><i class="fa fa-linkedin fa-2x " aria-hidden="true"></i></a>
+                        <a href="https://github.com/jeuneyannick"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</body>
+
+
+
+
+<!-- </section>
 <!-- <section class="container">
 <div class="row">
 <div class="panel panel-default col-md-4">
@@ -126,7 +137,8 @@ echo $affiche_loisirs[$i]['loisir'].'</br>';
 </div>
 </div>
 </section> -->
-</section>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="admin/js/bootstrap.min.js"></script>

@@ -1,0 +1,59 @@
+body{
+    background-image:url(../img/canyon.jpg);
+}
+
+.navbar{
+    border:none;
+    background-color:transparent;
+    font-weight:bold;
+}
+.navbar-nav li{
+    border:2px solid white;
+    background:indianred;
+    border-radius:6px;
+    padding:4px;
+    margin: 10px;
+}
+.navbar-nav li:hover{
+    background:white;
+    color:indianred;
+    transition: 1s;
+    border:2px solid indianred;
+}
+.navbar-nav li p:hover{
+    color:indianred;
+}
+.navbar-nav p{
+    color:white;
+}
+.contains{
+    height:75%;
+}
+.jumbotron{
+    height:100%;
+    background-color:transparent;
+}
+.jumbotron div{
+    font-size: 20px;
+    font-family:Righteous;
+    color:white;
+    font-weight:bold;
+    text-shadow: 3px 6px black;
+}
+.intro{
+    margin-top:8%;
+}
+.btn{
+    margin-top:8%;
+    padding:20px 20px;
+}
+.socialnetwork{
+    margin-top:14%;
+}
+.socialnetwork a{
+    padding:5px;
+}
+.socialnetwork a:hover{
+    color:white;
+    transition:1s;
+}
