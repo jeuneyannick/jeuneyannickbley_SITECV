@@ -60,7 +60,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             </div>
         </nav>
     </header>
-    <div class="container contains">
+    <section class="container contains">
         <div class="row">
             <div class="jumbotron text-uppercase text-center col-xs-12 col-md-12">
                 <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
@@ -76,8 +76,11 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
             </div>
-        </div>
+        </d>
     </div>
+
+
+
 </body>
 
 

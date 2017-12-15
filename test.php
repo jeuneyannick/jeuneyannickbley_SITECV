@@ -110,9 +110,9 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                     } ?> -->
 
 
-                    <div class="intro"> Site portfolio de Yannick Bley</div>
+                    <div class="intro"> Hey Bienvenue sur le site de Yannick Bley !</div>
                     <div class="description">Developpeur/Integrateur Web Junior</div>
-                    <div class="search">Actuellement à la recherche d'un stage</div>
+                    <div class="search">Je suis actuellement à la recherche d'un stage</div>
                     <div class="socialnetwork text-center col-md-9 col-md-offset-1 col-xs-5 col-sm-4">
                         <a href="https://twitter.com/YannickBley" target="_blank" title="Suivez moi sur Twitter"><i class="fa fa-twitter fa-5x " aria-hidden="true"></i></a>
                         <a href="https://www.facebook.com/yannick.bley.50" target="_blank" title="Ajoutez moi sur Facebook"><i class="fa fa-facebook fa-5x " aria-hidden="true"></i></a>
