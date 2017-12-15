@@ -8,17 +8,16 @@ body{
     font-weight:bold;
 }
 .navbar-nav li{
-    border:2px solid white;
-    background:indianred;
-    border-radius:6px;
-    padding:4px;
-    margin: 10px;
+  border:2px solid;
+  background:indianred;
+  border-radius:6px;
+  margin:10px;
 }
 .navbar-nav li:hover{
     background:white;
     color:indianred;
-    transition: 1s;
-    border:2px solid indianred;
+    transition: 0.5s;
+    border:2px solid;
 }
 .navbar-nav li p:hover{
     color:indianred;
@@ -48,12 +47,12 @@ body{
     padding:20px 20px;
 }
 .socialnetwork{
-    margin-top:14%;
+    margin-top:3%;
 }
 .socialnetwork a{
     padding:5px;
 }
 .socialnetwork a:hover{
     color:white;
-    transition:1s;
+    transition:0.5s;
 }
