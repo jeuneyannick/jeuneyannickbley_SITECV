@@ -27,7 +27,7 @@ $affiche_experiences= $req-> fetchAll(PDO::FETCH_ASSOC);
 $req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
-// var_dump($affiche_competences) . '</br>';
+ // var_dump($affiche_competences) . '</br>';
 
 ?>
 <head>
@@ -48,11 +48,11 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 <div class="container">
                     <div class=" text-center col-xs-12 col-md-12">
                         <ul class="nav navbar-nav">
-                            <li><a href="#mobilefirst.php"><p>Accueil</p></a></li>
-                            <li><a href="#competences"><p>Compétences</p></a></li>
-                            <li><a href="#Formations"><p>Formations</p></a></li>
-                            <li><a href="#Experiences"><p>Experiences</p></a></li>
-                            <li><a href="#Contact"><p>Contact</p></a></li>
+                            <li><a href="#mobilefirst" id="home"><p>Accueil</p></a></li>
+                            <li><a href="#competences" id="competences"><p>Compétences</p></a></li>
+                            <li><a href="#Formations" id="formations"><p>Formations</p></a></li>
+                            <li><a href="#Experiences" id="experiences"><p>Experiences</p></a></li>
+                            <li><a href="#Contact" id="contact"><p>Contact</p></a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,7 +61,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
         <div class="container contains">
             <div class="row">
-                <div class="jumbotron text-uppercase text-center col-xs-12 col-md-12">
+                <div class="jumbotron text-uppercase text-center col-xs-12 col-md-12" id="block">
 
 
                     <!-- <?php
@@ -109,16 +109,16 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                     echo $affiche_loisirs[$i]['loisir'].'</br>';
                     } ?> -->
 
-
+<!--
                     <div class="intro"> Site portfolio de Yannick Bley</div>
                     <div class="description">Developpeur/Integrateur Web Junior</div>
                     <div class="search">Actuellement à la recherche d'un stage</div>
-                    <div class="socialnetwork text-center col-md-9 col-md-offset-1 col-xs-5 col-sm-4">
+                    <div class="socialnetwork text-center col-md-12 col-xs-5 col-sm-4">
+                        <a href="https://fr.linkedin.com/in/yannick-bley-84b585145" target="_blank" title="Ajoutez moi sur Linkedin"><i class="fa fa-linkedin fa-5x " aria-hidden="true"></i></a>
                         <a href="https://twitter.com/YannickBley" target="_blank" title="Suivez moi sur Twitter"><i class="fa fa-twitter fa-5x " aria-hidden="true"></i></a>
                         <a href="https://www.facebook.com/yannick.bley.50" target="_blank" title="Ajoutez moi sur Facebook"><i class="fa fa-facebook fa-5x " aria-hidden="true"></i></a>
-                        <a href="https://fr.linkedin.com/in/yannick-bley-84b585145" target="_blank" title="Ajoutez moi sur Linkedin"><i class="fa fa-linkedin fa-5x " aria-hidden="true"></i></a>
                         <a href="https://github.com/jeuneyannick" target="_blank" title="Regardez mon GitHub"><i class="fa fa-github fa-5x" aria-hidden="true"></i></a>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -129,4 +129,9 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 </div>
         </footer>
         <main>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            <script src="admin/js/bootstrap.min.js"></script>
+            <script src="admin/js/mobilefirst.js"></script>
+            <script src="admin/js/jquery-3.2.1.min.js"></script>
         </body>

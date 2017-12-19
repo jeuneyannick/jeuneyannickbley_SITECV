@@ -3,18 +3,18 @@ body{
 }
 
 main{
-
-    position:relative;
+/*
+    position:relative; */
 
 }
 header{
     background: indianred;
     width: 100%;
-    overflow: hidden;
     height:8%;
+
 }
 .row{
-    margin-top: 30px;
+    margin:0;
 }
 
 .navbar{
@@ -47,11 +47,11 @@ header{
     background-color:indianred;
 }
 .jumbotron div{
-    font-size: 30px;
+    font-size:1.4em;
     font-family:Righteous;
     color:white;
     font-weight:bold;
-    text-shadow: 3px 6px black;
+    text-shadow: 3px 4px black;
 }
 .intro{
     margin-top:8%;
@@ -64,7 +64,7 @@ header{
     margin-top:3%;
 }
 .socialnetwork a{
-    padding:5px;
+    padding:7px;
     color:#33425B;
 }
 .socialnetwork a:hover{
@@ -82,10 +82,10 @@ header{
 }
 footer{
     background:indianred;
-    height: 12%;
-    margin-top: 67px;
+    height: 9%;
+    margin-top: 50px;
     position:absolute;
     width: 100%;
-    font-size: 25px;
+    font-size: 20px;
     font-family:Righteous;
 }
