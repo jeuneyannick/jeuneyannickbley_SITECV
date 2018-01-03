@@ -1,0 +1,27 @@
+#conteneur {
+
+  border: 2px solid black;
+  display:flex;
+  flex-wrap:nowrap; 
+  ;
+
+
+}
+
+#conteneur :first-child{
+
+  width: 50%;
+  height:100px;
+  background: indianred;
+}
+
+.element:nth-child(2){
+  width:50%;
+  height: 100px;
+  background: darksalmon;
+}
+.element:nth-child(3){
+  width:50%;
+  height: 100px;
+  background: darkslategray;
+}
