@@ -233,7 +233,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
     <p>Tous droits reservés</p>
 </footer>
 
-
+fefefEZfez
 
 
 
