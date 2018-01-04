@@ -25,12 +25,13 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 if(isset($_POST['e_titre'])){//par le nom du premier input
     $e_titre = addslashes($_POST['e_titre']);
+    $e_employeur = addslashes($_POST['e_employeur']);
     $e_soustitre = addslashes($_POST['e_soustitre']);
     $e_dates = addslashes($_POST['e_dates']);
     $e_description = addslashes($_POST['e_description']);
     $id_experience= $_POST['id_experience'];
 
-    $pdo->exec("UPDATE t_experiences SET e_titre ='$e_titre', e_soustitre='$e_soustitre', e_dates= '$e_dates', e_description= '$e_description'  WHERE id_experience='$id_experience'");
+    $pdo->exec("UPDATE t_experiences SET e_titre ='$e_titre', e_employeur='$e_employeur', e_soustitre='$e_soustitre', e_dates= '$e_dates', e_description= '$e_description'  WHERE id_experience='$id_experience'");
     header('location: experiences.php');
     exit();
 
@@ -89,12 +90,17 @@ $ligne_experience= $req->fetch();
                                     <input type="text" name="e_titre" class="form-control" value="<?php echo $ligne_experience['e_titre'];?>">
                                 </div>
                                 <div class="form-group">
+                                    <label for="e_employeur">Employeur</label>
+
+                                    <input type="text" name="e_employeur" class="form-control" value="<?php echo $ligne_experience['e_employeur'];?>">
+                                </div>
+                                <div class="form-group">
                                     <label for="soustitre">Soustitre</label>
                                     <input type="text" name="e_soustitre" class="form-control" value="<?php echo $ligne_experience['e_soustitre'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="dates">Dates</label>
-                                    <input type="text" name="f_dates" class="form-control" value="<?php echo $ligne_experience['e_dates'];?>">
+                                    <input type="text" name="e_dates" class="form-control" value="<?php echo $ligne_experience['e_dates'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>

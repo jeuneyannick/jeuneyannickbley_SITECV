@@ -1,13 +1,45 @@
-<!DOCTYPE html>
+<?php
+require_once('admin/init/connect.php'); // Connexion à ma base de données
+require_once('admin/init/functions.php');// Require des fonctions que je vais utiliser
+$req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
+$affiche_utilisateurs = $req -> fetchAll(PDO::FETCH_ASSOC);
+
+$req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
+$req->execute();
+$affiche_formations = $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_formations) . '</br>';
+
+// $req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '1'");
+// $req->execute();
+// $affiche_realisations = $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_realisations) . '</br>';
+
+$req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
+$req->execute();
+$affiche_loisirs = $req->fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_loisirs) . '</br>';
+
+$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
+$req->execute();
+$affiche_experiences= $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_experiences) . '</br>';
+
+$req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
+$req->execute();
+$affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
+// var_dump($affiche_competences) . '</br>';
+
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="admin/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style_responsive.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <title>Exercices Bootstrap 3</title>
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <title>Site cv Yannick Bley</title>
 </head>
 <body>
     <!--Page d'accueil -->
@@ -74,77 +106,21 @@
                 <strong>Compétences</strong>
             </div>
         </div>
-
-        <div class="row text-center">
-            <!--Début du contour de l'encadrement contenant les compétences -->
-            <div class="panel panel-default col-lg-5 col-lg-push-1 col-sm-5 col-sm-push-1 col-md-5 col-md-push-1 col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel panel-heading">
-                        <h4 class="panel-title">Front-End</h4>
-                    </div>
-                </div>
-                <!--Corps de l'encadrement -->
-                <div class="panel-body">
-                    <div class="row">
-                        <!--Début du cadre Jumbotron -->
-                        <div class="jumbotron col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="row">
-                                <div class="col-lg-2 col-lg-push-1 col-sm-2 col-md-2 col-xs">
-                                    HTML5
-                                </div>
-                                <div class="progress col-lg-8 col-lg-push-1 col-sm-4 col-sm-push-2 col-md-4 col-md-push-2 col-xs-12">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                        80%
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <!--Fin du cadre Jumbotron -->
-                    </div>
-                </div>
-                <!-- Fin du corps de l'encadrement-->
-            </div>
-
-            <div class="panel panel-default col-lg-5 col-lg-push-1 col-sm-5 col-sm-push-1 col-md-5 col-md-push-1 col-xs-12">
-                <div class="panel panel-primary">
-                    <div class="panel panel-heading">
-                        <h4 class="panel-title">Back-End</h4>
-                    </div>
-                </div>
-                <!--Corps de l'encadrement -->
-                <div class="panel-body">
-                    <div class="row">
-                        <!--Début du cadre Jumbotron -->
-                        <div class="jumbotron col-lg-12 col-sm-12 col-md-12 col-xs-12">
-                            <div class="row">
-                                <div class="col-lg-2 col-lg-push-1 col-sm-2 col-md-2 col-xs">
-                                    PHP
-                                </div>
-                            </div>
-                            <div class="progress col-lg-8 col-lg-push-1 col-sm-4 col-sm-push-2 col-md-4 col-md-push-2 col-xs-12">
-                                <div class="row">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                        70%
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <!--Fin du cadre Jumbotron -->
+        <div class="container jumbotron">
+            <div class="row">
+                <div class="competence col-lg-4 col-lg-push-4 col-md-4 col-md-push-4 col-sm-4 col-sm-push-4 col-xs-12">
+                    <p class="text-center">Competences</p>
+                    <?php foreach($affiche_competences as $competence){?>
+                        <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12"> <?= $competence['competence']?></div>
+                    <?php } ?>
                 </div>
             </div>
-            <!-- Fin du corps de l'encadrement-->
         </div>
-        <!--Fin du contour de l'encadrement -->
     </div>
 </div>
 <!--Fin de la page Compétences -->
 
-<div class="clearfix hidden-xs">
+<div class="clearfix">
 </div>
 <!-- Début de la page Formations -->
 <div class="third container" id="Formations">
@@ -179,41 +155,67 @@
             <strong>Expériences</strong>
         </div>
     </div>
-    <div class="row text-center">
-        <div class="col-lg-3 col-lg-push-1 col-md-3 col-md-push-1 col-sm-3 col-sm-push-1 col-xs-12">
-            <div class="cadre text-center" style=" width: 300px; height: 300px; border-radius: 200px; background:indianred;">
-                <div class="icons text-center">
-                    <i class="fa fa-graduation-cap fa-4x text-center" aria-hidden="true"></i>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-lg-push-1  col-md-3 col-md-push-1  col-sm-3 col-sm-push-1  col-xs-12">
+                <div class="cadre text-center" style=" width: 200px; height: 200px; border-radius: 100px; background:indianred;">
+                    <div class="icons text-center">
+                        <i class="fa fa-graduation-cap fa-4x text-center" aria-hidden="true"></i>
+                    </div>
+                    <div class="description">
+                        <p>Baccalauréat Série littéraire</p>
+                        <p>Lycée Michel-Ange,Villeneuve-la-Garenne</p>
+                        <p>2008-2009</p>
+                    </div>
                 </div>
-                <div class="description">
-                    <p>Baccalauréat Série littéraire</p>
-                    <p>Lycée Michel-Ange,Villeneuve-la-Garenne</p>
-                    <p>2008-2009</p>
+            </div>
+            <div class="col-lg-3 col-lg-push-2 col-md-3 col-lg-push-1  col-sm-3 col-sm-push-1  col-xs-12">
+                <div class="cadre text-center" style=" width: 200px; height: 200px; border-radius: 100px; background:indianred;">
+                    <div class="icons text-center">
+                        <i class="fa fa-graduation-cap fa-4x text-center" aria-hidden="true"></i>
+                    </div>
+                    <div class="description">
+                        <p>Baccalauréat Série littéraire</p>
+                        <p>Lycée Michel-Ange,Villeneuve-la-Garenne</p>
+                        <p>2008-2009</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-lg-push-2 col-md-3 col-md-push-1 col-sm-3 col-sm-push-1  col-xs-12">
+                <div class="cadre text-center" style=" width: 200px; height: 200px; border-radius: 100px; background:indianred;">
+                    <div class="icons text-center">
+                        <i class="fa fa-graduation-cap fa-4x text-center" aria-hidden="true"></i>
+                    </div>
+                    <div class="description">
+                        <p>Baccalauréat Série littéraire</p>
+                        <p>Lycée Michel-Ange,Villeneuve-la-Garenne</p>
+                        <p>2008-2009</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 </div>
-<div class="fifth container" id="Realisations">
-    <div class="row">
-        <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
-            <strong>Réalisations</strong>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-4 col-lg-push-1 col-md-4 col-md-push-1 col-sm-4 col-sm-push-1">
-            <div class="thumbnail text-center">
-                <img src="img/chamyl.jpg" alt="chamyl">
-                <div class="caption">
-                    <h3>Thumbnail label</h3>
-                </div>
-            </div>
-        </div>
-    </div>
-
+<!-- <div class="fifth container" id="Realisations">
+<div class="row">
+<div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
+<strong>Réalisations</strong>
 </div>
+</div>
+
+<div class="row">
+<div class="col-lg-4 col-lg-push-1 col-md-4 col-md-push-1 col-sm-4 col-sm-push-1">
+<div class="thumbnail text-center">
+<img src="" alt="chamyl">
+<div class="caption">
+<h3>Thumbnail label</h3>
+</div>
+</div>
+</div>
+</div>
+
+</div> -->
 
 <footer class="text-center">
     <p>Tous droits reservés</p>
@@ -222,6 +224,9 @@
 
 
 
+
+<script src="admin/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="admin/js/jquery-3.2.1.min.js"></script>
+<script src="admin/js/mobilefirst.js"></script>
 </body>

@@ -21,21 +21,46 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 ?>
 
 <?php
+
+if(isset($_POST['e_titre'])) { // Si on a posté une nouvelle experience
+    if($_POST['e_titre'] != '' && $_POST['e_soustitre'] != '' && $_POST['e_employeur']  && $_POST['e_dates'] != '' && $_POST['e_description'] != '')  { // Si experience n'est pas vide
+        // $e_titre             = addslashes($_POST['e_titre']);
+        // $e_soustitre         = addslashes($_POST['e_soustitre']);
+        // $e_dates             = addslashes($_POST['e_dates']);
+        // $e_description       = addslashes($_POST['e_description']);
+        // $pdo->exec("INSERT INTO t_experiences  VALUES ('$e_titre', '$e_soustitre', '$e_dates', '$e_description', '1')"); // mettre $id_utilisateur quand on l'aura dans la varible de session
+
+        // exit();
+        $req =  $pdo->prepare("INSERT INTO t_experiences (e_titre, e_employeur, e_soustitre, e_dates, e_description, utilisateur_id) VALUES (:e_titre, :e_employeur, :e_soustitre, :e_dates, :e_description, '1')");
+
+        $req->bindParam(':e_titre', addslashes($_POST['e_titre']), PDO::PARAM_STR);
+        $req->bindParam(':e_employeur', addslashes($_POST['e_employeur']), PDO::PARAM_STR);
+        $req->bindParam(':e_soustitre', addslashes($_POST['e_soustitre']), PDO::PARAM_STR);
+        $req->bindParam(':e_dates', addslashes($_POST['e_dates']), PDO::PARAM_STR);
+        $req->bindParam(':e_description', addslashes($_POST['e_description']), PDO::PARAM_STR);
+
+        if($req->execute()) {
+            header('location:experiences.php');
+        }
+    } // ferme le if $_POST
+} // ferme le if isset du form
+
 //gestion des contenus de la bdd compétences
 //Insertion d'une experience
-if(isset($_POST['e_titre'])){// si on a posté une nouvelle experience
-    if(!empty($_POST['e_titre']) && !empty($_POST['e_soustitre']) && !empty($_POST['e_dates']) && !empty($_POST['e_description']) ){
-
-        $e_titre = addslashes($_POST['e_titre']);
-        $e_soustitre = addslashes($_POST['e_soustitre']);
-        $e_dates = addslashes($_POST['e_dates']);
-        $e_description = addslashes($_POST['e_description']);
-        $pdo->exec("INSERT INTO t_experiences VALUES (NULL,'$e_titre' ,'$e_soustitre' ,'$e_dates' ,'$e_description' ,'$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
-        header("location: experiences.php");//pour revenir sur la page
-        exit();
-
-    }
-}
+// if(isset($_POST['e_titre'])){// si on a posté une nouvelle experience
+//     if(!empty($_POST['e_titre']) && !empty($_POST['e_employeur']) && !empty($_POST['e_soustitre']) && !empty($_POST['e_dates']) && !empty($_POST['e_description']) ){
+//
+//         $e_titre = addslashes($_POST['e_titre']);
+//         $e_employeur = addslashes($_POST['e_employeur']);
+//         $e_soustitre = addslashes($_POST['e_soustitre']);
+//         $e_dates = addslashes($_POST['e_dates']);
+//         $e_description = addslashes($_POST['e_description']);
+//         $pdo->exec("INSERT INTO t_experiences VALUES (NULL,'$e_titre' ,'$e_soustitre' ,'$e_dates' ,'$e_description' ,'$id_utilisateur,'$e_employeur' )");//mettre $id_utilisateur quand on l'aura dans la variable de session
+//         header("location: experiences.php");//pour revenir sur la page
+//         exit();
+//
+//     }
+// }
 
 
 
@@ -100,6 +125,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                                 <thead>
                                     <tr>
                                         <th>Titre</th>
+                                        <th>Employeur</th>
                                         <th>Soustitre</th>
                                         <th>Dates</th>
                                         <th>Description</th>
@@ -113,6 +139,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                                         <tr>
 
                                             <td><?php echo $ligne_experiences['e_titre']; ?></td>
+                                            <td><?php echo $ligne_experiences['e_employeur']; ?></td>
                                             <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
                                             <td><?php echo $ligne_experiences['e_dates']; ?></td>
                                             <td><?php echo $ligne_experiences['e_description']; ?></td>
@@ -137,40 +164,44 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                         <form  method="post" action="">
                             <div class="form-group">
                                 <label for="titre">Titre</label>
-                                <input type="text" name="e_titre" id="e_titre" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="e_titre" id="e_titre" placeholder="Inserez un titre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="e_employeur">Employeur</label>
+                                <input type="text" name="e_employeur" id="e_employeur" placeholder="Inserez un employeur" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="e_soustitre">Soustitre</label>
-                                <input type="text" name="e_soustitre" id="e_soustitre" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="e_soustitre" id="e_soustitre" placeholder="Inserez un sous-titre" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="e_dates">Formations</label>
-                                <input type="text" name="e_dates" id="e_dates" placeholder="Inserez une formation" class="form-control">
+                                <label for="e_dates">Dates</label>
+                                <input type="text" name="e_dates" id="e_dates" placeholder="Inserez une date" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="e_description">Description</label>
                                 <textarea name="e_description" id="editor1" class="form-control"></textarea>
-                                </div>
-                                <script>
-                                CKEDITOR.replace('editor1');
-                                </script>
+                            </div>
+                            <script>
+                            CKEDITOR.replace('editor1');
+                            </script>
 
-                                <input type="submit" class="btn btn-warning btn-block" value="Inserer">
+                            <input type="submit" class="btn btn-warning btn-block" value="Inserer">
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
-
             </div>
+
         </div>
+    </div>
 
 
-        <footer>
+    <footer>
 
-        </footer>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-    </body>
-    </html>
+</body>
+</html>
