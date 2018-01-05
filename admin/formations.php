@@ -12,15 +12,8 @@ if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
     header('location:connexion.php');
 }
 
-
-
-
-
-
 $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur='$id_utilisateur'");
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
-
-
 
 
 //gestion des contenus de la bdd compétences
@@ -39,7 +32,6 @@ if(isset($_POST['f_titre']) ) {// si on a posté une nouvelle compétence
     }
 }
 
-
 //suppression d'un formation
 
 if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
@@ -52,7 +44,6 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
 }//Ferme le if isset
 
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -65,7 +56,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
     <link rel="stylesheet" href="css/style_admin.css">
 </head>
 <body>
-    <?php require_once('inc/nav_inc.php>');
+    <?php require_once('inc/nav_inc.php');
     $req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
     $req->execute();
     $nbr_formations = $req-> rowCount();
@@ -76,7 +67,9 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
-                        <h2>il y a <?= $nbr_formations; ?> formations</h2>
+                        <h2>il y a <?= $nbr_formations; ?> formation<?php if($nbr_formations > 1){
+                            echo "s";
+                        }?></h2>
                     </div>
                 </div>
             </div>
@@ -109,14 +102,12 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                                     <?php while($ligne_formation= $req->fetch()){ ?>
 
                                         <tr>
-
                                             <td><?php echo $ligne_formation['f_titre']; ?></td>
                                             <td><?php echo $ligne_formation['f_lieu']; ?></td>
                                             <td><?php echo $ligne_formation['f_dates']; ?></td>
                                             <td><?php echo $ligne_formation['f_description']; ?></td>
                                             <td><a href="formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Supprimer</a></td>
                                             <td><a href="modif_formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Modifier</a></td>
-
                                         </tr>
                                     <?php } ?>
                                 </tbody>

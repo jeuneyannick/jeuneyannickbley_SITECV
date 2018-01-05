@@ -74,7 +74,9 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
                 <div class="panel panel-success">
                     <div class="panel-heading">
                         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
-                        <h2>il y a <?= $nbr_realisations; ?> realisations</h2>
+                        <h2>il y a <?= $nbr_realisations; ?> réalisation<?php if($nbr_realisations > 1){
+                            echo "s";
+                        }?></h2>
                     </div>
                 </div>
             </div>
@@ -86,7 +88,7 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
             <div class="col-md-8">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        Réalisations
+                        <p>Réalisations</p>
                     </div>
                     <div class="panel-body">
                         <table class="table table-hover">
@@ -104,16 +106,13 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
                             </thead>
                             <tbody>
                                 <?php while($ligne_realisation= $req->fetch()){ ?>
-
                                     <tr>
-
                                         <td><?php echo $ligne_realisation['r_titre']; ?></td>
                                         <td><?php echo $ligne_realisation['r_soustitre']; ?></td>
                                         <td><?php echo $ligne_realisation['r_dates']; ?></td>
                                         <td><?php echo $ligne_realisation['r_description']; ?></td>
                                         <td><a href="realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Supprimer</a></td>
                                         <td><a href="modif_realisations.php?id_realisation=<?php echo $ligne_realisation['id_realisation'];?>">Modifier</a></td>
-
                                     </tr>
                                 <?php } ?>
                             </tbody>
@@ -122,11 +121,10 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
                 </div>
             </div>
 
-
             <div class="col-md-4">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        Insertion d'une realisation
+                        <p>Insertion d'une réalisation</p>
                     </div>
                     <div class="table-responsive">
                         <div class="panel-body">
@@ -160,8 +158,6 @@ if(isset($_GET['id_realisation'])){// on récupère la comp. par son id dans l'U
 
         </div>
     </div>
-
-
     <footer>
 
     </footer>

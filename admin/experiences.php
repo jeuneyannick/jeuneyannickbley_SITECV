@@ -163,8 +163,8 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                     <div class="panel-body">
                         <form  method="post" action="">
                             <div class="form-group">
-                                <label for="titre">Titre</label>
-                                <input type="text" name="e_poste" id="e_poste" placeholder="Inserez un titre" class="form-control">
+                                <label for="poste">Poste</label>
+                                <input type="text" name="e_poste" id="e_poste" placeholder="Inserez un poste" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="e_employeur">Employeur</label>

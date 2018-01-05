@@ -24,14 +24,14 @@ require('init/functions.php');
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Parcours<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="formations.php">Formations</a></li>
-                        <li><a href="experiences.php">Experiences</a></li>
+                        <li><a href="experiences.php">Expériences</a></li>
                         <li><a href="realisations.php">Réalisations</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Compétences<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="competences.php">Competences</a></li>
+                        <li><a href="competences.php">Compétences</a></li>
                         <li><a href="loisirs.php">Loisirs</a></li>
                     </ul>
                 </li>

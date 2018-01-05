@@ -35,12 +35,6 @@ if(isset($_POST['competence']) ){// si on a posté une nouvelle compétence
     }
 }
 
-
-
-
-
-
-
 //suppression d'une compétence
 
 if(isset($_GET['id_competence'])){// on récupère la comp. par son id dans l'URL

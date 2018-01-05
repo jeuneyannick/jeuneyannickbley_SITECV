@@ -50,6 +50,7 @@ $ligne_experience= $req->fetch();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style_admin.css" rel="stylesheet">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
@@ -104,7 +105,7 @@ $ligne_experience= $req->fetch();
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_experience['e_description'];?>">
+                                    <textarea name="e_description" id="editor1" class="form-control" value="<?php echo $ligne_experience['e_description'];?>"></textarea>
                                 </div>
 
                                 <input hidden name="id_experience"  value="<?php echo $ligne_experience['id_experience'];?>">
@@ -114,7 +115,9 @@ $ligne_experience= $req->fetch();
                         </div>
                     </div>
                 </div>
-
+                <script>
+                CKEDITOR.replace('editor1');
+                </script>
             </div>
         </div>
     </div>

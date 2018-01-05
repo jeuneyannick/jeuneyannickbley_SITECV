@@ -30,12 +30,12 @@ $ligne_formation= $req->fetch();
 
 if(isset($_POST['f_titre'])){//par le nom du premier input
     $f_titre = addslashes($_POST['f_titre']);
-    $f_soustitre  = addslashes($_POST['f_soustitre']);
+    $f_lieu  = addslashes($_POST['f_lieu']);
     $f_dates  = addslashes($_POST['f_dates']);
     $f_description  = addslashes($_POST['f_description']);
     $id_formation = $_POST['id_formation'];
 
-    $pdo->exec("UPDATE t_formations SET f_titre ='$f_titre', f_soustitre='$f_soustitre', f_dates='$f_dates', f_description='$f_description' WHERE id_formation='$id_formation'");
+    $pdo->exec("UPDATE t_formations SET f_titre ='$f_titre', f_lieu='$f_lieu', f_dates='$f_dates', f_description='$f_description' WHERE id_formation='$id_formation'");
     header('location: formations.php');
     exit();
 
@@ -48,6 +48,7 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.ckeditor.com/4.7.3/standard/ckeditor.js"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_admin.css">
     <title>Admin : <?= $ligne_utilisateur['prenom'] . ' :  ' . $ligne_utilisateur['nom'] ; ?> nom</title>
@@ -86,8 +87,8 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
                                     <input type="text" name="f_titre" class="form-control" value="<?php echo $ligne_formation['f_titre'];?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="soustitre">Soustitre</label>
-                                    <input type="text" name="f_soustitre" class="form-control" value="<?php echo $ligne_formation['f_soustitre'];?>">
+                                    <label for="lieu">Lieu</label>
+                                    <input type="text" name="f_lieu" class="form-control" value="<?php echo $ligne_formation['f_lieu'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="dates">Dates</label>
@@ -105,6 +106,9 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
                         </div>
                     </div>
                 </div>
+                <script>
+                CKEDITOR.replace('editor1');
+                </script>
 
             </div>
         </div>
