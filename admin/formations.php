@@ -26,13 +26,13 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 //gestion des contenus de la bdd compétences
 //Insertion d'une competence
 if(isset($_POST['f_titre']) ) {// si on a posté une nouvelle compétence
-    if(!empty($_POST['f_titre']) && !empty($_POST['f_soustitre']) && !empty($_POST['f_dates']) && !empty($_POST['f_description']) ){
+    if(!empty($_POST['f_titre']) && !empty($_POST['f_lieu']) && !empty($_POST['f_dates']) && !empty($_POST['f_description']) ){
 
         $f_titre = addslashes($_POST['f_titre']);
-        $f_soustitre = addslashes($_POST['f_soustitre']);
+        $f_lieu = addslashes($_POST['f_lieu']);
         $f_dates = addslashes($_POST['f_dates']);
         $f_description = addslashes($_POST['f_description']);
-        $pdo->exec("INSERT INTO t_formations VALUES (NULL,'$f_titre','$f_soustitre','$f_dates','$f_description','$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        $pdo->exec("INSERT INTO t_formations VALUES (NULL,'$f_titre','$f_lieu','$f_dates','$f_description','$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
         header("location: formations.php");//pour revenir sur la page
         exit();
 
@@ -98,7 +98,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                                 <thead>
                                     <tr>
                                         <th>Titre</th>
-                                        <th>Soustitre</th>
+                                        <th>Lieu</th>
                                         <th>Dates</th>
                                         <th>Description</th>
                                         <th>Suppression</th>
@@ -111,7 +111,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                                         <tr>
 
                                             <td><?php echo $ligne_formation['f_titre']; ?></td>
-                                            <td><?php echo $ligne_formation['f_soustitre']; ?></td>
+                                            <td><?php echo $ligne_formation['f_lieu']; ?></td>
                                             <td><?php echo $ligne_formation['f_dates']; ?></td>
                                             <td><?php echo $ligne_formation['f_description']; ?></td>
                                             <td><a href="formations.php?id_formation=<?php echo $ligne_formation['id_formation'];?>">Supprimer</a></td>
@@ -138,8 +138,8 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                                 <input type="text" name="f_titre" id="f_titre" placeholder="Inserez une formation" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="f_soustitre">Soustitre</label>
-                                <input type="text" name="f_soustitre" id="f_soustitre" placeholder="Inserez une formation" class="form-control">
+                                <label for="f_lieu">Lieu</label>
+                                <input type="text" name="f_lieu" id="f_lieu" placeholder="Inserez un lieu de formation" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="f_dates">Dates</label>

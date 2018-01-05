@@ -22,8 +22,8 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 <?php
 
-if(isset($_POST['e_titre'])) { // Si on a posté une nouvelle experience
-    if($_POST['e_titre'] != '' && $_POST['e_soustitre'] != '' && $_POST['e_employeur']  && $_POST['e_dates'] != '' && $_POST['e_description'] != '')  { // Si experience n'est pas vide
+if(isset($_POST['e_poste'])) { // Si on a posté une nouvelle experience
+    if($_POST['e_poste'] != '' && $_POST['e_lieu'] != '' && $_POST['e_employeur']  && $_POST['e_dates'] != '' && $_POST['e_description'] != '')  { // Si experience n'est pas vide
         // $e_titre             = addslashes($_POST['e_titre']);
         // $e_soustitre         = addslashes($_POST['e_soustitre']);
         // $e_dates             = addslashes($_POST['e_dates']);
@@ -31,11 +31,11 @@ if(isset($_POST['e_titre'])) { // Si on a posté une nouvelle experience
         // $pdo->exec("INSERT INTO t_experiences  VALUES ('$e_titre', '$e_soustitre', '$e_dates', '$e_description', '1')"); // mettre $id_utilisateur quand on l'aura dans la varible de session
 
         // exit();
-        $req =  $pdo->prepare("INSERT INTO t_experiences (e_titre, e_employeur, e_soustitre, e_dates, e_description, utilisateur_id) VALUES (:e_titre, :e_employeur, :e_soustitre, :e_dates, :e_description, '1')");
+        $req =  $pdo->prepare("INSERT INTO t_experiences (e_poste, e_employeur, e_lieu, e_dates, e_description, utilisateur_id) VALUES (:e_poste, :e_employeur, :e_lieu, :e_dates, :e_description, '1')");
 
-        $req->bindParam(':e_titre', addslashes($_POST['e_titre']), PDO::PARAM_STR);
+        $req->bindParam(':e_poste', addslashes($_POST['e_poste']), PDO::PARAM_STR);
         $req->bindParam(':e_employeur', addslashes($_POST['e_employeur']), PDO::PARAM_STR);
-        $req->bindParam(':e_soustitre', addslashes($_POST['e_soustitre']), PDO::PARAM_STR);
+        $req->bindParam(':e_lieu', addslashes($_POST['e_lieu']), PDO::PARAM_STR);
         $req->bindParam(':e_dates', addslashes($_POST['e_dates']), PDO::PARAM_STR);
         $req->bindParam(':e_description', addslashes($_POST['e_description']), PDO::PARAM_STR);
 
@@ -124,9 +124,9 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
 
                                 <thead>
                                     <tr>
-                                        <th>Titre</th>
+                                        <th>Poste</th>
                                         <th>Employeur</th>
-                                        <th>Soustitre</th>
+                                        <th>Lieu</th>
                                         <th>Dates</th>
                                         <th>Description</th>
                                         <th>Suppression</th>
@@ -138,9 +138,9 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
 
                                         <tr>
 
-                                            <td><?php echo $ligne_experiences['e_titre']; ?></td>
+                                            <td><?php echo $ligne_experiences['e_poste']; ?></td>
                                             <td><?php echo $ligne_experiences['e_employeur']; ?></td>
-                                            <td><?php echo $ligne_experiences['e_soustitre']; ?></td>
+                                            <td><?php echo $ligne_experiences['e_lieu']; ?></td>
                                             <td><?php echo $ligne_experiences['e_dates']; ?></td>
                                             <td><?php echo $ligne_experiences['e_description']; ?></td>
                                             <td><a href="experiences.php?id_experience=<?php echo $ligne_experiences['id_experience'];?>">Supprimer</a></td>
@@ -164,15 +164,15 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                         <form  method="post" action="">
                             <div class="form-group">
                                 <label for="titre">Titre</label>
-                                <input type="text" name="e_titre" id="e_titre" placeholder="Inserez un titre" class="form-control">
+                                <input type="text" name="e_poste" id="e_poste" placeholder="Inserez un titre" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="e_employeur">Employeur</label>
                                 <input type="text" name="e_employeur" id="e_employeur" placeholder="Inserez un employeur" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="e_soustitre">Soustitre</label>
-                                <input type="text" name="e_soustitre" id="e_soustitre" placeholder="Inserez un sous-titre" class="form-control">
+                                <label for="e_lieu">Lieu</label>
+                                <input type="text" name="e_lieu" id="e_lieu" placeholder="Inserez un lieu" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="e_dates">Dates</label>

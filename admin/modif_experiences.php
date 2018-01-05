@@ -23,15 +23,15 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 // mise à jour d'une compétence
 
-if(isset($_POST['e_titre'])){//par le nom du premier input
-    $e_titre = addslashes($_POST['e_titre']);
+if(isset($_POST['e_poste'])){//par le nom du premier input
+    $e_poste = addslashes($_POST['e_poste']);
     $e_employeur = addslashes($_POST['e_employeur']);
-    $e_soustitre = addslashes($_POST['e_soustitre']);
+    $e_lieu = addslashes($_POST['e_lieu']);
     $e_dates = addslashes($_POST['e_dates']);
     $e_description = addslashes($_POST['e_description']);
     $id_experience= $_POST['id_experience'];
 
-    $pdo->exec("UPDATE t_experiences SET e_titre ='$e_titre', e_employeur='$e_employeur', e_soustitre='$e_soustitre', e_dates= '$e_dates', e_description= '$e_description'  WHERE id_experience='$id_experience'");
+    $pdo->exec("UPDATE t_experiences SET e_poste ='$e_poste', e_employeur='$e_employeur', e_lieu='$e_lieu', e_dates= '$e_dates', e_description= '$e_description'  WHERE id_experience='$id_experience'");
     header('location: experiences.php');
     exit();
 
@@ -85,9 +85,9 @@ $ligne_experience= $req->fetch();
                         <div class="panel-body">
                             <form action="modif_experiences.php" method="post">
                                 <div class="form-group">
-                                    <label for="e_titre">Titre</label>
+                                    <label for="e_poste">Poste</label>
 
-                                    <input type="text" name="e_titre" class="form-control" value="<?php echo $ligne_experience['e_titre'];?>">
+                                    <input type="text" name="e_poste" class="form-control" value="<?php echo $ligne_experience['e_poste'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="e_employeur">Employeur</label>
@@ -95,8 +95,8 @@ $ligne_experience= $req->fetch();
                                     <input type="text" name="e_employeur" class="form-control" value="<?php echo $ligne_experience['e_employeur'];?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="soustitre">Soustitre</label>
-                                    <input type="text" name="e_soustitre" class="form-control" value="<?php echo $ligne_experience['e_soustitre'];?>">
+                                    <label for="lieu">Lieu</label>
+                                    <input type="text" name="e_lieu" class="form-control" value="<?php echo $ligne_experience['e_lieu'];?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="dates">Dates</label>
