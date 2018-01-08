@@ -44,13 +44,13 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 <body>
 
     <!--Page d'accueil -->
-    <div class="first container">
+    <div class="first container" id="Accueil">
         <header>
             <div class="container">
                 <div class="row">
-                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-10 col-lg-7 col-lg-push-3" style="background: #eee;">
-                        <ul class=" nav navbar-nav list-inline" style="text-align: center; padding-top:2px; ">
-                            <!-- <li><a href="#index.php">Accueil</a></li> -->
+                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-10 col-lg-7 col-lg-push-3">
+                        <ul class=" nav navbar-nav list-inline">
+                            <li><a href="#Accueil">Accueil</a></li>
                             <li><a href="#Competences">Compétences</a></li>
                             <li><a href="#Formations">Formations</a></li>
                             <li><a href="#Experiences">Expériences</a></li>
@@ -65,12 +65,12 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
 
         <!--Section de présentation du site -->
-        <section class="jumbotron col-lg-6 col-lg-push-3 col-sm-7 col-sm-push-2 col-xs-12  ">
+        <section class="jumbotron col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-xs-12" >
             <div class="container">
                 <div class="row">
                     <div class="presentation text-center col-xs-12 col-sm-10 col-sm-offset-1">
                         <h2>Site CV de Yannick Bley</h2>
-                        <h3>Developpeur/Integrateur Web Junior</h3>
+                        <h3>Developpeur Web Junior</h3>
                         <p>Actuellement à la recherche d'un stage de 2 mois</p>
 
                         <a href="https://fr.linkedin.com/in/yannick-bley-84b585145"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
@@ -99,11 +99,16 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
         <div class="container-fluid jumbotron">
             <div class="row">
-                <div class="competence col-lg-6 col-lg-push-3 col-md-4 col-sm-4 col-sm-push-4 col-xs-12">
+                <div class="competence col-lg-8 col-lg-push-2 col-md-4 col-sm-4 col-sm-push-4 col-xs-12">
                     <p class="text-center">Compétences</p>
                     <?php foreach($affiche_competences as $competence){?>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-5 col-xs-12"> <?= $competence['competence']?></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-5 col-xs-12"> <?= $competence['c_niveau']?></div>
+                        <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-5"> <?= $competence['competence']?></div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="<?= $competence['c_niveau']?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $competence['c_niveau']?>">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> <?= $competence['c_niveau']?></div> -->
 
                     <?php } ?>
                 </div>

@@ -1,32 +1,104 @@
+*{
+    font-family:Righteous;
+}
+body{
+    background:#A96F6F;
+}
+/*Taille des sections qui sont les pages */
 .first, .second, .third, .fourth, .fifth{
     width:100%;
     min-height:100vh;
-}
 
+}
+/********/
+
+/*******/
+
+/**Style de la page accueil en responsive mobile */
+@media screen and (max-width: 425px){
+        .first .container .row{
+            margin-right: 0;
+        }
+          .container .navbar{
+              background:transparent;
+              border:none;
+          }
+        .first .jumbotron{
+            background: #005792;
+            margin-top: 13em;
+
+         }
+         .first .jumbotron .presentation > h3{
+             font-size:19px;
+         }
+  .second{
+
+  }
+
+  .third{
+
+  }
+  .fourth{
+
+  }
+}
+/********* fin du style responsive mobile*********/
+
+/*************Page Accueil***********************/
 .first{
-    background-image: url("");
+
 }
+        header{
+              width:100%;
+              z-index:1;
+              position:fixed;
+             }
+        nav{
+            width:100%;
+        }
+           .navbar{
+               background:transparent;
+               border:none;
+           }
+               .navbar-inverse .navbar-nav>li>a{
+                   color:white;
+               }
+                    ul{
+                        text-align:center;
+                        padding-top:2px;
+                        font-family:Righteous;
+                    }
+                        ul li:hover{
+                            background:#355C87;
+                        }
+           .first .jumbotron{
+            margin-top:13em;
+            background: #355C87;
+         }
+                .jumbotron .presentation{
+                      font-family: Righteous;
+                      color:white;
+                }
+                   .jumbotron .presentation a>i{
+                       color:white;
+                   }
+                   .jumbotron .presentation a>i:hover{
+                       transition:1s ease;
+                       transform:scale(1.3);
+                   }
+/***********************************************/
+/***************Page Compétences****************/
 .second{
-    background: maroon;
+
+
+
+
+
 }
+/***************Fin page Compétences************/
 .third{
-    background:brown;
+
 }
 .fourth{
-    background: darkred;
-}
 
-
-/*
-   Début style de la page d'accueil
-*/
-
-header{
-    width:100%;
-    z-index:1;
-    position:fixed;
-}
-nav{
-    /*hauter*/
-   width: 100%;
 }
