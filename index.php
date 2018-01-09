@@ -55,7 +55,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                             <li><a href="#Formations">Formations</a></li>
                             <li><a href="#Experiences">Expériences</a></li>
                             <!-- <li><a href="#Realisations">Réalisations</a></li> -->
-                            <li><a href="#Contact">Contact</a></li>
+                            <!-- <li><a href="#Contact">Contact</a></li> -->
                         </ul>
                     </nav>
                 </div>
@@ -93,19 +93,19 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
         <div class="row">
             <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
-                <strong>Compétences</strong>
+                <h2>Compétences</h2>
             </div>
         </div>
+
 
         <div class="container-fluid jumbotron">
             <div class="row">
                 <div class="competence col-lg-8 col-lg-push-2 col-md-4 col-sm-4 col-sm-push-4 col-xs-12">
-                    <p class="text-center">Compétences</p>
                     <?php foreach($affiche_competences as $competence){?>
-                        <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-5"> <?= $competence['competence']?></div>
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar" aria-valuenow="<?= $competence['c_niveau']?>" aria-valuemin="0" aria-valuemax="100" style="width:<?= $competence['c_niveau']?>">
-                                <span class="sr-only"></span>
+                        <div class=" col-lg-5 col-md-5 col-sm-5 col-xs-5"><p> <?= $competence['competence']?></p></div>
+                        <div class="progress col lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:<?= $competence['c_niveau']?>% ">
+                                <?= $competence['c_niveau']?>
                             </div>
                         </div>
                         <!-- <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5"> <?= $competence['c_niveau']?></div> -->
@@ -123,19 +123,19 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
         <div class="row">
 
             <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
-                <strong>Formations</strong>
+                <h2>Formations</h2>
             </div>
 
         </div>
 
         <div class="container-fluid jumbotron">
             <div class="row">
-                <div class="formations col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12 ">
+                <div class="formations col-lg-10 col-md-10 col-md-push-1 col-sm-12 col-xs-12 ">
                     <?php foreach($affiche_formations as $form){?>
-                        <div class="text-center col-lg-3 col-md-5 col-sm-6 col-xs-12"><p><?= $form['f_titre']?></p></div>
-                        <div class="text-center col-lg-3 col-md-5 col-sm-6 col-xs-12"><?= $form['f_lieu']?></div>
-                        <div class="text-center col-lg-3 col-md-5 col-sm-6 col-xs-12"><?= $form['f_dates']?></div>
-                        <div class="text-center col-lg-3 col-md-5 col-sm-6 col-xs-12"> <?= $form['f_description']?></div>
+                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
+                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_lieu"><?= $form['f_lieu']?></div>
+                        <div class="text-center col-lg-1 col-md-12 col-sm-12 col-xs-12" id="form_dates"><?= $form['f_dates']?></div>
+                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_description"><p> <?= $form['f_description']?></p></div>
                     <?php } ?>
                 </div>
             </div>
@@ -167,17 +167,17 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 <div class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
     <div class="row">
         <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
-            <strong>Expériences</strong>
+            <h2>Expériences</h2>
         </div>
     </div>
     <div class="container-fluid jumbotron">
         <div class="row">
-            <div class="experiences col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12  ">
+            <div class="experiences col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                 <?php foreach($affiche_experiences as $exp){?>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12"> <?= $exp['e_poste']?></div>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12"> <?= $exp['e_lieu']?></div>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12"> <?= $exp['e_dates']?></div>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12"> <?= $exp['e_description']?></div>
+                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_poste"><p><?= $exp['e_poste']?></p></div>
+                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_lieu"><p> <?= $exp['e_lieu']?></p></div>
+                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_dates"><p> <?= $exp['e_dates']?></p></div>
+                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_description"> <?= $exp['e_description']?></div>
                 <?php } ?>
             </div>
         </div>

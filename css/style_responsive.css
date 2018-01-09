@@ -1,6 +1,9 @@
 *{
     font-family:Righteous;
 }
+h2{
+    color:white;
+}
 body{
     background:#A96F6F;
 }
@@ -9,6 +12,13 @@ body{
     width:100%;
     min-height:100vh;
 
+}
+.jumbotron{
+    background:#355C87;
+    margin-top:9em;
+}
+footer{
+    margin-bottom:6em;
 }
 /********/
 
@@ -25,7 +35,7 @@ body{
           }
         .first .jumbotron{
             background: #005792;
-            margin-top: 13em;
+            margin-top: 14em;
 
          }
          .first .jumbotron .presentation > h3{
@@ -42,6 +52,28 @@ body{
 
   }
 }
+
+    #Experiences .container-fluid{
+        margin-top:12em;
+    }
+      #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
+          border:none;
+          color: white;
+      }
+      #exp_description,#exp_dates, #form_description, #form_dates{
+          background:#A96F6F;
+      }
+
+      #exp_lieu{
+          background:#005792;
+      }
+      #exp_poste,#form_titre{
+         background:maroon;
+      }
+
+
+
+
 /********* fin du style responsive mobile*********/
 
 /*************Page Accueil***********************/
@@ -62,6 +94,7 @@ body{
            }
                .navbar-inverse .navbar-nav>li>a{
                    color:white;
+                   text-shadow:black 3px 0px;
                }
                     ul{
                         text-align:center;
@@ -78,6 +111,7 @@ body{
                 .jumbotron .presentation{
                       font-family: Righteous;
                       color:white;
+                      text-shadow: black 5px 0px;
                 }
                    .jumbotron .presentation a>i{
                        color:white;
