@@ -48,7 +48,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
         <header>
             <div class="container">
                 <div class="row">
-                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-10 col-lg-7 col-lg-push-3">
+                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-8 col-lg-5 col-lg-push-3">
                         <ul class=" nav navbar-nav list-inline">
                             <li><a href="#Accueil">Accueil</a></li>
                             <li><a href="#Competences">Compétences</a></li>
@@ -130,11 +130,11 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
         <div class="container-fluid jumbotron">
             <div class="row">
-                <div class="formations col-lg-10 col-md-10 col-md-push-1 col-sm-12 col-xs-12 ">
+                <div class="formations col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                     <?php foreach($affiche_formations as $form){?>
                         <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
                         <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_lieu"><?= $form['f_lieu']?></div>
-                        <div class="text-center col-lg-1 col-md-12 col-sm-12 col-xs-12" id="form_dates"><?= $form['f_dates']?></div>
+                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_dates"><?= $form['f_dates']?></div>
                         <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_description"><p> <?= $form['f_description']?></p></div>
                     <?php } ?>
                 </div>
@@ -170,14 +170,14 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             <h2>Expériences</h2>
         </div>
     </div>
-    <div class="container-fluid jumbotron">
+    <div class="container-fluid jumbotron text-center">
         <div class="row">
             <div class="experiences col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                 <?php foreach($affiche_experiences as $exp){?>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_poste"><p><?= $exp['e_poste']?></p></div>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_lieu"><p> <?= $exp['e_lieu']?></p></div>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_dates"><p> <?= $exp['e_dates']?></p></div>
-                    <div class="text-center col-lg-6 col-md-6 col-sm-6 col-xs-12" id="exp_description"> <?= $exp['e_description']?></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_poste"><p><?= $exp['e_poste']?></p></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_lieu"><p> <?= $exp['e_lieu']?></p></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_dates"><p> <?= $exp['e_dates']?></p></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_description"> <?= $exp['e_description']?></div>
                 <?php } ?>
             </div>
         </div>

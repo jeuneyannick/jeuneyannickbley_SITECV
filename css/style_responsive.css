@@ -1,11 +1,12 @@
 *{
     font-family:Righteous;
+
 }
 h2{
     color:white;
 }
 body{
-    background:#A96F6F;
+    background:#086972;
 }
 /*Taille des sections qui sont les pages */
 .first, .second, .third, .fourth, .fifth{
@@ -14,7 +15,8 @@ body{
 
 }
 .jumbotron{
-    background:#355C87;
+    background:#2D6E7E;
+    border:none;
     margin-top:9em;
 }
 footer{
@@ -24,7 +26,7 @@ footer{
 
 /*******/
 
-/**Style de la page accueil en responsive mobile */
+/**Style des pages pour mobile */
 @media screen and (max-width: 425px){
         .first .container .row{
             margin-right: 0;
@@ -34,41 +36,47 @@ footer{
               border:none;
           }
         .first .jumbotron{
-            background: #005792;
+            background:#F54D42;
             margin-top: 14em;
 
          }
          .first .jumbotron .presentation > h3{
              font-size:19px;
          }
-  .second{
+          #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
+              padding-top:0;
+          }
 
-  }
+}
+/*****************************************/
+/**Style des pages pour tablette*/
+@media screen and (){
 
-  .third{
 
-  }
-  .fourth{
 
-  }
+
 }
 
+/***************************************/
     #Experiences .container-fluid{
         margin-top:12em;
     }
       #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
           border:none;
+          background:#2D6E7E;
           color: white;
+          padding-top: 11px;
       }
       #exp_description,#exp_dates, #form_description, #form_dates{
-          background:#A96F6F;
+          background:#0B8457;
+          border:2px;
+          border-radius:4px;
       }
 
-      #exp_lieu{
-          background:#005792;
-      }
       #exp_poste,#form_titre{
-         background:maroon;
+         background:#0B8457;
+         border:2px;
+         border-radius:4px;
       }
 
 
@@ -87,14 +95,14 @@ footer{
              }
         nav{
             width:100%;
+            background:#096C47;
         }
            .navbar{
-               background:transparent;
+               background:#2D6E7E;
                border:none;
            }
                .navbar-inverse .navbar-nav>li>a{
                    color:white;
-                   text-shadow:black 3px 0px;
                }
                     ul{
                         text-align:center;
@@ -102,21 +110,24 @@ footer{
                         font-family:Righteous;
                     }
                         ul li:hover{
-                            background:#355C87;
+                            transition:0.4s;
+                            background:#2D6E7E;
+                            border-radius:4px;
                         }
            .first .jumbotron{
             margin-top:13em;
-            background: #355C87;
+            background:#096C47;
          }
                 .jumbotron .presentation{
-                      font-family: Righteous;
+                      font-family:Righteous;
                       color:white;
-                      text-shadow: black 5px 0px;
+
                 }
                    .jumbotron .presentation a>i{
                        color:white;
                    }
                    .jumbotron .presentation a>i:hover{
+                       color:indianred;
                        transition:1s ease;
                        transform:scale(1.3);
                    }
