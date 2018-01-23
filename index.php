@@ -119,7 +119,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                         <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
                         <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_dates"><p> <?=$form['f_dates'] ?></p></div>
                         <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_description"><p><?= $form['f_description'] ?></p></div>
-                    <?php } ?>
+                    <?php } ?> bbh
                 </div>
             </div>
         </section>
