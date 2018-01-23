@@ -14,9 +14,9 @@ $affiche_formations = $req-> fetchAll(PDO::FETCH_ASSOC);
 // $affiche_realisations = $req-> fetchAll(PDO::FETCH_ASSOC);
 // var_dump($affiche_realisations) . '</br>';
 
-$req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
-$req->execute();
-$affiche_loisirs = $req->fetchAll(PDO::FETCH_ASSOC);
+// $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
+// $req->execute();
+// $affiche_loisirs = $req->fetchAll(PDO::FETCH_ASSOC);
 // var_dump($affiche_loisirs) . '</br>';
 
 $req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
