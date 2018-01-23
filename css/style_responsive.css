@@ -4,14 +4,17 @@
 }
 h2{
     color:white;
+    text-shadow: 1px 1px 1px black;
 }
 body{
-    background-image:url(../img/green_dust_scratch.png);
+    background-image:url(../img/ao.gif);
 }
 footer{
     margin-bottom:6em;
 }
-
+   .icons > a > i{
+       margin: 10px;
+   }
 /*************Page Accueil***********************/
 .first{
 
@@ -23,12 +26,15 @@ footer{
              }
         nav{
             width:100%;
-            background:#096C47;
-        }
-           .navbar{
-               background:#096C47;
-               border:none;
            }
+           .navbar-nav{
+               background:#455A64;
+               border:2px solid #ECEFF1;
+           }
+               .navbar-inverse{
+                   background:transparent;
+                   border:none;
+               }
                .navbar-inverse .navbar-nav>li>a{
                    color:white;
                }
@@ -39,13 +45,12 @@ footer{
                     }
                         ul li:hover{
                             transition:0.4s;
-                            background:#EAC100;
-                            border-radius:4px;
+                            background:black;
                         }
            .first .jumbotron{
             margin-top:13em;
-            background:#096C47;
-            border:2px solid #EAC100;
+            background:#607D8B;
+            border:2px solid #ECEFF1;
             border-radius: 4px;
          }
                 .jumbotron .presentation{
@@ -65,12 +70,13 @@ footer{
 /*Taille des sections qui sont les pages */
 .first, .second, .third, .fourth, .fifth{
     width:100%;
-    min-height:100vh;
+    min-height:55vh;
 
 }
 .jumbotron{
-    background:#096C47;
-    border:none;
+    background:#607D8B;
+    border:2px solid #ECEFF1;
+    box-shadow: 6px 6px 11px black;
     margin-top:9em;
 }
 #Competences .progress{
@@ -82,21 +88,18 @@ footer{
 }
 #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
     border:none;
-    background:#EAC100;
     color: white;
     padding-top: 11px;
 }
 #exp_description,#exp_dates, #form_description, #form_dates{
-    background:#0B8457;
     border:2px;
     border-radius:4px;
 
 }
 
 #exp_poste,#form_titre{
-    border: #EAC100 2px solid;
+    border: 2px solid #ECEFF1;
     border-radius: 4px;
-    background:#0B8457;
 }
 /**Style des pages pour mobile */
 @media screen and (max-width: 425px){

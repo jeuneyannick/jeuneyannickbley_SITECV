@@ -134,7 +134,7 @@ if(isset($_GET['id_formation'])){// on récupère la comp. par son id dans l'URL
                             </div>
                             <div class="form-group">
                                 <label for="f_dates">Dates</label>
-                                <input type="text" name="f_dates" id="f_dates" placeholder="Inserez une formation" class="form-control">
+                                <input type="text" name="f_dates" id="f_dates" placeholder="Inserez une date" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="f_description">Description</label>

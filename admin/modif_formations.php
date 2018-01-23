@@ -35,7 +35,7 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
     $f_description  = addslashes($_POST['f_description']);
     $id_formation = $_POST['id_formation'];
 
-    $pdo->exec("UPDATE t_formations SET f_titre ='$f_titre', f_lieu='$f_lieu', f_dates='$f_dates', f_description='$f_description' WHERE id_formation='$id_formation'");
+    $pdo->exec("UPDATE t_formations SET f_titre ='$f_titre', f_lieu ='$f_lieu', f_dates='$f_dates', f_description='$f_description' WHERE id_formation='$id_formation'");
     header('location: formations.php');
     exit();
 
@@ -83,11 +83,10 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
                             <form action="modif_formations.php" method="post">
                                 <div class="form-group">
                                     <label for="f_titre">Titre</label>
-
                                     <input type="text" name="f_titre" class="form-control" value="<?php echo $ligne_formation['f_titre'];?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="lieu">Lieu</label>
+                                    <label for="f_lieu">Lieu</label>
                                     <input type="text" name="f_lieu" class="form-control" value="<?php echo $ligne_formation['f_lieu'];?>">
                                 </div>
                                 <div class="form-group">
@@ -96,7 +95,7 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <input type="text" name="f_description" class="form-control" value="<?php echo $ligne_formation['f_description'];?>">
+                                    <textarea type="text" id="editor1" name="f_description" class="form-control" value="<?php echo $ligne_formation['f_description'];?>"></textarea>
                                 </div>
 
                                 <input hidden name="id_formation"  value="<?php echo $ligne_formation['id_formation'];?>">

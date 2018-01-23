@@ -7,27 +7,16 @@ $affiche_utilisateurs = $req -> fetchAll(PDO::FETCH_ASSOC);
 $req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_formations = $req-> fetchAll(PDO::FETCH_ASSOC);
-// var_dump($affiche_formations) . '</br>';
-
-// $req= $pdo->prepare("SELECT * FROM t_realisations WHERE utilisateur_id= '1'");
-// $req->execute();
-// $affiche_realisations = $req-> fetchAll(PDO::FETCH_ASSOC);
-// var_dump($affiche_realisations) . '</br>';
-
-// $req= $pdo->prepare("SELECT * FROM t_loisirs WHERE utilisateur_id= '1'");
-// $req->execute();
-// $affiche_loisirs = $req->fetchAll(PDO::FETCH_ASSOC);
-// var_dump($affiche_loisirs) . '</br>';
 
 $req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_experiences= $req-> fetchAll(PDO::FETCH_ASSOC);
-// var_dump($affiche_experiences) . '</br>';
+
 
 $req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
-// var_dump($affiche_competences) . '</br>';
+
 
 ?>
 <head>
@@ -70,27 +59,24 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 <div class="row">
                     <div class="presentation text-center col-xs-12 col-sm-10 col-sm-offset-1">
                         <h2>Site CV de Yannick Bley</h2>
-                        <h3>Developpeur Web Junior</h3>
+                        <h3>Devéloppeur Web Junior</h3>
                         <p>Actuellement à la recherche d'un stage de 2 mois</p>
-
-                        <a href="https://fr.linkedin.com/in/yannick-bley-84b585145"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
-                        <a href="https://twitter.com/YannickBley"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
-                        <a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
-                        <a href="https://github.com/jeuneyannick"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
-
+                        <div class="icons">
+                            <a href="https://fr.linkedin.com/in/yannick-bley-84b585145" target="_blank"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/YannickBley"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://github.com/jeuneyannick"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+                        </div>
 
                     </div>
                 </div>
             </div>
-
-
         </section><!--Fin de la section !-->
 
     </div><!-- Fin de la page d'accueil -->
 
 
-    <div class="second container" id="Competences"> <!-- Début page Competences -->
-
+    <section class="second container" id="Competences"> <!-- Début page Competences -->
         <div class="row">
             <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
                 <h2>Compétences</h2>
@@ -114,88 +100,67 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
-    </div><!--Fin de la page Compétences -->
+    </section><!--Fin de la page Compétences -->
 
 
     <div class="clearfix"></div>
 
-    <div class="third container" id="Formations"><!-- Début de la page Formations -->
+    <section class="third container" id="Formations"><!-- Début de la page Formations -->
         <div class="row">
-
             <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
                 <h2>Formations</h2>
             </div>
-
         </div>
-
-        <div class="container-fluid jumbotron">
+        <section class="container-fluid jumbotron text-center">
             <div class="row">
                 <div class="formations col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                     <?php foreach($affiche_formations as $form){?>
-                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
-                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_lieu"><?= $form['f_lieu']?></div>
-                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_dates"><?= $form['f_dates']?></div>
-                        <div class="text-center col-lg-3 col-md-12 col-sm-12 col-xs-12" id="form_description"><p> <?= $form['f_description']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_dates"><p> <?=$form['f_dates'] ?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_description"><p><?= $form['f_description'] ?></p></div>
                     <?php } ?>
                 </div>
             </div>
-        </div>
-        <!-- <div class="container">
-        <div class="row text-center">
-        <?php foreach($affiche_formations as $affiche_form){?>
-        <article class="col-lg-3  col-md-3  col-sm-3 col-xs-12">
-        <div class="cadre" style=" width: 300px; height: 300px; border-radius: 200px; background:indianred;">
-        <div class="icons text-center">
-        <i class="fa fa-graduation-cap fa-4x text-center" aria-hidden="true"></i>
-    </div>
-    <div class="description">
-    <div><?= $affiche_form['f_titre']?></div>
-    <div><?= $affiche_form['f_lieu']?></div>
-    <div><?= $affiche_form['f_dates']?></div>
-    <div><?= $affiche_form['f_description']?></div>
-</div>
+        </section>
 
-</div>
-</article>
-<?php } ?>
-</div>
-</div> -->
-</div><!-- Fin de la page Formations -->
 
-<div class="clearfix"></div>
+    </section><!-- Fin de la page Formations -->
 
-<div class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
-    <div class="row">
-        <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
-            <h2>Expériences</h2>
-        </div>
-    </div>
-    <div class="container-fluid jumbotron text-center">
+    <div class="clearfix"></div>
+
+    <section class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
         <div class="row">
-            <div class="experiences col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
-                <?php foreach($affiche_experiences as $exp){?>
-                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_poste"><p><?= $exp['e_poste']?></p></div>
-                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_lieu"><p> <?= $exp['e_lieu']?></p></div>
-                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_dates"><p> <?= $exp['e_dates']?></p></div>
-                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_description"> <?= $exp['e_description']?></div>
-                <?php } ?>
+            <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
+                <h2>Expériences</h2>
             </div>
         </div>
-    </div>
+        <section class="container-fluid jumbotron text-center">
+            <div class="row">
+                <div class="experiences col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+                    <?php foreach($affiche_experiences as $exp){?>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_poste"><p><?= $exp['e_poste']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_lieu"><p> <?= $exp['e_lieu']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_dates"><p> <?= $exp['e_dates']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_description"><p><?= $exp['e_description']?></p></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </section>
 
-</div><!-- Fin de la page Expériences -->
+    </section><!-- Fin de la page Expériences -->
 
-<div class="clearfix"></div><!-- -->
-
-
-<footer class="text-center">
-    <p> <?= date('Y'); ?> -  Tous droits reservés</p>
-</footer>
+    <div class="clearfix"></div><!-- -->
 
 
+    <footer class="text-center">
+        <p> <?= date('Y'); ?> -  Tous droits reservés</p>
+    </footer>
 
-<script src="admin/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="admin/js/jquery-3.2.1.min.js"></script>
-<script src="admin/js/mobilefirst.js"></script>
+
+
+    <script src="admin/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="admin/js/jquery-3.2.1.min.js"></script>
+    <script src="admin/js/mobilefirst.js"></script>
 </body>
