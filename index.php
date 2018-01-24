@@ -4,7 +4,7 @@ require_once('admin/init/functions.php');// Require des fonctions que je vais ut
 $req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $affiche_utilisateurs = $req -> fetchAll(PDO::FETCH_ASSOC);
 
-$req= $pdo->prepare("SELECT * FROM t_formations WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_formations  WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_formations = $req-> fetchAll(PDO::FETCH_ASSOC);
 
@@ -119,7 +119,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                         <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
                         <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_dates"><p> <?=$form['f_dates'] ?></p></div>
                         <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_description"><p><?= $form['f_description'] ?></p></div>
-                    <?php } ?> 
+                    <?php } ?>
                 </div>
             </div>
         </section>

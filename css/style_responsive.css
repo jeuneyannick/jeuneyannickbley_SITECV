@@ -98,7 +98,7 @@ footer{
 }
 
 #exp_poste,#form_titre{
-    border: 2px solid #ECEFF1;
+    border: 1px solid #ECEFF1;
     border-radius: 4px;
 }
 /**Style des pages pour mobile */
@@ -125,6 +125,8 @@ footer{
 /*****************************************/
 
 @media screen and (min-width: 768px){
-    padding-right:0; 
-    padding-left:0; 
+    .container .jumbotron p{
+        padding-right:0;
+        padding-left:0;
+    }
 }
