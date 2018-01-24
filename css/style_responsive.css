@@ -123,3 +123,8 @@ footer{
 
 }
 /*****************************************/
+
+@media screen and (min-width: 768px){
+    padding-right:0; 
+    padding-left:0; 
+}
