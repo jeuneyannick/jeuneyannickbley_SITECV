@@ -34,6 +34,7 @@ footer{
                .navbar-inverse{
                    background:transparent;
                    border:none;
+
                }
                .navbar-inverse .navbar-nav>li>a{
                    color:white;
@@ -45,7 +46,7 @@ footer{
                     }
                         ul li:hover{
                             transition:0.4s;
-                            background:black;
+                            background:indianred;
                         }
            .first .jumbotron{
             margin-top:13em;
@@ -62,7 +63,7 @@ footer{
                        color:white;
                    }
                    .jumbotron .presentation a>i:hover{
-                       color:#EAC100;
+                       color:indianred;
                        transition:1s ease;
                        transform:scale(1.3);
                    }
@@ -91,15 +92,18 @@ footer{
     color: white;
     padding-top: 11px;
 }
+
 #exp_description,#exp_dates, #form_description, #form_dates{
     border:2px;
     border-radius:4px;
-
 }
 
 #exp_poste,#form_titre{
     border: 1px solid #ECEFF1;
     border-radius: 4px;
+}
+#exp_poste,#form_titre{
+    background: indianred;
 }
 /**Style des pages pour mobile */
 @media screen and (max-width: 425px){
@@ -123,10 +127,3 @@ footer{
 
 }
 /*****************************************/
-
-@media screen and (min-width: 768px){
-    .container .jumbotron p{
-        padding-right:0;
-        padding-left:0;
-    }
-}

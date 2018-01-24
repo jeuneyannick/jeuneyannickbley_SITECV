@@ -38,7 +38,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             <div class="container">
                 <div class="row">
                     <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-8 col-lg-5 col-lg-push-3">
-                        <ul class=" nav navbar-nav list-inline">
+                        <ul class=" nav navbar-nav ">
                             <li><a href="#Accueil">Accueil</a></li>
                             <li><a href="#Competences">Compétences</a></li>
                             <li><a href="#Formations">Formations</a></li>
@@ -115,10 +115,10 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="formations col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                     <?php foreach($affiche_formations as $form){?>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_dates"><p> <?=$form['f_dates'] ?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-12 col-xs-12" id="form_description"><p><?= $form['f_description'] ?></p></div>
+                        <div class="text-center col-lg-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
+                        <div class="text-center col-lg-12" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
+                        <div class="text-center col-lg-12" id="form_dates"><p><?=$form['f_dates'] ?></p></div>
+                        <div class="text-center col-lg-12" id="form_description"></p><?= $form['f_description'] ?></</div>
                     <?php } ?>
                 </div>
             </div>
