@@ -179,7 +179,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
                     <div class="col-sm-6  col-lg-3">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-group">
