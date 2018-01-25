@@ -161,7 +161,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
 <div class="clearfix"></div><!-- -->
 
-<section class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
+<section class="fourth container" id="Contact"><!-- Début de la page Experiences -->
     <div class="row">
         <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
             <h2>Contact</h2>
@@ -172,13 +172,13 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             <form class="form-horizontal">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6 col-lg-3">
                         <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-6  col-lg-3">
                         <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                     </div>
                 </div>
@@ -187,8 +187,8 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                         <button type="submit" class="btn btn-default">Sign in</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
 
     </section>
 
