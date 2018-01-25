@@ -37,14 +37,13 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
         <header>
             <div class="container">
                 <div class="row">
-                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-8 col-lg-5 col-lg-push-3">
+                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-8 col-lg-7 col-lg-push-3">
                         <ul class=" nav navbar-nav ">
                             <li><a href="#Accueil">Accueil</a></li>
                             <li><a href="#Competences">Compétences</a></li>
                             <li><a href="#Formations">Formations</a></li>
                             <li><a href="#Experiences">Expériences</a></li>
-                            <!-- <li><a href="#Realisations">Réalisations</a></li> -->
-                            <!-- <li><a href="#Contact">Contact</a></li> -->
+                            <li><a href="#Contact">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -124,53 +123,85 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
             </div>
         </section>
         <!-- <section class="container-fluid jumbotron text-center">
-            <div class="row">
-                <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
-                    <?php foreach($affiche_formations as $form){?>
-                        <div class="text-center col-lg-3" id="form_titre"><p><?= $form['f_titre']?></p></div>
-                        <div class="text-center col-lg-3" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
-                        <div class="text-center col-lg-3" id="form_dates"><p><?=$form['f_dates'] ?></p></div>
-                        <div class="text-center col-lg-3" id="form_description"><?= $form['f_description'] ?></div>
-                    <?php } ?>
-                </div>
-            </div>
-        </section> -->
-    </section><!-- Fin de la page Formations -->
-
-    <div class="clearfix"></div>
-
-    <section class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
         <div class="row">
-            <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
-                <h2>Expériences</h2>
+        <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+        <?php foreach($affiche_formations as $form){?>
+        <div class="text-center col-lg-3" id="form_titre"><p><?= $form['f_titre']?></p></div>
+        <div class="text-center col-lg-3" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
+        <div class="text-center col-lg-3" id="form_dates"><p><?=$form['f_dates'] ?></p></div>
+        <div class="text-center col-lg-3" id="form_description"><?= $form['f_description'] ?></div>
+    <?php } ?>
+</div>
+</div>
+</section> -->
+</section><!-- Fin de la page Formations -->
+
+<div class="clearfix"></div>
+
+<section class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
+    <div class="row">
+        <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
+            <h2>Expériences</h2>
+        </div>
+    </div>
+    <section class="container-fluid jumbotron text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+                <?php foreach($affiche_experiences as $exp){?>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche" ><p class="affiche02"><?= $exp['e_poste']?></p></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche"><p> <?= $exp['e_lieu']?></p></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche" ><p> <?= $exp['e_dates']?></p></div>
+                    <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche"><?= $exp['e_description']?></div>
+                <?php } ?>
             </div>
         </div>
-        <section class="container-fluid jumbotron text-center">
-            <div class="row">
-                <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
-                    <?php foreach($affiche_experiences as $exp){?>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche" ><p class="affiche02"><?= $exp['e_poste']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche"><p> <?= $exp['e_lieu']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche" ><p> <?= $exp['e_dates']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche"><?= $exp['e_description']?></div>
-                    <?php } ?>
+    </section>
+
+</section><!-- Fin de la page Expériences -->
+
+<div class="clearfix"></div><!-- -->
+
+<section class="fourth container" id="Experiences"><!-- Début de la page Experiences -->
+    <div class="row">
+        <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
+            <h2>Contact</h2>
+        </div>
+    </div>
+    <section class="container-fluid jumbotron text-center">
+        <div class="row">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                    </div>
                 </div>
-            </div>
-        </section>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Sign in</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-    </section><!-- Fin de la page Expériences -->
+    </section>
 
-    <div class="clearfix"></div><!-- -->
+</section><!-- Fin de la page Expériences -->
 
-
-    <footer class="text-center">
-        <p> <?= date('Y'); ?> -  Tous droits reservés</p>
-    </footer>
-
+<footer class="text-center">
+    <p> <?= date('Y'); ?> -  Tous droits reservés</p>
+</footer>
 
 
-    <script src="admin/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="admin/js/jquery-3.2.1.min.js"></script>
-    <script src="admin/js/mobilefirst.js"></script>
+
+<script src="admin/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="admin/js/jquery-3.2.1.min.js"></script>
+<script src="admin/js/mobilefirst.js"></script>
 </body>

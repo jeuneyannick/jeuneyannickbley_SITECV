@@ -111,9 +111,9 @@ footer{
 
 .affiche02{
     border-radius:2px;
-    padding-top:2px;
-    padding-bottom:2px;
-    background: indianred;
+    padding-top:5px;
+    padding-bottom:5px;
+    background:indianred;
 }
 
 /**Style des pages pour mobile */
