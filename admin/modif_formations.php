@@ -95,7 +95,7 @@ if(isset($_POST['f_titre'])){//par le nom du premier input
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea type="text" id="editor1" name="f_description" class="form-control" value="<?php echo $ligne_formation['f_description'];?>"></textarea>
+                                    <textarea type="text" id="editor1" name="f_description" class="form-control"><?php echo $ligne_formation['f_description'];?></textarea>
                                 </div>
 
                                 <input hidden name="id_formation"  value="<?php echo $ligne_formation['id_formation'];?>">

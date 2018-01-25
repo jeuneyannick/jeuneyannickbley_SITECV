@@ -23,21 +23,15 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 <?php
 
 if(isset($_POST['e_poste'])) { // Si on a posté une nouvelle experience
-    if($_POST['e_poste'] != '' && $_POST['e_lieu'] != '' && $_POST['e_employeur']  && $_POST['e_dates'] != '' && $_POST['e_description'] != '')  { // Si experience n'est pas vide
-        // $e_titre             = addslashes($_POST['e_titre']);
-        // $e_soustitre         = addslashes($_POST['e_soustitre']);
-        // $e_dates             = addslashes($_POST['e_dates']);
-        // $e_description       = addslashes($_POST['e_description']);
-        // $pdo->exec("INSERT INTO t_experiences  VALUES ('$e_titre', '$e_soustitre', '$e_dates', '$e_description', '1')"); // mettre $id_utilisateur quand on l'aura dans la varible de session
+    if($_POST['e_poste'] != '' && $_POST['e_lieu'] != '' && $_POST['e_employeur']  && $_POST['e_dates'] != '' && $_POST['e_description'] != '')  {
 
-        // exit();
         $req =  $pdo->prepare("INSERT INTO t_experiences (e_poste, e_employeur, e_lieu, e_dates, e_description, utilisateur_id) VALUES (:e_poste, :e_employeur, :e_lieu, :e_dates, :e_description, '1')");
 
-        $req->bindParam(':e_poste', addslashes($_POST['e_poste']), PDO::PARAM_STR);
-        $req->bindParam(':e_employeur', addslashes($_POST['e_employeur']), PDO::PARAM_STR);
-        $req->bindParam(':e_lieu', addslashes($_POST['e_lieu']), PDO::PARAM_STR);
-        $req->bindParam(':e_dates', addslashes($_POST['e_dates']), PDO::PARAM_STR);
-        $req->bindParam(':e_description', addslashes($_POST['e_description']), PDO::PARAM_STR);
+        $req->bindParam(':e_poste', $_POST['e_poste'], PDO::PARAM_STR);
+        $req->bindParam(':e_employeur',$_POST['e_employeur'], PDO::PARAM_STR);
+        $req->bindParam(':e_lieu', $_POST['e_lieu'], PDO::PARAM_STR);
+        $req->bindParam(':e_dates', $_POST['e_dates'], PDO::PARAM_STR);
+        $req->bindParam(':e_description', $_POST['e_description'], PDO::PARAM_STR);
 
         if($req->execute()) {
             header('location:experiences.php');
@@ -103,7 +97,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
                 <div class="panel panel-primary">
                     <div class="panel-heading">
                         <h1>Admin du site cv de <?php echo ($ligne_utilisateur['prenom']); ?></h1>
-                        <h2>il y a <?= $nbr_experiences; ?> experiences</h2>
+                        <h2>il y a <?= $nbr_experiences; ?> expériences</h2>
                     </div>
                 </div>
             </div>
@@ -114,9 +108,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        Experiences
-                    </div>
+                    <div class="panel-heading"><p>Expériences</p></div>
                     <div class="table-responsive">
                         <div class="panel-body">
                             <table class="table table-hover">
@@ -158,7 +150,7 @@ if(isset($_GET['id_experience'])){// on récupère la comp. par son id dans l'UR
             <div class="col-md-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        Insertion d'une experience
+                        Insertion d'une expérience
                     </div>
                     <div class="panel-body">
                         <form  method="post" action="">

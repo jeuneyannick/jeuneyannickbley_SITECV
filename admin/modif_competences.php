@@ -29,8 +29,8 @@ $ligne_competence= $req->fetch();
 // mise à jour d'une compétence
 
 if(isset($_POST['competence'])){//par le nom du premier input
-    $competence = addslashes($_POST['competence']);
-    $c_niveau  = addslashes($_POST['c_niveau']);
+    $competence = $_POST['competence'];
+    $c_niveau  = $_POST['c_niveau'];
     $id_competence = $_POST['id_competence'];
 
     $pdo->exec("UPDATE t_competences SET competence ='$competence', c_niveau='$c_niveau' WHERE id_competence='$id_competence'");

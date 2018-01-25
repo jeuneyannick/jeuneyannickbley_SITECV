@@ -4,11 +4,11 @@ require_once('admin/init/functions.php');// Require des fonctions que je vais ut
 $req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $affiche_utilisateurs = $req -> fetchAll(PDO::FETCH_ASSOC);
 
-$req= $pdo->prepare("SELECT * FROM t_formations  WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_formations  WHERE utilisateur_id= '1' ORDER BY id_formation DESC");
 $req->execute();
 $affiche_formations = $req-> fetchAll(PDO::FETCH_ASSOC);
 
-$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1'");
+$req= $pdo->prepare("SELECT * FROM t_experiences WHERE utilisateur_id= '1' ORDER BY id_experience DESC");
 $req->execute();
 $affiche_experiences= $req-> fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,7 +27,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="admin/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style_responsive.css">
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Righteous&Roboto" rel="stylesheet">
     <title>Site cv Yannick Bley</title>
 </head>
 <body>
@@ -59,7 +59,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 <div class="row">
                     <div class="presentation text-center col-xs-12 col-sm-10 col-sm-offset-1">
                         <h2>Site CV de Yannick Bley</h2>
-                        <h3>Devéloppeur Web Junior</h3>
+                        <h3>Développeur Web Junior</h3>
                         <p>Actuellement à la recherche d'un stage de 2 mois</p>
                         <div class="icons">
                             <a href="https://fr.linkedin.com/in/yannick-bley-84b585145" target="_blank"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
@@ -105,7 +105,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
     <div class="clearfix"></div>
 
-    <section class="third container" id="Formations"><!-- Début de la page Formations -->
+    <section class="fourth container" id="Formations"><!-- Début de la page Formations -->
         <div class="row">
             <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
                 <h2>Formations</h2>
@@ -113,18 +113,28 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
         </div>
         <section class="container-fluid jumbotron text-center">
             <div class="row">
-                <div class="formations col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                     <?php foreach($affiche_formations as $form){?>
-                        <div class="text-center col-lg-12" id="form_titre"><p><?= $form['f_titre']?></p></div>
-                        <div class="text-center col-lg-12" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
-                        <div class="text-center col-lg-12" id="form_dates"><p><?=$form['f_dates'] ?></p></div>
-                        <div class="text-center col-lg-12" id="form_description"></p><?= $form['f_description'] ?></</div>
+                        <div class="text-center  col-md-3 col-sm-3 col-xs-12 affiche " ><p class="affiche02"><?= $form['f_titre']?></p></div>
+                        <div class="text-center  col-md-3 col-sm-3 col-xs-12 affiche"><p> <?= $form['f_lieu']?></p></div>
+                        <div class="text-center  col-md-3 col-sm-3 col-xs-12 affiche " ><p> <?= $form['f_dates']?></p></div>
+                        <div class="text-center  col-md-3 col-sm-3 col-xs-12 affiche " ><?= $form['f_description']?></div>
                     <?php } ?>
                 </div>
             </div>
         </section>
-
-
+        <!-- <section class="container-fluid jumbotron text-center">
+            <div class="row">
+                <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+                    <?php foreach($affiche_formations as $form){?>
+                        <div class="text-center col-lg-3" id="form_titre"><p><?= $form['f_titre']?></p></div>
+                        <div class="text-center col-lg-3" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
+                        <div class="text-center col-lg-3" id="form_dates"><p><?=$form['f_dates'] ?></p></div>
+                        <div class="text-center col-lg-3" id="form_description"><?= $form['f_description'] ?></div>
+                    <?php } ?>
+                </div>
+            </div>
+        </section> -->
     </section><!-- Fin de la page Formations -->
 
     <div class="clearfix"></div>
@@ -137,12 +147,12 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
         </div>
         <section class="container-fluid jumbotron text-center">
             <div class="row">
-                <div class="experiences col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+                <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
                     <?php foreach($affiche_experiences as $exp){?>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_poste"><p><?= $exp['e_poste']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_lieu"><p> <?= $exp['e_lieu']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_dates"><p> <?= $exp['e_dates']?></p></div>
-                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12" id="exp_description"><p><?= $exp['e_description']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche" ><p class="affiche02"><?= $exp['e_poste']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche"><p> <?= $exp['e_lieu']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche" ><p> <?= $exp['e_dates']?></p></div>
+                        <div class="text-center col-lg-3 col-md-3 col-sm-3 col-xs-12 affiche"><?= $exp['e_description']?></div>
                     <?php } ?>
                 </div>
             </div>

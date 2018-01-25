@@ -29,10 +29,10 @@ $ligne_realisation = $req->fetch();
 // mise à jour d'une compétence
 
 if(isset($_POST['r_titre'])){//par le nom du premier input
-    $r_titre = addslashes($_POST['r_titre']);
-    $r_soustitre  = addslashes($_POST['r_soustitre']);
-    $r_dates  = addslashes($_POST['r_dates']);
-    $r_description  = addslashes($_POST['r_description']);
+    $r_titre = $_POST['r_titre'];
+    $r_soustitre  = $_POST['r_soustitre'];
+    $r_dates  = $_POST['r_dates'];
+    $r_description  = $_POST['r_description'];
     $id_realisation = $_POST['id_realisation'];
 
     $pdo->exec("UPDATE t_realisations SET r_titre ='$r_titre', r_soustitre ='$r_soustitre', r_dates = '$r_dates', r_description='$r_description' WHERE id_realisation='$id_realisation'");
@@ -94,7 +94,7 @@ if(isset($_POST['r_titre'])){//par le nom du premier input
                                     <label for="description">Description</label>
                                     <input type="text" name="r_description" class="form-control" value="<?php echo $ligne_realisation['r_description'];?>">
                                 </div>
-
+*+
                                 <input hidden name="id_realisation"  value="<?php echo $ligne_realisation['id_realisation'];?>">
                                 <input type="submit" class="btn btn-warning btn-block" value="Mettre à jour">
                             </form>

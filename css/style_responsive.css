@@ -2,10 +2,11 @@
     font-family:Righteous;
 
 }
-h2{
+h2, h3{
     color:white;
     text-shadow: 1px 1px 1px black;
 }
+
 body{
     background-image:url(../img/ao.gif);
 }
@@ -29,7 +30,7 @@ footer{
            }
            .navbar-nav{
                background:#455A64;
-               border:2px solid #ECEFF1;
+
            }
                .navbar-inverse{
                    background:transparent;
@@ -81,30 +82,40 @@ footer{
     margin-top:9em;
 }
 #Competences .progress{
-    padding-left:0 ;
+    padding-left:0;
+    box-shadow:2px 3px 11px black;
+
 }
+ .competence .progress-bar{
+     background:indianred;
+ }
+  .competence {
+      color:white;
+  }
 
 #Experiences .container-fluid{
     margin-top:12em;
 }
-#exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
+/* #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
     border:none;
     color: white;
     padding-top: 11px;
+    background:red;
+} */
+.affiche{
+    color: white;
+    padding-top: 11px;
+    font-family: 'Roboto', sans-serif;
 }
 
-#exp_description,#exp_dates, #form_description, #form_dates{
-    border:2px;
-    border-radius:4px;
-}
 
-#exp_poste,#form_titre{
-    border: 1px solid #ECEFF1;
-    border-radius: 4px;
-}
-#exp_poste,#form_titre{
+.affiche02{
+    border-radius:2px;
+    padding-top:2px;
+    padding-bottom:2px;
     background: indianred;
 }
+
 /**Style des pages pour mobile */
 @media screen and (max-width: 425px){
     .first .container .row{
@@ -121,7 +132,7 @@ footer{
     .first .jumbotron .presentation > h3{
         font-size:19px;
     }
-    #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
+    .affiche{
         padding-top:0;
     }
 

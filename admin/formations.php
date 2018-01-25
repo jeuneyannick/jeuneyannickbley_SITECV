@@ -21,13 +21,21 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 if(isset($_POST['f_titre']) ) {// si on a posté une nouvelle compétence
     if(!empty($_POST['f_titre']) && !empty($_POST['f_lieu']) && !empty($_POST['f_dates']) && !empty($_POST['f_description']) ){
 
-        $f_titre = addslashes($_POST['f_titre']);
-        $f_lieu = addslashes($_POST['f_lieu']);
-        $f_dates = addslashes($_POST['f_dates']);
-        $f_description = addslashes($_POST['f_description']);
-        $pdo->exec("INSERT INTO t_formations VALUES (NULL,'$f_titre','$f_lieu','$f_dates','$f_description','$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
-        header("location: formations.php");//pour revenir sur la page
-        exit();
+        // $f_titre = addslashes($_POST['f_titre']);
+        // $f_lieu = addslashes($_POST['f_lieu']);
+        // $f_dates = addslashes($_POST['f_dates']);
+        // $f_description = addslashes($_POST['f_description']);
+        $pdo->prepare("INSERT INTO t_formations(f_titre,f_lieu,f_dates,f_description,utilisateur_id) VALUES (:f_titre, :f_lieu, :f_dates, :f_description,'$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        $req->bindParam(':f_titre', $_POST['f_titre'], PDO::PARAM_STR);
+        $req->bindParam(':f_lieu',$_POST['f_lieu'], PDO::PARAM_STR);
+        $req->bindParam(':f_dates', $_POST['f_dates'], PDO::PARAM_STR);
+        $req->bindParam(':f_description', $_POST['f_description'], PDO::PARAM_STR);
+
+        if($req->execute()) {
+            header('location:formations.php');
+        }
+
+
 
     }
 }

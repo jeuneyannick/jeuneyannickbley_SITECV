@@ -15,12 +15,6 @@ $req = $pdo -> query("SELECT * FROM t_utilisateurs WHERE id_utilisateur = '$id_u
 $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 
 
-
-
-
-
-
-
 // mise à jour d'une compétence
 
 if(isset($_POST['e_poste'])){//par le nom du premier input
@@ -105,7 +99,7 @@ $ligne_experience= $req->fetch();
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea name="e_description" id="editor1" class="form-control" value="<?php echo $ligne_experience['e_description'];?>"></textarea>
+                                    <textarea name="e_description" id="editor1" class="form-control" ><?php echo $ligne_experience['e_description'];?></textarea>
                                 </div>
 
                                 <input hidden name="id_experience"  value="<?php echo $ligne_experience['id_experience'];?>">

@@ -26,12 +26,16 @@ $ligne_utilisateur = $req -> fetch(PDO::FETCH_ASSOC);
 if(isset($_POST['competence']) ){// si on a posté une nouvelle compétence
     if(!empty($_POST['competence']) && !empty($_POST['c_niveau'])){
 
-        $competence = addslashes($_POST['competence']);
-        $c_niveau = addslashes($_POST['c_niveau']);
-        $pdo->exec("INSERT INTO t_competences VALUES (NULL,'$competence','$c_niveau','$id_utilisateur')");//mettre $id_utilisateur quand on l'aura dans la variable de session
-        header("location: competences.php");//pour revenir sur la page
-        exit();
+        $competence = $_POST['competence'];
+        $c_niveau = $_POST['c_niveau'];
 
+        $req = $pdo->prepare("INSERT INTO t_competences(competence, c_niveau, utilisateur_id) VALUES (:competence,:c_niveau,'1')");//mettre $id_utilisateur quand on l'aura dans la variable de session
+        $req->bindParam(':competence', $competence, PDO::PARAM_STR);
+        $req->bindParam(':c_niveau',$_POST['c_niveau'], PDO::PARAM_INT);
+
+        if($req->execute()) {
+            header('location:competences.php');
+        }
     }
 }
 
