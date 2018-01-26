@@ -96,16 +96,11 @@ footer{
 #Experiences .container-fluid{
     margin-top:12em;
 }
-/* #exp_poste,#exp_lieu,#exp_dates, #exp_description, #form_titre, #form_lieu,#form_dates,#form_description{
-    border:none;
-    color: white;
-    padding-top: 11px;
-    background:red;
-} */
+
 .affiche{
     color: white;
     padding-top: 11px;
-    
+
 }
 
 

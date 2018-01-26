@@ -1,6 +1,6 @@
 <?php
 require_once('admin/init/connect.php'); // Connexion à ma base de données
-require_once('admin/init/functions.php');// Require des fonctions que je vais utiliser
+require_once('Contact.class.php');
 $req = $pdo->query("SELECT* FROM t_utilisateurs WHERE id_utilisateur = '1'");
 $affiche_utilisateurs = $req -> fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,7 +17,21 @@ $req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
+// on vérifie que le formulaire a été poste
+if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui nous permets d'accèder aux champs par des variables
+   extract($_POST);
+   $valid = (empty($c_nom) || empty($c_email) || !filter_var($c_email, FILTER_VALIDATE_EMAIL) || empty($c_sujet) || empty($c_message))
+   ? false : true;// écriture ternaire if else
 
+   if ($valid) {// si tous les champs sont renseignés
+       $contact = new Contact();// on crée un nouvel objet (ou instance ) de la class Contact.class.phpinfo
+       $contact->insertContact($c_nom, $c_email, $c_sujet, $c_message);
+       unset($c_nom);
+       unset($c_email);
+       unset($c_sujet);
+       unset($c_message);
+   }
+}
 ?>
 <head>
     <meta charset="UTF-8">
@@ -122,18 +136,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </section>
-        <!-- <section class="container-fluid jumbotron text-center">
-        <div class="row">
-        <div class="col-lg-8 col-lg-push-2 col-md-10 col-md-push-1 col-sm-12 col-xs-12">
-        <?php foreach($affiche_formations as $form){?>
-        <div class="text-center col-lg-3" id="form_titre"><p><?= $form['f_titre']?></p></div>
-        <div class="text-center col-lg-3" id="form_lieu"><p><?=$form['f_lieu']?></p></div>
-        <div class="text-center col-lg-3" id="form_dates"><p><?=$form['f_dates'] ?></p></div>
-        <div class="text-center col-lg-3" id="form_description"><?= $form['f_description'] ?></div>
-    <?php } ?>
-</div>
-</div>
-</section> -->
+
 </section><!-- Fin de la page Formations -->
 
 <div class="clearfix"></div>
@@ -161,7 +164,7 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
 <div class="clearfix"></div><!-- -->
 
-<section class="fourth container" id="Contact"><!-- Début de la page Experiences -->
+<section class="fifth container" id="Contact"><!-- Début de la page Experiences -->
     <div class="row">
         <div class="page-header text-center col-lg-6 col-lg-push-3 col-sm-6 col-sm-push-3 col-md-6 col-md-push-3 col-xs-12">
             <h2>Contact</h2>
@@ -169,28 +172,30 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
     </div>
     <section class="container-fluid jumbotron text-center">
         <div class="row">
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-6 col-lg-3">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <div class ="col-lg-6 col-lg-push-3">
+                <form method="POST">
+                    <div class="form-group">
+                        <label for="nom">Nom:</label>
+                        <input type="text" class="form-control" name="c_nom" required>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-6  col-lg-3">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
+                    <div class="form-group">
+                        <label for="email">Email : </label>
+                        <input type="email" class="form-control" name="c_email" required>
                     </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">Sign in</button>
+                    <div class="form-group">
+                        <label for="sujet">Sujet:</label>
+                        <input type="text" class="form-control" name="c_sujet" placeholder="Objet de votre message" required>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea class="form-control" rows="5" name="c_message"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default largeur">Envoyer</button>
+                </form>
             </div>
-        </form>
 
-    </section>
+
+</section>
 
 </section><!-- Fin de la page Expériences -->
 
@@ -202,6 +207,4 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
 <script src="admin/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="admin/js/jquery-3.2.1.min.js"></script>
-<script src="admin/js/mobilefirst.js"></script>
 </body>
