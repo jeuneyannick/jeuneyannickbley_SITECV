@@ -37,8 +37,8 @@ $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
         <header>
             <div class="container">
                 <div class="row">
-                    <nav class="text-center navbar navbar-inverse col-xs-12 col-sm-8 col-lg-7 col-lg-push-3">
-                        <ul class=" nav navbar-nav ">
+                    <nav class="text-center navbar navbar-inverse col-xs-4 col-sm-10 col-sm-push-2 col-lg-7 col-lg-push-3">
+                        <ul class="nav navbar-nav ">
                             <li><a href="#Accueil">Accueil</a></li>
                             <li><a href="#Competences">Compétences</a></li>
                             <li><a href="#Formations">Formations</a></li>
