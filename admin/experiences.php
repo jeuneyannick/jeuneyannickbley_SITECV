@@ -2,7 +2,6 @@
 // gestion des contenus de la bdd
 //suppression d'une competence
 require_once('init/connect.php');
-
 session_start();// à mettre dans toutes les pages de l'admin
 if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
 
@@ -39,23 +38,7 @@ if(isset($_POST['e_poste'])) { // Si on a posté une nouvelle experience
     } // ferme le if $_POST
 } // ferme le if isset du form
 
-//gestion des contenus de la bdd compétences
-//Insertion d'une experience
-// if(isset($_POST['e_titre'])){// si on a posté une nouvelle experience
-//     if(!empty($_POST['e_titre']) && !empty($_POST['e_employeur']) && !empty($_POST['e_soustitre']) && !empty($_POST['e_dates']) && !empty($_POST['e_description']) ){
-//
-//         $e_titre = addslashes($_POST['e_titre']);
-//         $e_employeur = addslashes($_POST['e_employeur']);
-//         $e_soustitre = addslashes($_POST['e_soustitre']);
-//         $e_dates = addslashes($_POST['e_dates']);
-//         $e_description = addslashes($_POST['e_description']);
-//         $pdo->exec("INSERT INTO t_experiences VALUES (NULL,'$e_titre' ,'$e_soustitre' ,'$e_dates' ,'$e_description' ,'$id_utilisateur,'$e_employeur' )");//mettre $id_utilisateur quand on l'aura dans la variable de session
-//         header("location: experiences.php");//pour revenir sur la page
-//         exit();
-//
-//     }
-// }
-
+/
 
 
 

@@ -81,9 +81,9 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
                         <p>Actuellement à la recherche d'un stage de 2 mois</p>
                         <div class="icons">
                             <a href="https://fr.linkedin.com/in/yannick-bley-84b585145" target="_blank"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
-                            <a href="https://twitter.com/YannickBley"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
-                            <a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
-                            <a href="https://github.com/jeuneyannick"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/YannickBley" target="_blank"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/yannick.bley.50" target="_blank"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://github.com/jeuneyannick" target="_blank"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
                         </div>
 
                     </div>
