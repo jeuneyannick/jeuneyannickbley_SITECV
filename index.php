@@ -22,6 +22,11 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
    extract($_POST);
    $valid = (empty($c_nom) || empty($c_email) || !filter_var($c_email, FILTER_VALIDATE_EMAIL) || empty($c_sujet) || empty($c_message))
    ? false : true;// écriture ternaire if else
+   $c_nom = htmlspecialchars($c_nom);
+   $c_email = htmlspecialchars($c_email);
+   $c_sujet = htmlspecialchars($c_sujet);
+   $c_message = htmlspecialchars($c_message);
+
 
    if ($valid) {// si tous les champs sont renseignés
        $contact = new Contact();// on crée un nouvel objet (ou instance ) de la class Contact.class.phpinfo
