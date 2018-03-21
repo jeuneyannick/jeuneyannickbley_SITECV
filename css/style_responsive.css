@@ -12,6 +12,7 @@ body{
 }
 footer{
     margin-bottom:6em;
+    color:white;
 }
    .icons > a > i{
        margin: 10px;
@@ -121,7 +122,7 @@ footer{
         border:none;
     }
     .first .jumbotron{
-        margin-top: 14em;
+        margin-top:14em;
 
     }
     .first .jumbotron .presentation > h3{

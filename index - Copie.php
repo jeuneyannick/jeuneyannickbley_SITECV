@@ -52,7 +52,7 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
 <body>
 
     <!--Page d'accueil -->
-    <section class="first container" id="Accueil">
+    <div class="first container" id="Accueil">
         <header>
             <div class="container">
                 <div class="row">
@@ -91,7 +91,7 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
             </div>
         </section><!--Fin de la section !-->
 
-    </section><!-- Fin de la page d'accueil -->
+    </div><!-- Fin de la page d'accueil -->
 
 
     <section class="second container" id="Competences"> <!-- Début page Competences -->

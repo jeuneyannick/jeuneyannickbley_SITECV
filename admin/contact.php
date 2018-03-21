@@ -15,7 +15,6 @@ if(isset($_SESSION['connexion']) && $_SESSION['connexion']=='connecté'){
 }
 
 $req = $pdo->prepare("SELECT * FROM t_contact ORDER BY id_contact DESC");
-// $ligne_commentaires = $sql->fetch();
 $req->execute();
 $nbr_commentaires = $req->rowCount();
 
