@@ -41,7 +41,7 @@ class Contact {
         $this->headers .= 'Content-type : text/html; charset=utf-8' . "\r\n";
 
         // on utilise la fonction mail() de PHP
-        mail($this->to, $this->c_sujet, $this->c_message, $this->headers);
+        mail($this->to, $this->c_sujet, $this->c_message, $this->headers, sendEmail());
     }
 
 }

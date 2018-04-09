@@ -17,8 +17,8 @@ $req= $pdo->prepare("SELECT * FROM t_competences WHERE utilisateur_id= '1'");
 $req->execute();
 $affiche_competences = $req-> fetchAll(PDO::FETCH_ASSOC);
 
-// on vérifie que le formulaire a été poste
-if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui nous permets d'accèder aux champs par des variables
+// on vérifie que le formulaire a été posté
+if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui nous permet d'accèder aux champs par des variables
    extract($_POST);
    $valid = (empty($c_nom) || empty($c_email) || !filter_var($c_email, FILTER_VALIDATE_EMAIL) || empty($c_sujet) || empty($c_message))
    ? false : true;// écriture ternaire if else
@@ -78,12 +78,11 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
                     <div class="presentation text-center col-xs-12 col-sm-10 col-sm-offset-1">
                         <h2>Site CV de Yannick Bley</h2>
                         <h3>Développeur Web Junior</h3>
-                        <p>Actuellement à la recherche d'un stage de 2 mois</p>
+                        <p>Actuellement à la recherche d'une entreprise en alternance</p>
                         <div class="icons">
-                            <a href="https://fr.linkedin.com/in/yannick-bley-84b585145" target="_blank"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
-                            <a href="https://twitter.com/YannickBley" target="_blank"><i class="fa fa-twitter fa-4x" aria-hidden="true"></i></a>
-                            <a href="https://www.facebook.com/yannick.bley.50" target="_blank"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
-                            <a href="https://github.com/jeuneyannick" target="_blank"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://fr.linkedin.com/in/yannick-bley-84b585145"><i class="fa fa-linkedin fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://www.facebook.com/yannick.bley.50"><i class="fa fa-facebook fa-4x" aria-hidden="true"></i></a>
+                            <a href="https://github.com/jeuneyannick"><i class="fa fa-github fa-4x" aria-hidden="true"></i></a>
                         </div>
 
                     </div>
@@ -181,19 +180,23 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
                 <form method="POST">
                     <div class="form-group">
                         <label for="nom">Nom:</label>
-                        <input type="text" class="form-control" name="c_nom" required>
+                        <input type="text" class="form-control" name="c_nom" id="nom" placeholder = "Entrez votre nom" required>
+                        <span id="aideNom"></span>
                     </div>
                     <div class="form-group">
                         <label for="email">Email : </label>
-                        <input type="email" class="form-control" name="c_email" required>
+                        <input type="email" class="form-control" name="c_email" id="email" placeholder = "Entrez une adresse mail valide" required>
+                        <span id="aideEmail"></span>
                     </div>
                     <div class="form-group">
                         <label for="sujet">Sujet:</label>
-                        <input type="text" class="form-control" name="c_sujet" placeholder="Objet de votre message" required>
+                        <input type="text" class="form-control" name="c_sujet" id="sujet" placeholder="Objet de votre message" required>
+                        <span id="aideSujet"></span>
                     </div>
                     <div class="form-group">
                         <label for="message">Message:</label>
-                        <textarea class="form-control" rows="5" name="c_message"></textarea>
+                        <textarea class="form-control" rows="5" name="c_message" id="message" placeholder ="Laissez un message"></textarea>
+                        <span id="aideMessage"></span>
                     </div>
                     <button type="submit" class="btn btn-default largeur">Envoyer</button>
                 </form>
@@ -208,8 +211,11 @@ if (!empty($_POST)) {// on éclate le tableau avec la methode extract(), ce qui 
     <p> <?= date('Y'); ?> -  Tous droits reservés</p>
 </footer>
 
+    
+</body>
+</html>
 
-
+<script src ="js/main.js"></script>
 <script src="admin/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </body>
